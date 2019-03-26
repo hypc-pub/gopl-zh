@@ -1,0 +1,759 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>示例: 解码S表达式 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch12-07.html" />
+    
+    
+    <link rel="prev" href="ch12-05.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch12-07.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch12-05.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch3/ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch12-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            为何需要反射?
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            reflect.Type和reflect.Value
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Display递归打印
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 编码S表达式
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            通过reflect.Value修改值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-06.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 解码S表达式
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-07.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            获取结构体字段标签
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-08.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            显示一个类型的方法集
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-09.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            几点忠告
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="126-&#x793A;&#x4F8B;-&#x89E3;&#x7801;s&#x8868;&#x8FBE;&#x5F0F;">12.6. &#x793A;&#x4F8B;: &#x89E3;&#x7801;S&#x8868;&#x8FBE;&#x5F0F;</h2>
+<p>&#x6807;&#x51C6;&#x5E93;&#x4E2D;encoding/...&#x4E0B;&#x6BCF;&#x4E2A;&#x5305;&#x4E2D;&#x63D0;&#x4F9B;&#x7684;Marshal&#x7F16;&#x7801;&#x51FD;&#x6570;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;Unmarshal&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E3;&#x7801;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x5728;4.5&#x8282;&#x4E2D;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x8981;&#x5C06;&#x5305;&#x542B;JSON&#x7F16;&#x7801;&#x683C;&#x5F0F;&#x7684;&#x5B57;&#x8282;slice&#x6570;&#x636E;&#x89E3;&#x7801;&#x4E3A;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;Movie&#x7C7B;&#x578B;&#xFF08;&#xA7;12.3&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">data := []byte{/* ... */}
+var movie Movie
+err := json.Unmarshal(data, &amp;movie)
+</code></pre>
+<p>Unmarshal&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x4E86;&#x53CD;&#x5C04;&#x673A;&#x5236;&#x7C7B;&#x4FEE;&#x6539;movie&#x53D8;&#x91CF;&#x7684;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#xFF0C;&#x6839;&#x636E;&#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x4E3A;Movie&#x6210;&#x5458;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;map&#x3001;&#x7ED3;&#x6784;&#x4F53;&#x548C;slice&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x4E3A;S&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x7801;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B80;&#x6613;&#x7684;Unmarshal&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x524D;&#x9762;&#x7684;json.Unmarshal&#x6807;&#x51C6;&#x5E93;&#x51FD;&#x6570;&#xFF0C;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5B9E;&#x73B0;&#x7684;sexpr.Marshal&#x51FD;&#x6570;&#x7684;&#x9006;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x63D0;&#x9192;&#x4E00;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x5065;&#x58EE;&#x7684;&#x548C;&#x901A;&#x7528;&#x7684;&#x5B9E;&#x73B0;&#x901A;&#x5E38;&#x9700;&#x8981;&#x6BD4;&#x4F8B;&#x5B50;&#x66F4;&#x591A;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E3A;&#x4E86;&#x4FBF;&#x4E8E;&#x6F14;&#x793A;&#x6211;&#x4EEC;&#x91C7;&#x7528;&#x4E86;&#x7CBE;&#x7B80;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x652F;&#x6301;S&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x9650;&#x7684;&#x5B50;&#x96C6;&#xFF0C;&#x540C;&#x65F6;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x7684;&#x65B9;&#x5F0F;&#x4E5F;&#x6BD4;&#x8F83;&#x7C97;&#x66B4;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x6F14;&#x793A;&#x53CD;&#x5C04;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5B9E;&#x7528;&#x7684;S&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x89E3;&#x7801;&#x5668;&#x3002;</p>
+<p>&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;lexer&#x4F7F;&#x7528;&#x4E86;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;text/scanner&#x5305;&#x5C06;&#x8F93;&#x5165;&#x6D41;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x89E3;&#x6790;&#x4E3A;&#x4E00;&#x4E2A;&#x4E2A;&#x7C7B;&#x4F3C;&#x6CE8;&#x91CA;&#x3001;&#x6807;&#x8BC6;&#x7B26;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x548C;&#x6570;&#x5B57;&#x9762;&#x503C;&#x4E4B;&#x7C7B;&#x7684;&#x6807;&#x8BB0;&#x3002;&#x8F93;&#x5165;&#x626B;&#x63CF;&#x5668;scanner&#x7684;Scan&#x65B9;&#x6CD5;&#x5C06;&#x63D0;&#x524D;&#x626B;&#x63CF;&#x548C;&#x8FD4;&#x56DE;&#x4E0B;&#x4E00;&#x4E2A;&#x8BB0;&#x53F7;&#xFF0C;&#x5BF9;&#x4E8E;rune&#x7C7B;&#x578B;&#x3002;&#x5927;&#x591A;&#x6570;&#x8BB0;&#x53F7;&#xFF0C;&#x6BD4;&#x5982;&#x201C;(&#x201D;&#xFF0C;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5355;&#x4E00;rune&#x53EF;&#x8868;&#x793A;&#x7684;Unicode&#x5B57;&#x7B26;&#xFF0C;&#x4F46;&#x662F;text/scanner&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x5C0F;&#x7684;&#x8D1F;&#x6570;&#x8868;&#x793A;&#x8BB0;&#x53F7;&#x6807;&#x8BC6;&#x7B26;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x7531;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x7EC4;&#x6210;&#x7684;&#x8BB0;&#x53F7;&#x3002;&#x8C03;&#x7528;Scan&#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE;&#x8FD9;&#x4E9B;&#x8BB0;&#x53F7;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x63A5;&#x7740;&#x8C03;&#x7528;TokenText&#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE;&#x8BB0;&#x53F7;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x89E3;&#x6790;&#x5668;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x591A;&#x6B21;&#x4F7F;&#x7528;&#x5F53;&#x524D;&#x7684;&#x8BB0;&#x53F7;&#xFF0C;&#x4F46;&#x662F;Scan&#x4F1A;&#x4E00;&#x76F4;&#x5411;&#x524D;&#x626B;&#x63CF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5305;&#x88C5;&#x4E86;&#x4E00;&#x4E2A;lexer&#x626B;&#x63CF;&#x5668;&#x8F85;&#x52A9;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x8DDF;&#x8E2A;&#x6700;&#x8FD1;&#x7531;Scan&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x8BB0;&#x53F7;&#x3002;</p>
+<p><u><i>gopl.io/ch12/sexpr</i></u></p>
+<pre class="language-"><code class="lang-Go">type lexer struct {
+    scan  scanner.Scanner
+    token rune // the current token
+}
+
+func (lex *lexer) next()        { lex.token = lex.scan.Scan() }
+func (lex *lexer) text() string { return lex.scan.TokenText() }
+
+func (lex *lexer) consume(want rune) {
+    if lex.token != want { // NOTE: Not an example of good error handling.
+        panic(fmt.Sprintf(&quot;got %q, want %q&quot;, lex.text(), want))
+    }
+    lex.next()
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x8F6C;&#x5230;&#x8BED;&#x6CD5;&#x89E3;&#x6790;&#x5668;&#x3002;&#x5B83;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;read&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x8BFB;&#x53D6;S&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F53;&#x524D;&#x6807;&#x8BB0;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;S&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5F53;&#x524D;&#x6807;&#x8BB0;&#x66F4;&#x65B0;&#x53EF;&#x53D6;&#x5730;&#x5740;&#x7684;reflect.Value&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;v&#x3002;</p>
+<pre class="language-"><code class="lang-Go">func read(lex *lexer, v reflect.Value) {
+    switch lex.token {
+    case scanner.Ident:
+        // The only valid identifiers are
+        // &quot;nil&quot; and struct field names.
+        if lex.text() == &quot;nil&quot; {
+            v.Set(reflect.Zero(v.Type()))
+            lex.next()
+            return
+        }
+    case scanner.String:
+        s, _ := strconv.Unquote(lex.text()) // NOTE: ignoring errors
+        v.SetString(s)
+        lex.next()
+        return
+    case scanner.Int:
+        i, _ := strconv.Atoi(lex.text()) // NOTE: ignoring errors
+        v.SetInt(int64(i))
+        lex.next()
+        return
+    case &apos;(&apos;:
+        lex.next()
+        readList(lex, v)
+        lex.next() // consume &apos;)&apos;
+        return
+    }
+    panic(fmt.Sprintf(&quot;unexpected token %q&quot;, lex.text()))
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x7684;S&#x8868;&#x8FBE;&#x5F0F;&#x4F7F;&#x7528;&#x6807;&#x8BC6;&#x7B26;&#x533A;&#x5206;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#xFF0C;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x540D;&#x548C;nil&#x503C;&#x7684;&#x6307;&#x9488;&#x3002;read&#x51FD;&#x6570;&#x503C;&#x5904;&#x7406;nil&#x7C7B;&#x578B;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#x3002;&#x5F53;&#x9047;&#x5230;scanner.Ident&#x4E3A;&#x201C;nil&#x201D;&#x662F;&#xFF0C;&#x4F7F;&#x7528;reflect.Zero&#x51FD;&#x6570;&#x5C06;&#x53D8;&#x91CF;v&#x8BBE;&#x7F6E;&#x4E3A;&#x96F6;&#x503C;&#x3002;&#x800C;&#x5176;&#x5B83;&#x4EFB;&#x4F55;&#x7C7B;&#x578B;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x4F5C;&#x4E3A;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x3002;&#x540E;&#x9762;&#x7684;readList&#x51FD;&#x6570;&#x5C06;&#x5904;&#x7406;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6210;&#x5458;&#x540D;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x201C;(&#x201D;&#x6807;&#x8BB0;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x7684;&#x5F00;&#x59CB;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x51FD;&#x6570;readList&#xFF0C;&#x5C06;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x89E3;&#x7801;&#x5230;&#x4E00;&#x4E2A;&#x805A;&#x5408;&#x7C7B;&#x578B;&#x4E2D;&#xFF08;map&#x3001;&#x7ED3;&#x6784;&#x4F53;&#x3001;slice&#x6216;&#x6570;&#x7EC4;&#xFF09;&#xFF0C;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x4F9D;&#x7136;&#x4E8E;&#x4F20;&#x5165;&#x5F85;&#x586B;&#x5145;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x6BCF;&#x6B21;&#x9047;&#x5230;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5FAA;&#x73AF;&#x7EE7;&#x7EED;&#x89E3;&#x6790;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x76F4;&#x5230;&#x9047;&#x5230;&#x4E8E;&#x5F00;&#x59CB;&#x6807;&#x8BB0;&#x5339;&#x914D;&#x7684;&#x7ED3;&#x675F;&#x6807;&#x8BB0;&#x201C;)&#x201D;&#xFF0C;endList&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x68C0;&#x6D4B;&#x7ED3;&#x675F;&#x6807;&#x8BB0;&#x3002;</p>
+<p>&#x6700;&#x6709;&#x8DA3;&#x7684;&#x90E8;&#x5206;&#x662F;&#x9012;&#x5F52;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x662F;&#x5BF9;&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x7684;&#x5904;&#x7406;&#x3002;&#x76F4;&#x5230;&#x9047;&#x5230;&#x201C;)&#x201D;&#x7ED3;&#x675F;&#x6807;&#x8BB0;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;Index&#x51FD;&#x6570;&#x6765;&#x83B7;&#x53D6;&#x6570;&#x7EC4;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x9012;&#x5F52;&#x8C03;&#x7528;read&#x51FD;&#x6570;&#x5904;&#x7406;&#x3002;&#x548C;&#x5176;&#x5B83;&#x9519;&#x8BEF;&#x7C7B;&#x4F3C;&#xFF0C;&#x5982;&#x679C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x5BFC;&#x81F4;&#x89E3;&#x7801;&#x5668;&#x7684;&#x5F15;&#x7528;&#x8D85;&#x51FA;&#x4E86;&#x6570;&#x7EC4;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x89E3;&#x7801;&#x5668;&#x5C06;&#x629B;&#x51FA;panic&#x5F02;&#x5E38;&#x3002;slice&#x4E5F;&#x91C7;&#x7528;&#x7C7B;&#x4F3C;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x5C06;&#x4E3A;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;slice&#x7684;&#x672B;&#x5C3E;&#x3002;</p>
+<p>&#x5728;&#x5FAA;&#x73AF;&#x5904;&#x7406;&#x7ED3;&#x6784;&#x4F53;&#x548C;map&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#x5FC5;&#x987B;&#x89E3;&#x7801;&#x4E00;&#x4E2A;(key value)&#x683C;&#x5F0F;&#x7684;&#x5BF9;&#x5E94;&#x5B50;&#x5217;&#x8868;&#x3002;&#x5BF9;&#x4E8E;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;key&#x90E8;&#x5206;&#x5BF9;&#x4E8E;&#x6210;&#x5458;&#x7684;&#x540D;&#x5B57;&#x3002;&#x548C;&#x6570;&#x7EC4;&#x7C7B;&#x4F3C;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;FieldByName&#x627E;&#x5230;&#x7ED3;&#x6784;&#x4F53;&#x5BF9;&#x5E94;&#x6210;&#x5458;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x9012;&#x5F52;&#x8C03;&#x7528;read&#x51FD;&#x6570;&#x5904;&#x7406;&#x3002;&#x5BF9;&#x4E8E;map&#xFF0C;key&#x53EF;&#x80FD;&#x662F;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#xFF0C;&#x5BF9;&#x5143;&#x7D20;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x548C;slice&#x7C7B;&#x4F3C;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x9012;&#x5F52;&#x586B;&#x5145;&#x5B83;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x65B0;&#x89E3;&#x6790;&#x5230;&#x7684;key/value&#x5BF9;&#x6DFB;&#x52A0;&#x5230;map&#x3002;</p>
+<pre class="language-"><code class="lang-Go">func readList(lex *lexer, v reflect.Value) {
+    switch v.Kind() {
+    case reflect.Array: // (item ...)
+        for i := 0; !endList(lex); i++ {
+            read(lex, v.Index(i))
+        }
+
+    case reflect.Slice: // (item ...)
+        for !endList(lex) {
+            item := reflect.New(v.Type().Elem()).Elem()
+            read(lex, item)
+            v.Set(reflect.Append(v, item))
+        }
+
+    case reflect.Struct: // ((name value) ...)
+        for !endList(lex) {
+            lex.consume(&apos;(&apos;)
+            if lex.token != scanner.Ident {
+                panic(fmt.Sprintf(&quot;got token %q, want field name&quot;, lex.text()))
+            }
+            name := lex.text()
+            lex.next()
+            read(lex, v.FieldByName(name))
+            lex.consume(&apos;)&apos;)
+        }
+
+    case reflect.Map: // ((key value) ...)
+        v.Set(reflect.MakeMap(v.Type()))
+        for !endList(lex) {
+            lex.consume(&apos;(&apos;)
+            key := reflect.New(v.Type().Key()).Elem()
+            read(lex, key)
+            value := reflect.New(v.Type().Elem()).Elem()
+            read(lex, value)
+            v.SetMapIndex(key, value)
+            lex.consume(&apos;)&apos;)
+        }
+
+    default:
+        panic(fmt.Sprintf(&quot;cannot decode list into %v&quot;, v.Type()))
+    }
+}
+
+func endList(lex *lexer) bool {
+    switch lex.token {
+    case scanner.EOF:
+        panic(&quot;end of file&quot;)
+    case &apos;)&apos;:
+        return true
+    }
+    return false
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x89E3;&#x6790;&#x5668;&#x5305;&#x88C5;&#x4E3A;&#x5BFC;&#x51FA;&#x7684;Unmarshal&#x89E3;&#x7801;&#x51FD;&#x6570;&#xFF0C;&#x9690;&#x85CF;&#x4E86;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x548C;&#x6E05;&#x7406;&#x7B49;&#x8FB9;&#x7F18;&#x5904;&#x7406;&#x3002;&#x5185;&#x90E8;&#x89E3;&#x6790;&#x5668;&#x4EE5;panic&#x7684;&#x65B9;&#x5F0F;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#xFF0C;&#x4F46;&#x662F;Unmarshal&#x51FD;&#x6570;&#x901A;&#x8FC7;&#x5728;defer&#x8BED;&#x53E5;&#x8C03;&#x7528;recover&#x51FD;&#x6570;&#x6765;&#x6355;&#x83B7;&#x5185;&#x90E8;panic&#xFF08;&#xA7;5.10&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;panic&#x5BF9;&#x5E94;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">// Unmarshal parses S-expression data and populates the variable
+// whose address is in the non-nil pointer out.
+func Unmarshal(data []byte, out interface{}) (err error) {
+    lex := &amp;lexer{scan: scanner.Scanner{Mode: scanner.GoTokens}}
+    lex.scan.Init(bytes.NewReader(data))
+    lex.next() // get the first token
+    defer func() {
+        // NOTE: this is not an example of ideal error handling.
+        if x := recover(); x != nil {
+            err = fmt.Errorf(&quot;error at %s: %v&quot;, lex.scan.Position, x)
+        }
+    }()
+    read(lex, reflect.ValueOf(out).Elem())
+    return nil
+}
+</code></pre>
+<p>&#x751F;&#x4EA7;&#x5B9E;&#x73B0;&#x4E0D;&#x5E94;&#x8BE5;&#x5BF9;&#x4EFB;&#x4F55;&#x8F93;&#x5165;&#x95EE;&#x9898;&#x90FD;&#x7528;panic&#x5F62;&#x5F0F;&#x62A5;&#x544A;&#xFF0C;&#x800C;&#x4E14;&#x5E94;&#x8BE5;&#x62A5;&#x544A;&#x4E00;&#x4E9B;&#x9519;&#x8BEF;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#x8F93;&#x5165;&#x7684;&#x884C;&#x53F7;&#x548C;&#x4F4D;&#x7F6E;&#x7B49;&#x3002;&#x5C3D;&#x7BA1;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x5C55;&#x793A;&#x7C7B;&#x4F3C;encoding/json&#x7B49;&#x5305;&#x5E95;&#x5C42;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;&#x601D;&#x8DEF;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x53CD;&#x5C04;&#x673A;&#x5236;&#x6765;&#x586B;&#x5145;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 12.8&#xFF1A;</strong> sexpr.Unmarshal&#x51FD;&#x6570;&#x548C;json.Unmarshal&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x8981;&#x6C42;&#x5728;&#x89E3;&#x7801;&#x524D;&#x8F93;&#x5165;&#x5B8C;&#x6574;&#x7684;&#x5B57;&#x8282;slice&#x3002;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x548C;json.Decoder&#x7C7B;&#x4F3C;&#x7684;sexpr.Decoder&#x7C7B;&#x578B;&#xFF0C;&#x652F;&#x6301;&#x4ECE;&#x4E00;&#x4E2A;io.Reader&#x6D41;&#x89E3;&#x7801;&#x3002;&#x4FEE;&#x6539;sexpr.Unmarshal&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B0;&#x7684;&#x7C7B;&#x578B;&#x5B9E;&#x73B0;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 12.9&#xFF1A;</strong> &#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x6807;&#x8BB0;&#x7684;API&#x7528;&#x4E8E;&#x89E3;&#x7801;S&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x53C2;&#x8003;xml.Decoder&#xFF08;7.14&#xFF09;&#x7684;&#x98CE;&#x683C;&#x3002;&#x4F60;&#x5C06;&#x9700;&#x8981;&#x4E94;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6807;&#x8BB0;&#xFF1A;Symbol&#x3001;String&#x3001;Int&#x3001;StartList&#x548C;EndList&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 12.10&#xFF1A;</strong> &#x6269;&#x5C55;sexpr.Unmarshal&#x51FD;&#x6570;&#xFF0C;&#x652F;&#x6301;&#x5E03;&#x5C14;&#x578B;&#x3001;&#x6D6E;&#x70B9;&#x6570;&#x548C;interface&#x7C7B;&#x578B;&#x7684;&#x89E3;&#x7801;&#xFF0C;&#x4F7F;&#x7528; <strong>&#x7EC3;&#x4E60; 12.3&#xFF1A;</strong> &#x7684;&#x65B9;&#x6848;&#x3002;&#xFF08;&#x63D0;&#x793A;&#xFF1A;&#x8981;&#x89E3;&#x7801;&#x63A5;&#x53E3;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06;name&#x6620;&#x5C04;&#x5230;&#x6BCF;&#x4E2A;&#x652F;&#x6301;&#x7C7B;&#x578B;&#x7684;reflect.Type&#x3002;&#xFF09;</p>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"示例: 解码S表达式","level":"1.13.6","depth":2,"next":{"title":"获取结构体字段标签","level":"1.13.7","depth":2,"path":"ch12/ch12-07.md","ref":"ch12/ch12-07.md","articles":[]},"previous":{"title":"通过reflect.Value修改值","level":"1.13.5","depth":2,"path":"ch12/ch12-05.md","ref":"ch12/ch12-05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch12/ch12-06.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

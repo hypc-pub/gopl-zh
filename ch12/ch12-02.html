@@ -1,0 +1,704 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>reflect.Type和reflect.Value · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch12-03.html" />
+    
+    
+    <link rel="prev" href="ch12-01.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch12-03.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch12-01.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch3/ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch12-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            为何需要反射?
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-02.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            reflect.Type和reflect.Value
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Display递归打印
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 编码S表达式
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            通过reflect.Value修改值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 解码S表达式
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-07.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            获取结构体字段标签
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-08.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            显示一个类型的方法集
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch12-09.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            几点忠告
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="122-reflecttype-&#x548C;-reflectvalue">12.2. reflect.Type &#x548C; reflect.Value</h2>
+<p>&#x53CD;&#x5C04;&#x662F;&#x7531; reflect &#x5305;&#x63D0;&#x4F9B;&#x7684;&#x3002;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x7C7B;&#x578B;&#xFF0C;Type &#x548C; Value&#x3002;&#x4E00;&#x4E2A; Type &#x8868;&#x793A;&#x4E00;&#x4E2A;Go&#x7C7B;&#x578B;&#x3002;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x6709;&#x8BB8;&#x591A;&#x65B9;&#x6CD5;&#x6765;&#x533A;&#x5206;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x68C0;&#x67E5;&#x5B83;&#x4EEC;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6210;&#x5458;&#x6216;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7B49;&#x3002;&#x552F;&#x4E00;&#x80FD;&#x53CD;&#x6620; reflect.Type &#x5B9E;&#x73B0;&#x7684;&#x662F;&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#xFF08;&#xA7;7.5&#xFF09;&#xFF0C;&#x4E5F;&#x6B63;&#x662F;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F53;&#x6807;&#x8BC6;&#x4E86;&#x63A5;&#x53E3;&#x503C;&#x7684;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x51FD;&#x6570; reflect.TypeOf &#x63A5;&#x53D7;&#x4EFB;&#x610F;&#x7684; interface{} &#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4EE5; reflect.Type &#x5F62;&#x5F0F;&#x8FD4;&#x56DE;&#x5176;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">t := reflect.TypeOf(3)  // a reflect.Type
+fmt.Println(t.String()) // &quot;int&quot;
+fmt.Println(t)          // &quot;int&quot;
+</code></pre>
+<p>&#x5176;&#x4E2D; TypeOf(3) &#x8C03;&#x7528;&#x5C06;&#x503C; 3 &#x4F20;&#x7ED9; interface{} &#x53C2;&#x6570;&#x3002;&#x56DE;&#x5230; 7.5&#x8282; &#x7684;&#x5C06;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x503C;&#x8F6C;&#x4E3A;&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x9690;&#x5F0F;&#x7684;&#x63A5;&#x53E3;&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#xFF0C;&#x5B83;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x4FE1;&#x606F;&#x7684;&#x63A5;&#x53E3;&#x503C;&#xFF1A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#xFF08;&#x8FD9;&#x91CC;&#x662F; int&#xFF09;&#x548C;&#x5B83;&#x7684;&#x52A8;&#x6001;&#x7684;&#x503C;&#xFF08;&#x8FD9;&#x91CC;&#x662F; 3&#xFF09;&#x3002;</p>
+<p>&#x56E0;&#x4E3A; reflect.TypeOf &#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x7684;&#x63A5;&#x53E3;&#x503C;&#xFF0C;&#x5B83;&#x603B;&#x662F;&#x8FD4;&#x56DE;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C06;&#x6253;&#x5370; &quot;*os.File&quot; &#x800C;&#x4E0D;&#x662F; &quot;io.Writer&quot;&#x3002;&#x7A0D;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x5230;&#x80FD;&#x591F;&#x8868;&#x8FBE;&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#x7684; reflect.Type&#x3002;</p>
+<pre class="language-"><code class="lang-Go">var w io.Writer = os.Stdout
+fmt.Println(reflect.TypeOf(w)) // &quot;*os.File&quot;
+</code></pre>
+<p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; reflect.Type &#x63A5;&#x53E3;&#x662F;&#x6EE1;&#x8DB3; fmt.Stringer &#x63A5;&#x53E3;&#x7684;&#x3002;&#x56E0;&#x4E3A;&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x5BF9;&#x4E8E;&#x8C03;&#x8BD5;&#x548C;&#x65E5;&#x5FD7;&#x662F;&#x6709;&#x5E2E;&#x52A9;&#x7684;&#xFF0C; fmt.Printf &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7F29;&#x5199; %T &#x53C2;&#x6570;&#xFF0C;&#x5185;&#x90E8;&#x4F7F;&#x7528; reflect.TypeOf &#x6765;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">fmt.Printf(&quot;%T\n&quot;, 3) // &quot;int&quot;
+</code></pre>
+<p>reflect &#x5305;&#x4E2D;&#x53E6;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x7C7B;&#x578B;&#x662F; Value&#x3002;&#x4E00;&#x4E2A; reflect.Value &#x53EF;&#x4EE5;&#x88C5;&#x8F7D;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;&#x51FD;&#x6570; reflect.ValueOf &#x63A5;&#x53D7;&#x4EFB;&#x610F;&#x7684; interface{} &#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x88C5;&#x8F7D;&#x7740;&#x5176;&#x52A8;&#x6001;&#x503C;&#x7684; reflect.Value&#x3002;&#x548C; reflect.TypeOf &#x7C7B;&#x4F3C;&#xFF0C;reflect.ValueOf &#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x4E5F;&#x662F;&#x5177;&#x4F53;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F; reflect.Value &#x4E5F;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x503C;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">v := reflect.ValueOf(3) // a reflect.Value
+fmt.Println(v)          // &quot;3&quot;
+fmt.Printf(&quot;%v\n&quot;, v)   // &quot;3&quot;
+fmt.Println(v.String()) // NOTE: &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span> <span class="token attr-name">Value</span><span class="token punctuation">&gt;</span></span>&quot;
+</code></pre>
+<p>&#x548C; reflect.Type &#x7C7B;&#x4F3C;&#xFF0C;reflect.Value &#x4E5F;&#x6EE1;&#x8DB3; fmt.Stringer &#x63A5;&#x53E3;&#xFF0C;&#x4F46;&#x662F;&#x9664;&#x975E; Value &#x6301;&#x6709;&#x7684;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5426;&#x5219; String &#x65B9;&#x6CD5;&#x53EA;&#x8FD4;&#x56DE;&#x5176;&#x7C7B;&#x578B;&#x3002;&#x800C;&#x4F7F;&#x7528; fmt &#x5305;&#x7684; %v &#x6807;&#x5FD7;&#x53C2;&#x6570;&#x4F1A;&#x5BF9; reflect.Values &#x7279;&#x6B8A;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x5BF9; Value &#x8C03;&#x7528; Type &#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x6240;&#x5BF9;&#x5E94;&#x7684; reflect.Type&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">t := v.Type()           // a reflect.Type
+fmt.Println(t.String()) // &quot;int&quot;
+</code></pre>
+<p>reflect.ValueOf &#x7684;&#x9006;&#x64CD;&#x4F5C;&#x662F; reflect.Value.Interface &#x65B9;&#x6CD5;&#x3002;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; interface{} &#x7C7B;&#x578B;&#xFF0C;&#x88C5;&#x8F7D;&#x7740;&#x4E0E; reflect.Value &#x76F8;&#x540C;&#x7684;&#x5177;&#x4F53;&#x503C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">v := reflect.ValueOf(3) // a reflect.Value
+x := v.Interface()      // an interface{}
+i := x.(int)            // an int
+fmt.Printf(&quot;%d\n&quot;, i)   // &quot;3&quot;
+</code></pre>
+<p>reflect.Value &#x548C; interface{} &#x90FD;&#x80FD;&#x88C5;&#x8F7D;&#x4EFB;&#x610F;&#x7684;&#x503C;&#x3002;&#x6240;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x63A5;&#x53E3;&#x9690;&#x85CF;&#x4E86;&#x503C;&#x5185;&#x90E8;&#x7684;&#x8868;&#x793A;&#x65B9;&#x5F0F;&#x548C;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x6709;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5177;&#x4F53;&#x7684;&#x52A8;&#x6001;&#x7C7B;&#x578B;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x7C7B;&#x578B;&#x65AD;&#x8A00;&#x6765;&#x8BBF;&#x95EE;&#x5185;&#x90E8;&#x7684;&#x503C;&#xFF08;&#x5C31;&#x50CF;&#x4E0A;&#x9762;&#x90A3;&#x6837;&#xFF09;&#xFF0C;&#x5185;&#x90E8;&#x503C;&#x6211;&#x4EEC;&#x6CA1;&#x6CD5;&#x8BBF;&#x95EE;&#x3002;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A; Value &#x5219;&#x6709;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#x6765;&#x68C0;&#x67E5;&#x5176;&#x5185;&#x5BB9;&#xFF0C;&#x65E0;&#x8BBA;&#x5B83;&#x7684;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x7684;&#x683C;&#x5F0F;&#x5316;&#x51FD;&#x6570; format.Any&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528; reflect.Value &#x7684; Kind &#x65B9;&#x6CD5;&#x6765;&#x66FF;&#x4EE3;&#x4E4B;&#x524D;&#x7684;&#x7C7B;&#x578B; switch&#x3002;&#x867D;&#x7136;&#x8FD8;&#x662F;&#x6709;&#x65E0;&#x7A77;&#x591A;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x7684; kinds &#x7C7B;&#x578B;&#x5374;&#x662F;&#x6709;&#x9650;&#x7684;&#xFF1A;Bool&#x3001;String &#x548C; &#x6240;&#x6709;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x7684;&#x57FA;&#x7840;&#x7C7B;&#x578B;&#xFF1B;Array &#x548C; Struct &#x5BF9;&#x5E94;&#x7684;&#x805A;&#x5408;&#x7C7B;&#x578B;&#xFF1B;Chan&#x3001;Func&#x3001;Ptr&#x3001;Slice &#x548C; Map &#x5BF9;&#x5E94;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF1B;interface &#x7C7B;&#x578B;&#xFF1B;&#x8FD8;&#x6709;&#x8868;&#x793A;&#x7A7A;&#x503C;&#x7684; Invalid &#x7C7B;&#x578B;&#x3002;&#xFF08;&#x7A7A;&#x7684; reflect.Value &#x7684; kind &#x5373;&#x4E3A; Invalid&#x3002;&#xFF09;</p>
+<p><u><i>gopl.io/ch12/format</i></u></p>
+<pre class="language-"><code class="lang-Go">package format
+
+import (
+    &quot;reflect&quot;
+    &quot;strconv&quot;
+)
+
+// Any formats any value as a string.
+func Any(value interface{}) string {
+    return formatAtom(reflect.ValueOf(value))
+}
+
+// formatAtom formats a value without inspecting its internal structure.
+func formatAtom(v reflect.Value) string {
+    switch v.Kind() {
+    case reflect.Invalid:
+        return &quot;invalid&quot;
+    case reflect.Int, reflect.Int8, reflect.Int16,
+        reflect.Int32, reflect.Int64:
+        return strconv.FormatInt(v.Int(), 10)
+    case reflect.Uint, reflect.Uint8, reflect.Uint16,
+        reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+        return strconv.FormatUint(v.Uint(), 10)
+    // ...floating-point and complex cases omitted for brevity...
+    case reflect.Bool:
+        return strconv.FormatBool(v.Bool())
+    case reflect.String:
+        return strconv.Quote(v.String())
+    case reflect.Chan, reflect.Func, reflect.Ptr, reflect.Slice, reflect.Map:
+        return v.Type().String() + &quot; 0x&quot; +
+            strconv.FormatUint(uint64(v.Pointer()), 16)
+    default: // reflect.Array, reflect.Struct, reflect.Interface
+        return v.Type().String() + &quot; value&quot;
+    }
+}
+</code></pre>
+<p>&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x51FD;&#x6570;&#x5C06;&#x6BCF;&#x4E2A;&#x503C;&#x89C6;&#x4F5C;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x5206;&#x5272;&#x6CA1;&#x6709;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x7684;&#x7269;&#x54C1;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x53EB; formatAtom&#x3002;&#x5BF9;&#x4E8E;&#x805A;&#x5408;&#x7C7B;&#x578B;&#xFF08;&#x7ED3;&#x6784;&#x4F53;&#x548C;&#x6570;&#x7EC4;&#xFF09;&#x548C;&#x63A5;&#x53E3;&#xFF0C;&#x53EA;&#x662F;&#x6253;&#x5370;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5BF9;&#x4E8E;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF08;channels&#x3001;functions&#x3001;pointers&#x3001;slices &#x548C; maps&#xFF09;&#xFF0C;&#x6253;&#x5370;&#x7C7B;&#x578B;&#x548C;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;&#x3002;&#x867D;&#x7136;&#x8FD8;&#x4E0D;&#x591F;&#x7406;&#x60F3;&#xFF0C;&#x4F46;&#x662F;&#x4F9D;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x91CD;&#x5927;&#x7684;&#x8FDB;&#x6B65;&#xFF0C;&#x5E76;&#x4E14; Kind &#x53EA;&#x5173;&#x5FC3;&#x5E95;&#x5C42;&#x8868;&#x793A;&#xFF0C;format.Any &#x4E5F;&#x652F;&#x6301;&#x5177;&#x540D;&#x7C7B;&#x578B;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">var x int64 = 1
+var d time.Duration = 1 * time.Nanosecond
+fmt.Println(format.Any(x))                  // &quot;1&quot;
+fmt.Println(format.Any(d))                  // &quot;1&quot;
+fmt.Println(format.Any([]int64{x}))         // &quot;[]int64 0x8202b87b0&quot;
+fmt.Println(format.Any([]time.Duration{d})) // &quot;[]time.Duration 0x8202b87e0&quot;
+</code></pre>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"reflect.Type和reflect.Value","level":"1.13.2","depth":2,"next":{"title":"Display递归打印","level":"1.13.3","depth":2,"path":"ch12/ch12-03.md","ref":"ch12/ch12-03.md","articles":[]},"previous":{"title":"为何需要反射?","level":"1.13.1","depth":2,"path":"ch12/ch12-01.md","ref":"ch12/ch12-01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch12/ch12-02.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

@@ -1,0 +1,603 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>布尔型 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch3-05.html" />
+    
+    
+    <link rel="prev" href="ch3-03.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch3-05.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch3-03.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch3-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            整型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            浮点数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            复数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-04.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            布尔型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            字符串
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            常量
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch12/ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="34-&#x5E03;&#x5C14;&#x578B;">3.4. &#x5E03;&#x5C14;&#x578B;</h2>
+<p>&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#xFF1A;true&#x548C;false&#x3002;if&#x548C;for&#x8BED;&#x53E5;&#x7684;&#x6761;&#x4EF6;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x4E14;==&#x548C;&lt;&#x7B49;&#x6BD4;&#x8F83;&#x64CD;&#x4F5C;&#x4E5F;&#x4F1A;&#x4EA7;&#x751F;&#x5E03;&#x5C14;&#x578B;&#x7684;&#x503C;&#x3002;&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;<code>!</code>&#x5BF9;&#x5E94;&#x903B;&#x8F91;&#x975E;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;<code>!true</code>&#x7684;&#x503C;&#x4E3A;<code>false</code>&#xFF0C;&#x66F4;&#x7F57;&#x55E6;&#x7684;&#x8BF4;&#x6CD5;&#x662F;<code>(!true==false)==true</code>&#xFF0C;&#x867D;&#x7136;&#x8868;&#x8FBE;&#x65B9;&#x5F0F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F1A;&#x91C7;&#x7528;&#x7B80;&#x6D01;&#x7684;&#x5E03;&#x5C14;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5C31;&#x50CF;&#x7528;x&#x6765;&#x8868;&#x793A;<code>x==true</code>&#x3002;</p>
+<p>&#x5E03;&#x5C14;&#x503C;&#x53EF;&#x4EE5;&#x548C;&amp;&amp;&#xFF08;AND&#xFF09;&#x548C;||&#xFF08;OR&#xFF09;&#x64CD;&#x4F5C;&#x7B26;&#x7ED3;&#x5408;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x77ED;&#x8DEF;&#x884C;&#x4E3A;&#xFF1A;&#x5982;&#x679C;&#x8FD0;&#x7B97;&#x7B26;&#x5DE6;&#x8FB9;&#x503C;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x6574;&#x4E2A;&#x5E03;&#x5C14;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x8FD0;&#x7B97;&#x7B26;&#x53F3;&#x8FB9;&#x7684;&#x503C;&#x5C06;&#x4E0D;&#x518D;&#x88AB;&#x6C42;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x4E0B;&#x9762;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x603B;&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">s != &quot;&quot; &amp;&amp; s[0] == &apos;x&apos;
+</code></pre>
+<p>&#x5176;&#x4E2D;s[0]&#x64CD;&#x4F5C;&#x5982;&#x679C;&#x5E94;&#x7528;&#x4E8E;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;panic&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;<code>&amp;&amp;</code>&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;<code>||</code>&#x9AD8;&#xFF08;&#x52A9;&#x8BB0;&#xFF1A;<code>&amp;&amp;</code>&#x5BF9;&#x5E94;&#x903B;&#x8F91;&#x4E58;&#x6CD5;&#xFF0C;<code>||</code>&#x5BF9;&#x5E94;&#x903B;&#x8F91;&#x52A0;&#x6CD5;&#xFF0C;&#x4E58;&#x6CD5;&#x6BD4;&#x52A0;&#x6CD5;&#x4F18;&#x5148;&#x7EA7;&#x8981;&#x9AD8;&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#x5F62;&#x5F0F;&#x7684;&#x5E03;&#x5C14;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x5C0F;&#x62EC;&#x5F27;&#x7684;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">if &apos;a&apos; &lt;= c &amp;&amp; c &lt;= &apos;z&apos; ||
+    &apos;A&apos; &lt;= c &amp;&amp; c &lt;= &apos;Z&apos; ||
+    &apos;0&apos; &lt;= c &amp;&amp; c &lt;= &apos;9&apos; {
+    // ...ASCII letter or digit...
+}
+</code></pre>
+<p>&#x5E03;&#x5C14;&#x503C;&#x5E76;&#x4E0D;&#x4F1A;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x5B57;&#x503C;0&#x6216;1&#xFF0C;&#x53CD;&#x4E4B;&#x4EA6;&#x7136;&#x3002;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x663E;&#x5F0F;&#x7684;if&#x8BED;&#x53E5;&#x8F85;&#x52A9;&#x8F6C;&#x6362;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">i := 0
+if b {
+    i = 1
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x7ECF;&#x5E38;&#x505A;&#x7C7B;&#x4F3C;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x66F4;&#x65B9;&#x4FBF;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">// btoi returns 1 if b is true and 0 if false.
+func btoi(b bool) int {
+    if b {
+        return 1
+    }
+    return 0
+}
+</code></pre>
+<p>&#x6570;&#x5B57;&#x5230;&#x5E03;&#x5C14;&#x578B;&#x7684;&#x9006;&#x8F6C;&#x6362;&#x5219;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x5BF9;&#x79F0;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x88C5;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">// itob reports whether i is non-zero.
+func itob(i int) bool { return i != 0 }
+</code></pre>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"布尔型","level":"1.4.4","depth":2,"next":{"title":"字符串","level":"1.4.5","depth":2,"path":"ch3/ch3-05.md","ref":"ch3/ch3-05.md","articles":[]},"previous":{"title":"复数","level":"1.4.3","depth":2,"path":"ch3/ch3-03.md","ref":"ch3/ch3-03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-04.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

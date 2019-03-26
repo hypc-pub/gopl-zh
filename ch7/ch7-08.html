@@ -1,0 +1,787 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>error接口 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch7-09.html" />
+    
+    
+    <link rel="prev" href="ch7-07.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch7-09.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch7-07.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch3/ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch7-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            接口是合约
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            接口类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            实现接口的条件
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            flag.Value接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            接口值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            sort.Interface接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-07.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            http.Handler接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-08.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            error接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-09.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 表达式求值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-10.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            类型断言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-11.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            基于类型断言识别错误类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-12.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            通过类型断言查询接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-13.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            类型分支
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-14.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 基于标记的XML解码
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch7-15.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            补充几点
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch12/ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="78-error&#x63A5;&#x53E3;">7.8. error&#x63A5;&#x53E3;</h2>
+<p>&#x4ECE;&#x672C;&#x4E66;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;&#x8FC7;&#x795E;&#x79D8;&#x7684;&#x9884;&#x5B9A;&#x4E49;error&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x89E3;&#x91CA;&#x5B83;&#x7A76;&#x7ADF;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x5B83;&#x5C31;&#x662F;interface&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x6709;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x7684;&#x5355;&#x4E00;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> <span class="token builtin">error</span> <span class="token keyword">interface</span> <span class="token punctuation">{</span>
+    <span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;error&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x8C03;&#x7528;errors.New&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;error&#x3002;&#x6574;&#x4E2A;errors&#x5305;&#x4EC5;&#x53EA;&#x6709;4&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> errors
+
+<span class="token keyword">func</span> <span class="token function">New</span><span class="token punctuation">(</span>text <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token operator">&amp;</span>errorString<span class="token punctuation">{</span>text<span class="token punctuation">}</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> errorString <span class="token keyword">struct</span> <span class="token punctuation">{</span> text <span class="token builtin">string</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>e <span class="token operator">*</span>errorString<span class="token punctuation">)</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> e<span class="token punctuation">.</span>text <span class="token punctuation">}</span>
+</code></pre>
+<p>&#x627F;&#x8F7D;errorString&#x7684;&#x7C7B;&#x578B;&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x800C;&#x975E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x62A4;&#x5B83;&#x8868;&#x793A;&#x7684;&#x9519;&#x8BEF;&#x907F;&#x514D;&#x7C97;&#x5FC3;&#xFF08;&#x6216;&#x6709;&#x610F;&#xFF09;&#x7684;&#x66F4;&#x65B0;&#x3002;&#x5E76;&#x4E14;&#x56E0;&#x4E3A;&#x662F;&#x6307;&#x9488;&#x7C7B;&#x578B;<code>*errorString</code>&#x6EE1;&#x8DB3;error&#x63A5;&#x53E3;&#x800C;&#x975E;errorString&#x7C7B;&#x578B;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;New&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x90FD;&#x5206;&#x914D;&#x4E86;&#x4E00;&#x4E2A;&#x72EC;&#x7279;&#x7684;&#x548C;&#x5176;&#x4ED6;&#x9519;&#x8BEF;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x60F3;&#x8981;&#x91CD;&#x8981;&#x7684;error&#x4F8B;&#x5982;io.EOF&#x548C;&#x4E00;&#x4E2A;&#x521A;&#x597D;&#x6709;&#x76F8;&#x540C;&#x9519;&#x8BEF;&#x6D88;&#x606F;&#x7684;error&#x6BD4;&#x8F83;&#x540E;&#x76F8;&#x7B49;&#x3002;</p>
+<pre class="language-"><code class="lang-go">fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;EOF&quot;</span><span class="token punctuation">)</span> <span class="token operator">==</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">&quot;EOF&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;false&quot;</span>
+</code></pre>
+<p>&#x8C03;&#x7528;errors.New&#x51FD;&#x6570;&#x662F;&#x975E;&#x5E38;&#x7A00;&#x5C11;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x7684;&#x5C01;&#x88C5;&#x51FD;&#x6570;fmt.Errorf&#xFF0C;&#x5B83;&#x8FD8;&#x4F1A;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x5316;&#x3002;&#x6211;&#x4EEC;&#x66FE;&#x591A;&#x6B21;&#x5728;&#x7B2C;5&#x7AE0;&#x4E2D;&#x7528;&#x5230;&#x5B83;&#x3002;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> fmt
+
+<span class="token keyword">import</span> <span class="token string">&quot;errors&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">Errorf</span><span class="token punctuation">(</span>format <span class="token builtin">string</span><span class="token punctuation">,</span> args <span class="token operator">...</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token function">Sprintf</span><span class="token punctuation">(</span>format<span class="token punctuation">,</span> args<span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x867D;&#x7136;<code>*errorString</code>&#x53EF;&#x80FD;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x9519;&#x8BEF;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x8FDC;&#x975E;&#x53EA;&#x6709;&#x5B83;&#x4E00;&#x4E2A;&#x3002;&#x4F8B;&#x5982;&#xFF0C;syscall&#x5305;&#x63D0;&#x4F9B;&#x4E86;Go&#x8BED;&#x8A00;&#x5E95;&#x5C42;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;API&#x3002;&#x5728;&#x591A;&#x4E2A;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;error&#x63A5;&#x53E3;&#x7684;&#x6570;&#x5B57;&#x7C7B;&#x578B;Errno&#xFF0C;&#x5E76;&#x4E14;&#x5728;Unix&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;Errno&#x7684;Error&#x65B9;&#x6CD5;&#x4F1A;&#x4ECE;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x9519;&#x8BEF;&#x6D88;&#x606F;&#xFF0C;&#x5982;&#x4E0B;&#x9762;&#x5C55;&#x793A;&#x7684;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> syscall
+
+<span class="token keyword">type</span> Errno <span class="token builtin">uintptr</span> <span class="token comment">// operating system error code</span>
+
+<span class="token keyword">var</span> errors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">:</span>   <span class="token string">&quot;operation not permitted&quot;</span><span class="token punctuation">,</span>   <span class="token comment">// EPERM</span>
+    <span class="token number">2</span><span class="token punctuation">:</span>   <span class="token string">&quot;no such file or directory&quot;</span><span class="token punctuation">,</span> <span class="token comment">// ENOENT</span>
+    <span class="token number">3</span><span class="token punctuation">:</span>   <span class="token string">&quot;no such process&quot;</span><span class="token punctuation">,</span>           <span class="token comment">// ESRCH</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>e Errno<span class="token punctuation">)</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">&lt;=</span> <span class="token function">int</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">int</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token function">len</span><span class="token punctuation">(</span>errors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> errors<span class="token punctuation">[</span>e<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;errno %d&quot;</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x6301;&#x6709;Errno&#x503C;&#x4E3A;2&#x7684;&#x63A5;&#x53E3;&#x503C;&#xFF0C;&#x8868;&#x793A;POSIX ENOENT&#x72B6;&#x51B5;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> err <span class="token builtin">error</span> <span class="token operator">=</span> syscall<span class="token punctuation">.</span><span class="token function">Errno</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// &quot;no such file or directory&quot;</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>         <span class="token comment">// &quot;no such file or directory&quot;</span>
+</code></pre>
+<p>err&#x7684;&#x503C;&#x56FE;&#x5F62;&#x5316;&#x7684;&#x5448;&#x73B0;&#x5728;&#x56FE;7.6&#x4E2D;&#x3002;</p>
+<p><img src="../images/ch7-06.png" alt=""></p>
+<p>Errno&#x662F;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x9519;&#x8BEF;&#x7684;&#x9AD8;&#x6548;&#x8868;&#x793A;&#x65B9;&#x5F0F;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x7684;&#x96C6;&#x5408;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x6EE1;&#x8DB3;&#x6807;&#x51C6;&#x7684;&#x9519;&#x8BEF;&#x63A5;&#x53E3;&#x3002;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x7B2C;7.11&#x8282;&#x4E86;&#x89E3;&#x5230;&#x5176;&#x5B83;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"error接口","level":"1.8.8","depth":2,"next":{"title":"示例: 表达式求值","level":"1.8.9","depth":2,"path":"ch7/ch7-09.md","ref":"ch7/ch7-09.md","articles":[]},"previous":{"title":"http.Handler接口","level":"1.8.7","depth":2,"path":"ch7/ch7-07.md","ref":"ch7/ch7-07.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch7/ch7-08.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

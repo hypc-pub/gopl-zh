@@ -1,0 +1,741 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>函数值 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch5-06.html" />
+    
+    
+    <link rel="prev" href="ch5-04.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch5-06.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch5-04.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch3/ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch5-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            函数声明
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            递归
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            多返回值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            错误
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-05.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            函数值
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            匿名函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-07.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            可变参数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-08.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Deferred函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-09.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Panic异常
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch5-10.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Recover捕获异常
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch12/ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="55-&#x51FD;&#x6570;&#x503C;">5.5. &#x51FD;&#x6570;&#x503C;</h2>
+<p>&#x5728;Go&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x88AB;&#x770B;&#x4F5C;&#x7B2C;&#x4E00;&#x7C7B;&#x503C;&#xFF08;first-class values&#xFF09;&#xFF1A;&#x51FD;&#x6570;&#x50CF;&#x5176;&#x4ED6;&#x503C;&#x4E00;&#x6837;&#xFF0C;&#x62E5;&#x6709;&#x7C7B;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x8D4B;&#x503C;&#x7ED9;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#xFF0C;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;&#xFF0C;&#x4ECE;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x3002;&#x5BF9;&#x51FD;&#x6570;&#x503C;&#xFF08;function value&#xFF09;&#x7684;&#x8C03;&#x7528;&#x7C7B;&#x4F3C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">    func square(n int) int { return n * n }
+    func negative(n int) int { return -n }
+    func product(m, n int) int { return m * n }
+
+    f := square
+    fmt.Println(f(3)) // &quot;9&quot;
+
+    f = negative
+    fmt.Println(f(3))     // &quot;-3&quot;
+    fmt.Printf(&quot;%T\n&quot;, f) // &quot;func(int) int&quot;
+
+    f = product // compile error: can&apos;t assign func(int, int) int to func(int) int
+</code></pre>
+<p>&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x96F6;&#x503C;&#x662F;nil&#x3002;&#x8C03;&#x7528;&#x503C;&#x4E3A;nil&#x7684;&#x51FD;&#x6570;&#x503C;&#x4F1A;&#x5F15;&#x8D77;panic&#x9519;&#x8BEF;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">    var f func(int) int
+    f(3) // &#x6B64;&#x5904;f&#x7684;&#x503C;&#x4E3A;nil, &#x4F1A;&#x5F15;&#x8D77;panic&#x9519;&#x8BEF;
+</code></pre>
+<p>&#x51FD;&#x6570;&#x503C;&#x53EF;&#x4EE5;&#x4E0E;nil&#x6BD4;&#x8F83;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">    var f func(int) int
+    if f != nil {
+        f(3)
+    }
+</code></pre>
+<p>&#x4F46;&#x662F;&#x51FD;&#x6570;&#x503C;&#x4E4B;&#x95F4;&#x662F;&#x4E0D;&#x53EF;&#x6BD4;&#x8F83;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x7528;&#x51FD;&#x6570;&#x503C;&#x4F5C;&#x4E3A;map&#x7684;key&#x3002;</p>
+<p>&#x51FD;&#x6570;&#x503C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x4E0D;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6570;&#x636E;&#x6765;&#x53C2;&#x6570;&#x5316;&#x51FD;&#x6570;&#xFF0C;&#x4EA6;&#x53EF;&#x901A;&#x8FC7;&#x884C;&#x4E3A;&#x3002;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x5305;&#x542B;&#x8BB8;&#x591A;&#x8FD9;&#x6837;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C55;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x6280;&#x5DE7;&#x3002;strings.Map&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x8C03;&#x7528;add1&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x5C06;&#x6BCF;&#x4E2A;add1&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FD4;&#x56DE;&#x7ED9;&#x8C03;&#x7528;&#x8005;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">    func add1(r rune) rune { return r + 1 }
+
+    fmt.Println(strings.Map(add1, &quot;HAL-9000&quot;)) // &quot;IBM.:111&quot;
+    fmt.Println(strings.Map(add1, &quot;VMS&quot;))      // &quot;WNT&quot;
+    fmt.Println(strings.Map(add1, &quot;Admix&quot;))    // &quot;Benjy&quot;
+</code></pre>
+<p>5.2&#x8282;&#x7684;findLinks&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x4E86;&#x8F85;&#x52A9;&#x51FD;&#x6570;visit&#xFF0C;&#x904D;&#x5386;&#x548C;&#x64CD;&#x4F5C;&#x4E86;HTML&#x9875;&#x9762;&#x7684;&#x6240;&#x6709;&#x7ED3;&#x70B9;&#x3002;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x904D;&#x5386;&#x7ED3;&#x70B9;&#x7684;&#x903B;&#x8F91;&#x548C;&#x64CD;&#x4F5C;&#x7ED3;&#x70B9;&#x7684;&#x903B;&#x8F91;&#x5206;&#x79BB;&#xFF0C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x590D;&#x7528;&#x904D;&#x5386;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x4ECE;&#x800C;&#x5BF9;&#x7ED3;&#x70B9;&#x8FDB;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><u><i>gopl.io/ch5/outline2</i></u></p>
+<pre class="language-"><code class="lang-Go">// forEachNode&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;x&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;pre(x)&#x548C;post(x)&#x3002;
+// pre&#x548C;post&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;&#x3002;
+// &#x904D;&#x5386;&#x5B69;&#x5B50;&#x7ED3;&#x70B9;&#x4E4B;&#x524D;&#xFF0C;pre&#x88AB;&#x8C03;&#x7528;
+// &#x904D;&#x5386;&#x5B69;&#x5B50;&#x7ED3;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;post&#x88AB;&#x8C03;&#x7528;
+func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
+    if pre != nil {
+        pre(n)
+    }
+    for c := n.FirstChild; c != nil; c = c.NextSibling {
+        forEachNode(c, pre, post)
+    }
+    if post != nil {
+        post(n)
+    }
+}
+</code></pre>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x63A5;&#x6536;2&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x5728;&#x7ED3;&#x70B9;&#x7684;&#x5B69;&#x5B50;&#x88AB;&#x8BBF;&#x95EE;&#x524D;&#x548C;&#x8BBF;&#x95EE;&#x540E;&#x8C03;&#x7528;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x8BBE;&#x8BA1;&#x7ED9;&#x8C03;&#x7528;&#x8005;&#x66F4;&#x5927;&#x7684;&#x7075;&#x6D3B;&#x6027;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;startElemen&#x548C;endElement&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x8F93;&#x51FA;HTML&#x5143;&#x7D20;&#x7684;&#x5F00;&#x59CB;&#x6807;&#x7B7E;&#x548C;&#x7ED3;&#x675F;&#x6807;&#x7B7E;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span></code>&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">var depth int
+func startElement(n *html.Node) {
+    if n.Type == html.ElementNode {
+        fmt.Printf(&quot;%*s&lt;%s&gt;\n&quot;, depth*2, &quot;&quot;, n.Data)
+        depth++
+    }
+}
+func endElement(n *html.Node) {
+    if n.Type == html.ElementNode {
+        depth--
+        fmt.Printf(&quot;%*s&lt;/%s&gt;\n&quot;, depth*2, &quot;&quot;, n.Data)
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5229;&#x7528;fmt.Printf&#x7684;&#x4E00;&#x4E2A;&#x5C0F;&#x6280;&#x5DE7;&#x63A7;&#x5236;&#x8F93;&#x51FA;&#x7684;&#x7F29;&#x8FDB;&#x3002;<code>%*s</code>&#x4E2D;&#x7684;<code>*</code>&#x4F1A;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x4E4B;&#x524D;&#x586B;&#x5145;&#x4E00;&#x4E9B;&#x7A7A;&#x683C;&#x3002;&#x5728;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x8F93;&#x51FA;&#x4F1A;&#x5148;&#x586B;&#x5145;<code>depth*2</code>&#x6570;&#x91CF;&#x7684;&#x7A7A;&#x683C;&#xFF0C;&#x518D;&#x8F93;&#x51FA;&quot;&quot;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x8F93;&#x51FA;HTML&#x6807;&#x7B7E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x8C03;&#x7528;forEachNode&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">forEachNode(doc, startElement, endElement)
+</code></pre>
+<p>&#x4E0E;&#x4E4B;&#x524D;&#x7684;outline&#x7A0B;&#x5E8F;&#x76F8;&#x6BD4;&#xFF0C;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4E86;&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x9875;&#x9762;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre class="language-"><code>$ go build gopl.io/ch5/outline2
+$ ./outline2 http://gopl.io
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meta</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">&gt;</span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>img</span><span class="token punctuation">&gt;</span></span>
+...
+</code></pre><p><strong>&#x7EC3;&#x4E60; 5.7&#xFF1A;</strong> &#x5B8C;&#x5584;startElement&#x548C;endElement&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x5176;&#x6210;&#x4E3A;&#x901A;&#x7528;&#x7684;HTML&#x8F93;&#x51FA;&#x5668;&#x3002;&#x8981;&#x6C42;&#xFF1A;&#x8F93;&#x51FA;&#x6CE8;&#x91CA;&#x7ED3;&#x70B9;&#xFF0C;&#x6587;&#x672C;&#x7ED3;&#x70B9;&#x4EE5;&#x53CA;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5C5E;&#x6027;&#xFF08;&lt; a href=&apos;...&apos;&gt;&#xFF09;&#x3002;&#x4F7F;&#x7528;&#x7B80;&#x7565;&#x683C;&#x5F0F;&#x8F93;&#x51FA;&#x6CA1;&#x6709;&#x5B69;&#x5B50;&#x7ED3;&#x70B9;&#x7684;&#x5143;&#x7D20;&#xFF08;&#x5373;&#x7528;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">/&gt;</span></span></code>&#x4EE3;&#x66FF;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>img</span><span class="token punctuation">&gt;</span></span></code>&#xFF09;&#x3002;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#xFF0C;&#x9A8C;&#x8BC1;&#x7A0B;&#x5E8F;&#x8F93;&#x51FA;&#x7684;&#x683C;&#x5F0F;&#x6B63;&#x786E;&#x3002;&#xFF08;&#x8BE6;&#x89C1;11&#x7AE0;&#xFF09;</p>
+<p><strong>&#x7EC3;&#x4E60; 5.8&#xFF1A;</strong> &#x4FEE;&#x6539;pre&#x548C;post&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x5176;&#x8FD4;&#x56DE;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x8FD4;&#x56DE;false&#x65F6;&#xFF0C;&#x4E2D;&#x6B62;forEachNoded&#x7684;&#x904D;&#x5386;&#x3002;&#x4F7F;&#x7528;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x7F16;&#x5199;ElementByID&#x51FD;&#x6570;&#xFF0C;&#x6839;&#x636E;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;id&#x67E5;&#x627E;&#x7B2C;&#x4E00;&#x4E2A;&#x62E5;&#x6709;&#x8BE5;id&#x5143;&#x7D20;&#x7684;HTML&#x5143;&#x7D20;&#xFF0C;&#x67E5;&#x627E;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x505C;&#x6B62;&#x904D;&#x5386;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">func ElementByID(doc *html.Node, id string) *html.Node
+</code></pre>
+<p><strong>&#x7EC3;&#x4E60; 5.9&#xFF1A;</strong> &#x7F16;&#x5199;&#x51FD;&#x6570;expand&#xFF0C;&#x5C06;s&#x4E2D;&#x7684;&quot;foo&quot;&#x66FF;&#x6362;&#x4E3A;f(&quot;foo&quot;)&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">func expand(s string, f func(string) string) string
+</code></pre>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"函数值","level":"1.6.5","depth":2,"next":{"title":"匿名函数","level":"1.6.6","depth":2,"path":"ch5/ch5-06.md","ref":"ch5/ch5-06.md","articles":[]},"previous":{"title":"错误","level":"1.6.4","depth":2,"path":"ch5/ch5-04.md","ref":"ch5/ch5-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch5/ch5-05.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

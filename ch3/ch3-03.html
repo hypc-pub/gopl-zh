@@ -1,0 +1,644 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>复数 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch3-04.html" />
+    
+    
+    <link rel="prev" href="ch3-02.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch3-04.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch3-02.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch3-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            整型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            浮点数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-03.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            复数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            布尔型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            字符串
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch3-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            常量
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch8/ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch12/ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="33-&#x590D;&#x6570;">3.3. &#x590D;&#x6570;</h2>
+<p>Go&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x7CBE;&#x5EA6;&#x7684;&#x590D;&#x6570;&#x7C7B;&#x578B;&#xFF1A;complex64&#x548C;complex128&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;float32&#x548C;float64&#x4E24;&#x79CD;&#x6D6E;&#x70B9;&#x6570;&#x7CBE;&#x5EA6;&#x3002;&#x5185;&#x7F6E;&#x7684;complex&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x590D;&#x6570;&#xFF0C;&#x5185;&#x5EFA;&#x7684;real&#x548C;imag&#x51FD;&#x6570;&#x5206;&#x522B;&#x8FD4;&#x56DE;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x548C;&#x865A;&#x90E8;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">var x complex128 = complex(1, 2) // 1+2i
+var y complex128 = complex(3, 4) // 3+4i
+fmt.Println(x*y)                 // &quot;(-5+10i)&quot;
+fmt.Println(real(x*y))           // &quot;-5&quot;
+fmt.Println(imag(x*y))           // &quot;10&quot;
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x9762;&#x503C;&#x6216;&#x4E00;&#x4E2A;&#x5341;&#x8FDB;&#x5236;&#x6574;&#x6570;&#x9762;&#x503C;&#x540E;&#x9762;&#x8DDF;&#x7740;&#x4E00;&#x4E2A;i&#xFF0C;&#x4F8B;&#x5982;3.141592i&#x6216;2i&#xFF0C;&#x5B83;&#x5C06;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x590D;&#x6570;&#x7684;&#x865A;&#x90E8;&#xFF0C;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x662F;0&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">fmt.Println(1i * 1i) // &quot;(-1+0i)&quot;, i^2 = -1
+</code></pre>
+<p>&#x5728;&#x5E38;&#x91CF;&#x7B97;&#x672F;&#x89C4;&#x5219;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x590D;&#x6570;&#x5E38;&#x91CF;&#x53EF;&#x4EE5;&#x52A0;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x6570;&#x503C;&#x5E38;&#x91CF;&#xFF08;&#x6574;&#x6570;&#x6216;&#x6D6E;&#x70B9;&#x6570;&#x3001;&#x5B9E;&#x90E8;&#x6216;&#x865A;&#x90E8;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x81EA;&#x7136;&#x7684;&#x65B9;&#x5F0F;&#x4E66;&#x5199;&#x590D;&#x6570;&#xFF0C;&#x5C31;&#x50CF;1+2i&#x6216;&#x4E0E;&#x4E4B;&#x7B49;&#x4EF7;&#x7684;&#x5199;&#x6CD5;2i+1&#x3002;&#x4E0A;&#x9762;x&#x548C;y&#x7684;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#x8FD8;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#xFF1A;</p>
+<pre class="language-"><code class="lang-Go">x := 1 + 2i
+y := 3 + 4i
+</code></pre>
+<p>&#x590D;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;==&#x548C;!=&#x8FDB;&#x884C;&#x76F8;&#x7B49;&#x6BD4;&#x8F83;&#x3002;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x548C;&#x865A;&#x90E8;&#x90FD;&#x76F8;&#x7B49;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x4EEC;&#x624D;&#x662F;&#x76F8;&#x7B49;&#x7684;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x76F8;&#x7B49;&#x6BD4;&#x8F83;&#x662F;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x7279;&#x522B;&#x5C0F;&#x5FC3;&#x5904;&#x7406;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;&#xFF09;&#x3002;</p>
+<p>math/cmplx&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x590D;&#x6570;&#x5904;&#x7406;&#x7684;&#x8BB8;&#x591A;&#x51FD;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#x6C42;&#x590D;&#x6570;&#x7684;&#x5E73;&#x65B9;&#x6839;&#x51FD;&#x6570;&#x548C;&#x6C42;&#x5E42;&#x51FD;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-Go">fmt.Println(cmplx.Sqrt(-1)) // &quot;(0+1i)&quot;
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;complex128&#x590D;&#x6570;&#x7B97;&#x6CD5;&#x6765;&#x751F;&#x6210;&#x4E00;&#x4E2A;Mandelbrot&#x56FE;&#x50CF;&#x3002;</p>
+<p><u><i>gopl.io/ch3/mandelbrot</i></u></p>
+<pre class="language-"><code class="lang-Go">// Mandelbrot emits a PNG image of the Mandelbrot fractal.
+package main
+
+import (
+    &quot;image&quot;
+    &quot;image/color&quot;
+    &quot;image/png&quot;
+    &quot;math/cmplx&quot;
+    &quot;os&quot;
+)
+
+
+func main() {
+    const (
+        xmin, ymin, xmax, ymax = -2, -2, +2, +2
+        width, height          = 1024, 1024
+    )
+
+    img := image.NewRGBA(image.Rect(0, 0, width, height))
+    for py := 0; py &lt; height; py++ {
+        y := float64(py)/height*(ymax-ymin) + ymin
+        for px := 0; px &lt; width; px++ {
+            x := float64(px)/width*(xmax-xmin) + xmin
+            z := complex(x, y)
+            // Image point (px, py) represents complex value z.
+            img.Set(px, py, mandelbrot(z))
+        }
+    }
+    png.Encode(os.Stdout, img) // NOTE: ignoring errors
+}
+
+func mandelbrot(z complex128) color.Color {
+    const iterations = 200
+    const contrast = 15
+
+    var v complex128
+    for n := uint8(0); n &lt; iterations; n++ {
+        v = v*v + z
+        if cmplx.Abs(v) &gt; 2 {
+            return color.Gray{255 - contrast*n}
+        }
+    }
+    return color.Black
+}
+</code></pre>
+<p>&#x7528;&#x4E8E;&#x904D;&#x5386;1024x1024&#x56FE;&#x50CF;&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x4E24;&#x4E2A;&#x5D4C;&#x5957;&#x7684;&#x5FAA;&#x73AF;&#x5BF9;&#x5E94;-2&#x5230;+2&#x533A;&#x95F4;&#x7684;&#x590D;&#x6570;&#x5E73;&#x9762;&#x3002;&#x7A0B;&#x5E8F;&#x53CD;&#x590D;&#x6D4B;&#x8BD5;&#x6BCF;&#x4E2A;&#x70B9;&#x5BF9;&#x5E94;&#x590D;&#x6570;&#x503C;&#x5E73;&#x65B9;&#x503C;&#x52A0;&#x4E00;&#x4E2A;&#x589E;&#x91CF;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x70B9;&#x662F;&#x5426;&#x8D85;&#x51FA;&#x534A;&#x5F84;&#x4E3A;2&#x7684;&#x5706;&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#xFF0C;&#x901A;&#x8FC7;&#x6839;&#x636E;&#x9884;&#x8BBE;&#x7F6E;&#x7684;&#x9003;&#x9038;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x7070;&#x5EA6;&#x989C;&#x8272;&#x6765;&#x4EE3;&#x66FF;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x70B9;&#x5C5E;&#x4E8E;Mandelbrot&#x96C6;&#x5408;&#xFF0C;&#x4F7F;&#x7528;&#x9ED1;&#x8272;&#x989C;&#x8272;&#x6807;&#x8BB0;&#x3002;&#x6700;&#x7EC8;&#x7A0B;&#x5E8F;&#x5C06;&#x751F;&#x6210;&#x7684;PNG&#x683C;&#x5F0F;&#x5206;&#x5F62;&#x56FE;&#x50CF;&#x8F93;&#x51FA;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#xFF0C;&#x5982;&#x56FE;3.3&#x6240;&#x793A;&#x3002;</p>
+<p><img src="../images/ch3-03.png" alt=""></p>
+<p><strong>&#x7EC3;&#x4E60; 3.5&#xFF1A;</strong> &#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x5F69;&#x8272;&#x7684;Mandelbrot&#x56FE;&#x50CF;&#xFF0C;&#x4F7F;&#x7528;image.NewRGBA&#x521B;&#x5EFA;&#x56FE;&#x50CF;&#xFF0C;&#x4F7F;&#x7528;color.RGBA&#x6216;color.YCbCr&#x751F;&#x6210;&#x989C;&#x8272;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 3.6&#xFF1A;</strong> &#x5347;&#x91C7;&#x6837;&#x6280;&#x672F;&#x53EF;&#x4EE5;&#x964D;&#x4F4E;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x5BF9;&#x8BA1;&#x7B97;&#x989C;&#x8272;&#x503C;&#x548C;&#x5E73;&#x5747;&#x503C;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x5C06;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x5206;&#x6210;&#x56DB;&#x4E2A;&#x5B50;&#x50CF;&#x7D20;&#xFF0C;&#x5B9E;&#x73B0;&#x5B83;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 3.7&#xFF1A;</strong> &#x53E6;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5206;&#x5F62;&#x56FE;&#x50CF;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528;&#x725B;&#x987F;&#x6CD5;&#x6765;&#x6C42;&#x89E3;&#x4E00;&#x4E2A;&#x590D;&#x6570;&#x65B9;&#x7A0B;&#xFF0C;&#x4F8B;&#x5982;$z^4-1=0$&#x3002;&#x6BCF;&#x4E2A;&#x8D77;&#x70B9;&#x5230;&#x56DB;&#x4E2A;&#x6839;&#x7684;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x5BF9;&#x5E94;&#x9634;&#x5F71;&#x7684;&#x7070;&#x5EA6;&#x3002;&#x65B9;&#x7A0B;&#x6839;&#x5BF9;&#x5E94;&#x7684;&#x70B9;&#x7528;&#x989C;&#x8272;&#x8868;&#x793A;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 3.8&#xFF1A;</strong> &#x901A;&#x8FC7;&#x63D0;&#x9AD8;&#x7CBE;&#x5EA6;&#x6765;&#x751F;&#x6210;&#x66F4;&#x591A;&#x7EA7;&#x522B;&#x7684;&#x5206;&#x5F62;&#x3002;&#x4F7F;&#x7528;&#x56DB;&#x79CD;&#x4E0D;&#x540C;&#x7CBE;&#x5EA6;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x5B57;&#x5B9E;&#x73B0;&#x76F8;&#x540C;&#x7684;&#x5206;&#x5F62;&#xFF1A;complex64&#x3001;complex128&#x3001;big.Float&#x548C;big.Rat&#x3002;&#xFF08;&#x540E;&#x9762;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x5728;math/big&#x5305;&#x58F0;&#x660E;&#x3002;Float&#x662F;&#x6709;&#x6307;&#x5B9A;&#x9650;&#x7CBE;&#x5EA6;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#xFF1B;Rat&#x662F;&#x65E0;&#x9650;&#x7CBE;&#x5EA6;&#x7684;&#x6709;&#x7406;&#x6570;&#x3002;&#xFF09;&#x5B83;&#x4EEC;&#x95F4;&#x7684;&#x6027;&#x80FD;&#x548C;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x5BF9;&#x6BD4;&#x5982;&#x4F55;&#xFF1F;&#x5F53;&#x6E32;&#x67D3;&#x56FE;&#x53EF;&#x89C1;&#x65F6;&#x7F29;&#x653E;&#x7684;&#x7EA7;&#x522B;&#x662F;&#x591A;&#x5C11;&#xFF1F;</p>
+<p><strong>&#x7EC3;&#x4E60; 3.9&#xFF1A;</strong> &#x7F16;&#x5199;&#x4E00;&#x4E2A;web&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x751F;&#x6210;&#x5206;&#x5F62;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x8FD0;&#x884C;&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;HTTP&#x53C2;&#x6570;&#x6307;&#x5B9A;x&#x3001;y&#x548C;zoom&#x53C2;&#x6570;&#x3002;</p>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"复数","level":"1.4.3","depth":2,"next":{"title":"布尔型","level":"1.4.4","depth":2,"path":"ch3/ch3-04.md","ref":"ch3/ch3-04.md","articles":[]},"previous":{"title":"浮点数","level":"1.4.2","depth":2,"path":"ch3/ch3-02.md","ref":"ch3/ch3-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-03.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

@@ -1,0 +1,798 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>示例: 并发的目录遍历 · Go语言圣经</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+
+    
+    <link rel="next" href="ch8-09.html" />
+    
+    
+    <link rel="prev" href="ch8-07.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="gb-page-wrapper">
+    <header class="gb-page-header">
+        <div class="container">
+        
+            <a href=".." class="logo">
+                <img src="../gitbook/images/logo/64.png">
+                <h1>Go语言圣经</h1>
+            </a>
+
+            
+
+            <div class="page_search_block">
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                
+                <a href="ch8-09.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-right"></i>
+                </a>
+                
+                
+                <a href="ch8-07.html" class="btn btn-link pull-right hidden-xs">
+                    <i class="octicon octicon-chevron-left"></i>
+                </a>
+                
+            
+            </div>
+        
+        </div>
+    </header>
+
+    <div class="gb-page-body">
+        <div class="gb-page-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+
+
+
+    
+    <div class="panel panel-default ">
+        
+
+        <div class="list-group">
+            
+    
+        
+        <a href="../" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            前言
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch1/ch1.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            入门
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch2/ch2.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            程序结构
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch3/ch3.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基础数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch4/ch4.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            复合数据类型
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch5/ch5.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            函数
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch6/ch6.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            方法
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch7/ch7.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            接口
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-down"></i>
+            
+
+            Goroutines和Channels
+
+        
+        </a>
+        
+
+        
+        
+    
+        
+        <a href="ch8-01.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Goroutines
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-02.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 并发的Clock服务
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-03.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 并发的Echo服务
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-04.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            Channels
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-05.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            并发的循环
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-06.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 并发的Web爬虫
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-07.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            基于select的多路复用
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-08.html" class="list-group-item active">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 并发的目录遍历
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-09.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            并发的退出
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="ch8-10.html" class="list-group-item ">
+        
+
+            
+            <i class="octicon octicon-chevron-down" style="opacity: 0"></i>
+            
+
+            
+
+            示例: 聊天服务
+
+        
+        </a>
+        
+
+        
+    
+
+        
+    
+        
+        <a href="../ch9/ch9.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            基于共享变量的并发
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch10/ch10.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            包和工具
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch11/ch11.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            测试
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch12/ch12.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            反射
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../ch13/ch13.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            底层编程
+
+        
+        </a>
+        
+
+        
+    
+        
+        <a href="../appendix/appendix.html" class="list-group-item ">
+        
+
+            
+
+            
+            <i class="octicon octicon-chevron-right"></i>
+            
+
+            附录
+
+        
+        </a>
+        
+
+        
+    
+
+        </div>
+    </div>
+    
+
+
+
+                    </div>
+                    <div class="col-md-9">
+                        
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                            
+                            <div class="gb-markdown book-page-inner">
+                                <h2 id="88-&#x793A;&#x4F8B;-&#x5E76;&#x53D1;&#x7684;&#x76EE;&#x5F55;&#x904D;&#x5386;">8.8. &#x793A;&#x4F8B;: &#x5E76;&#x53D1;&#x7684;&#x76EE;&#x5F55;&#x904D;&#x5386;</h2>
+<p>&#x5728;&#x672C;&#x5C0F;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x6765;&#x751F;&#x6210;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x7684;&#x786C;&#x76D8;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x62A5;&#x544A;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x548C;Unix&#x91CC;&#x7684;du&#x5DE5;&#x5177;&#x6BD4;&#x8F83;&#x76F8;&#x4F3C;&#x3002;&#x5927;&#x591A;&#x6570;&#x5DE5;&#x4F5C;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;walkDir&#x51FD;&#x6570;&#x6765;&#x5B8C;&#x6210;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F7F;&#x7528;dirents&#x51FD;&#x6570;&#x6765;&#x679A;&#x4E3E;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x5165;&#x53E3;&#x3002;</p>
+<p><u><i>gopl.io/ch8/du1</i></u></p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// walkDir recursively walks the file tree rooted at dir</span>
+<span class="token comment">// and sends the size of each found file on fileSizes.</span>
+<span class="token keyword">func</span> <span class="token function">walkDir</span><span class="token punctuation">(</span>dir <span class="token builtin">string</span><span class="token punctuation">,</span> fileSizes <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> entry <span class="token operator">:=</span> <span class="token keyword">range</span> <span class="token function">dirents</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> entry<span class="token punctuation">.</span><span class="token function">IsDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            subdir <span class="token operator">:=</span> filepath<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> entry<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">walkDir</span><span class="token punctuation">(</span>subdir<span class="token punctuation">,</span> fileSizes<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            fileSizes <span class="token operator">&lt;-</span> entry<span class="token punctuation">.</span><span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// dirents returns the entries of directory dir.</span>
+<span class="token keyword">func</span> <span class="token function">dirents</span><span class="token punctuation">(</span>dir <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>os<span class="token punctuation">.</span>FileInfo <span class="token punctuation">{</span>
+    entries<span class="token punctuation">,</span> err <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadDir</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Fprintf</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Stderr<span class="token punctuation">,</span> <span class="token string">&quot;du1: %v\n&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> entries
+<span class="token punctuation">}</span>
+</code></pre>
+<p>ioutil.ReadDir&#x51FD;&#x6570;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;os.FileInfo&#x7C7B;&#x578B;&#x7684;slice&#xFF0C;os.FileInfo&#x7C7B;&#x578B;&#x4E5F;&#x662F;os.Stat&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#x800C;&#x8A00;&#xFF0C;walkDir&#x4F1A;&#x9012;&#x5F52;&#x5730;&#x8C03;&#x7528;&#x5176;&#x81EA;&#x8EAB;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5728;&#x9012;&#x5F52;&#x91CC;&#x83B7;&#x53D6;&#x6BCF;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x4FE1;&#x606F;&#x3002;walkDir&#x51FD;&#x6570;&#x4F1A;&#x5411;fileSizes&#x8FD9;&#x4E2A;channel&#x53D1;&#x9001;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x6761;&#x6D88;&#x606F;&#x5305;&#x542B;&#x4E86;&#x6587;&#x4EF6;&#x7684;&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4E3B;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E86;&#x4E24;&#x4E2A;goroutine&#x3002;&#x540E;&#x53F0;&#x7684;goroutine&#x8C03;&#x7528;walkDir&#x6765;&#x904D;&#x5386;&#x547D;&#x4EE4;&#x884C;&#x7ED9;&#x51FA;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x5E76;&#x6700;&#x7EC8;&#x5173;&#x95ED;fileSizes&#x8FD9;&#x4E2A;channel&#x3002;&#x4E3B;goroutine&#x4F1A;&#x5BF9;&#x5176;&#x4ECE;channel&#x4E2D;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x7D2F;&#x52A0;&#xFF0C;&#x5E76;&#x8F93;&#x51FA;&#x5176;&#x548C;&#x3002;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;flag&quot;</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;io/ioutil&quot;</span>
+    <span class="token string">&quot;os&quot;</span>
+    <span class="token string">&quot;path/filepath&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Determine the initial directories.</span>
+    flag<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    roots <span class="token operator">:=</span> flag<span class="token punctuation">.</span><span class="token function">Args</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>roots<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+        roots <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">&quot;.&quot;</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Traverse the file tree.</span>
+    fileSizes <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int64</span><span class="token punctuation">)</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> root <span class="token operator">:=</span> <span class="token keyword">range</span> roots <span class="token punctuation">{</span>
+            <span class="token function">walkDir</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> fileSizes<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>fileSizes<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// Print the results.</span>
+    <span class="token keyword">var</span> nfiles<span class="token punctuation">,</span> nbytes <span class="token builtin">int64</span>
+    <span class="token keyword">for</span> size <span class="token operator">:=</span> <span class="token keyword">range</span> fileSizes <span class="token punctuation">{</span>
+        nfiles<span class="token operator">++</span>
+        nbytes <span class="token operator">+=</span> size
+    <span class="token punctuation">}</span>
+    <span class="token function">printDiskUsage</span><span class="token punctuation">(</span>nfiles<span class="token punctuation">,</span> nbytes<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">printDiskUsage</span><span class="token punctuation">(</span>nfiles<span class="token punctuation">,</span> nbytes <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d files  %.1f GB\n&quot;</span><span class="token punctuation">,</span> nfiles<span class="token punctuation">,</span> <span class="token function">float64</span><span class="token punctuation">(</span>nbytes<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">1e9</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x4F1A;&#x5728;&#x6253;&#x5370;&#x5176;&#x7ED3;&#x679C;&#x4E4B;&#x524D;&#x5361;&#x4F4F;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#x3002;</p>
+<pre class="language-"><code>$ go build gopl.io/ch8/du1
+$ ./du1 $HOME /usr /bin /etc
+213201 files  62.7 GB
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x80FD;&#x591F;&#x8BA9;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5904;&#x7406;&#x8FDB;&#x5EA6;&#x7684;&#x8BDD;&#x60F3;&#x5FC5;&#x66F4;&#x597D;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x7B80;&#x5355;&#x5730;&#x628A;printDiskUsage&#x51FD;&#x6570;&#x8C03;&#x7528;&#x79FB;&#x52A8;&#x5230;&#x5FAA;&#x73AF;&#x91CC;&#x4F1A;&#x5BFC;&#x81F4;&#x5176;&#x6253;&#x5370;&#x51FA;&#x6210;&#x767E;&#x4E0A;&#x5343;&#x7684;&#x8F93;&#x51FA;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;du&#x7684;&#x53D8;&#x79CD;&#x4F1A;&#x95F4;&#x6B47;&#x6253;&#x5370;&#x5185;&#x5BB9;&#xFF0C;&#x4E0D;&#x8FC7;&#x53EA;&#x6709;&#x5728;&#x8C03;&#x7528;&#x65F6;&#x63D0;&#x4F9B;&#x4E86;-v&#x7684;flag&#x624D;&#x4F1A;&#x663E;&#x793A;&#x7A0B;&#x5E8F;&#x8FDB;&#x5EA6;&#x4FE1;&#x606F;&#x3002;&#x5728;roots&#x76EE;&#x5F55;&#x4E0A;&#x5FAA;&#x73AF;&#x7684;&#x540E;&#x53F0;goroutine&#x5728;&#x8FD9;&#x91CC;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;&#x4E3B;goroutine&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4E86;&#x8BA1;&#x65F6;&#x5668;&#x6765;&#x6BCF;500ms&#x751F;&#x6210;&#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x7528;select&#x8BED;&#x53E5;&#x6765;&#x7B49;&#x5F85;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x7684;&#x6D88;&#x606F;&#x6765;&#x66F4;&#x65B0;&#x603B;&#x5927;&#x5C0F;&#x6570;&#x636E;&#xFF0C;&#x6216;&#x8005;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x7684;&#x4E8B;&#x4EF6;&#x6765;&#x6253;&#x5370;&#x5F53;&#x524D;&#x7684;&#x603B;&#x5927;&#x5C0F;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;-v&#x7684;flag&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x6CA1;&#x6709;&#x4F20;&#x5165;&#x7684;&#x8BDD;&#xFF0C;tick&#x8FD9;&#x4E2A;channel&#x4F1A;&#x4FDD;&#x6301;&#x4E3A;nil&#xFF0C;&#x8FD9;&#x6837;&#x5728;select&#x91CC;&#x7684;case&#x4E5F;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x88AB;&#x7981;&#x7528;&#x4E86;&#x3002;</p>
+<p><u><i>gopl.io/ch8/du2</i></u></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> verbose <span class="token operator">=</span> flag<span class="token punctuation">.</span><span class="token function">Bool</span><span class="token punctuation">(</span><span class="token string">&quot;v&quot;</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">&quot;show verbose progress messages&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...start background goroutine...</span>
+
+    <span class="token comment">// Print the results periodically.</span>
+    <span class="token keyword">var</span> tick <span class="token operator">&lt;-</span><span class="token keyword">chan</span> time<span class="token punctuation">.</span>Time
+    <span class="token keyword">if</span> <span class="token operator">*</span>verbose <span class="token punctuation">{</span>
+        tick <span class="token operator">=</span> time<span class="token punctuation">.</span><span class="token function">Tick</span><span class="token punctuation">(</span><span class="token number">500</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> nfiles<span class="token punctuation">,</span> nbytes <span class="token builtin">int64</span>
+loop<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> <span class="token punctuation">{</span>
+        <span class="token keyword">select</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> size<span class="token punctuation">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span>fileSizes<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+                <span class="token keyword">break</span> loop <span class="token comment">// fileSizes was closed</span>
+            <span class="token punctuation">}</span>
+            nfiles<span class="token operator">++</span>
+            nbytes <span class="token operator">+=</span> size
+        <span class="token keyword">case</span> <span class="token operator">&lt;-</span>tick<span class="token punctuation">:</span>
+            <span class="token function">printDiskUsage</span><span class="token punctuation">(</span>nfiles<span class="token punctuation">,</span> nbytes<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printDiskUsage</span><span class="token punctuation">(</span>nfiles<span class="token punctuation">,</span> nbytes<span class="token punctuation">)</span> <span class="token comment">// final totals</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x4E0D;&#x518D;&#x4F7F;&#x7528;range&#x5FAA;&#x73AF;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;select&#x7684;case&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x5730;&#x5224;&#x65AD;fileSizes&#x7684;channel&#x662F;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x88AB;&#x5173;&#x95ED;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x7528;&#x5230;channel&#x63A5;&#x6536;&#x7684;&#x4E8C;&#x503C;&#x5F62;&#x5F0F;&#x3002;&#x5982;&#x679C;channel&#x5DF2;&#x7ECF;&#x88AB;&#x5173;&#x95ED;&#x4E86;&#x7684;&#x8BDD;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#x5FAA;&#x73AF;&#x3002;&#x8FD9;&#x91CC;&#x7684;break&#x8BED;&#x53E5;&#x7528;&#x5230;&#x4E86;&#x6807;&#x7B7E;break&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x7EC8;&#x7ED3;select&#x548C;for&#x4E24;&#x4E2A;&#x5FAA;&#x73AF;&#xFF1B;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7528;&#x6807;&#x7B7E;&#x5C31;break&#x7684;&#x8BDD;&#x53EA;&#x4F1A;&#x9000;&#x51FA;&#x5185;&#x5C42;&#x7684;select&#x5FAA;&#x73AF;&#xFF0C;&#x800C;&#x5916;&#x5C42;&#x7684;for&#x5FAA;&#x73AF;&#x4F1A;&#x4F7F;&#x4E4B;&#x8FDB;&#x5165;&#x4E0B;&#x4E00;&#x8F6E;select&#x5FAA;&#x73AF;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x7A0B;&#x5E8F;&#x4F1A;&#x60A0;&#x95F2;&#x5730;&#x4E3A;&#x6211;&#x4EEC;&#x6253;&#x5370;&#x66F4;&#x65B0;&#x6D41;&#xFF1A;</p>
+<pre class="language-"><code>$ go build gopl.io/ch8/du2
+$ ./du2 -v $HOME /usr /bin /etc
+28608 files  8.3 GB
+54147 files  10.3 GB
+93591 files  15.1 GB
+127169 files  52.9 GB
+175931 files  62.2 GB
+213201 files  62.7 GB
+</code></pre><p>&#x7136;&#x800C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x8FD8;&#x662F;&#x4F1A;&#x82B1;&#x4E0A;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#x624D;&#x4F1A;&#x7ED3;&#x675F;&#x3002;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x5E76;&#x53D1;&#x8C03;&#x7528;walkDir&#xFF0C;&#x4ECE;&#x800C;&#x53D1;&#x6325;&#x78C1;&#x76D8;&#x7CFB;&#x7EDF;&#x7684;&#x5E76;&#x884C;&#x6027;&#x80FD;&#x3002;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7B2C;&#x4E09;&#x4E2A;&#x7248;&#x672C;&#x7684;du&#xFF0C;&#x4F1A;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;walkDir&#x7684;&#x8C03;&#x7528;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;goroutine&#x3002;&#x5B83;&#x4F7F;&#x7528;sync.WaitGroup&#xFF08;&#xA7;8.5&#xFF09;&#x6765;&#x5BF9;&#x4ECD;&#x65E7;&#x6D3B;&#x8DC3;&#x7684;walkDir&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x8BA1;&#x6570;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;goroutine&#x4F1A;&#x5728;&#x8BA1;&#x6570;&#x5668;&#x51CF;&#x4E3A;&#x96F6;&#x7684;&#x65F6;&#x5019;&#x5C06;fileSizes&#x8FD9;&#x4E2A;channel&#x5173;&#x95ED;&#x3002;</p>
+<p><u><i>gopl.io/ch8/du3</i></u></p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...determine roots...</span>
+    <span class="token comment">// Traverse each root of the file tree in parallel.</span>
+    fileSizes <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">int64</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> n sync<span class="token punctuation">.</span>WaitGroup
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> root <span class="token operator">:=</span> <span class="token keyword">range</span> roots <span class="token punctuation">{</span>
+        n<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">go</span> <span class="token function">walkDir</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> fileSizes<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        n<span class="token punctuation">.</span><span class="token function">Wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">close</span><span class="token punctuation">(</span>fileSizes<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// ...select loop...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">walkDir</span><span class="token punctuation">(</span>dir <span class="token builtin">string</span><span class="token punctuation">,</span> n <span class="token operator">*</span>sync<span class="token punctuation">.</span>WaitGroup<span class="token punctuation">,</span> fileSizes <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">defer</span> n<span class="token punctuation">.</span><span class="token function">Done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> entry <span class="token operator">:=</span> <span class="token keyword">range</span> <span class="token function">dirents</span><span class="token punctuation">(</span>dir<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> entry<span class="token punctuation">.</span><span class="token function">IsDir</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            n<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+            subdir <span class="token operator">:=</span> filepath<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> entry<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">go</span> <span class="token function">walkDir</span><span class="token punctuation">(</span>subdir<span class="token punctuation">,</span> n<span class="token punctuation">,</span> fileSizes<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            fileSizes <span class="token operator">&lt;-</span> entry<span class="token punctuation">.</span><span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x5728;&#x9AD8;&#x5CF0;&#x671F;&#x4F1A;&#x521B;&#x5EFA;&#x6210;&#x767E;&#x4E0A;&#x5343;&#x7684;goroutine&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;dirents&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x8BA1;&#x6570;&#x4FE1;&#x53F7;&#x91CF;&#x6765;&#x963B;&#x6B62;&#x4ED6;&#x540C;&#x65F6;&#x6253;&#x5F00;&#x592A;&#x591A;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x5728;8.7&#x8282;&#x4E2D;&#x7684;&#x5E76;&#x53D1;&#x722C;&#x866B;&#x4E00;&#x6837;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token comment">// sema is a counting semaphore for limiting concurrency in dirents.</span>
+<span class="token keyword">var</span> sema <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment">// dirents returns the entries of directory dir.</span>
+<span class="token keyword">func</span> <span class="token function">dirents</span><span class="token punctuation">(</span>dir <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>os<span class="token punctuation">.</span>FileInfo <span class="token punctuation">{</span>
+    sema <span class="token operator">&lt;-</span> <span class="token keyword">struct</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token comment">// acquire token</span>
+    <span class="token keyword">defer</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">&lt;-</span>sema <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// release token</span>
+    <span class="token comment">// ...</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x6BD4;&#x4E4B;&#x524D;&#x90A3;&#x4E2A;&#x5FEB;&#x4E86;&#x597D;&#x51E0;&#x500D;&#xFF0C;&#x5C3D;&#x7BA1;&#x5176;&#x5177;&#x4F53;&#x6548;&#x7387;&#x8FD8;&#x662F;&#x548C;&#x4F60;&#x7684;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x673A;&#x5668;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x3002;</p>
+<p><strong>&#x7EC3;&#x4E60; 8.9&#xFF1A;</strong> &#x7F16;&#x5199;&#x4E00;&#x4E2A;du&#x5DE5;&#x5177;&#xFF0C;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C06;root&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x76EE;&#x5F55;&#x5927;&#x5C0F;&#x8BA1;&#x7B97;&#x5E76;&#x663E;&#x793A;&#x51FA;&#x6765;&#x3002;</p>
+
+                            </div>
+                            
+                        
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../gitbook/gitbook.js"></script>
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/bg-nest.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-bg-nest/init.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+    
+
+    
+    <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+    
+
+<script>
+(function() {
+    gitbook.page.hasChanged({"page":{"title":"示例: 并发的目录遍历","level":"1.9.8","depth":2,"next":{"title":"并发的退出","level":"1.9.9","depth":2,"path":"ch8/ch8-09.md","ref":"ch8/ch8-09.md","articles":[]},"previous":{"title":"基于select的多路复用","level":"1.9.7","depth":2,"path":"ch8/ch8-07.md","ref":"ch8/ch8-07.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch8/ch8-08.md","mtime":"2019-03-26T06:34:32.118Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+})();
+</script>
+
+        
+    </body>
+</html>
+

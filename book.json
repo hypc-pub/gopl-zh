@@ -1,13 +1,17 @@
 {
-	"gitbook": "3.x",
-	"title": "Go语言圣经",
-	"description": "<The Go Programming Language>中文版",
-	"language": "zh-hans",
-	"structure": {
-		"readme": "preface.md"
-	},
-	"plugins": [
-		"katex",
-		"-search"
-	]
+    "gitbook": "3.x",
+    "title": "Go语言圣经",
+    "description": "<The Go Programming Language>中文版",
+    "language": "zh-hans",
+    "structure": {
+        "readme": "preface.md"
+    },
+    "plugins": [
+        "theme-opendocs", "bg-nest",
+        "katex",
+        "-highlight", "prism",
+        "-lunr", "-search", "search-pro",
+        "-sharing",
+        "-fontsettings"
+    ]
 }

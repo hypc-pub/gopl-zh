@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -679,21 +679,21 @@
                                 <h2 id="74-flagvalue&#x63A5;&#x53E3;">7.4. flag.Value&#x63A5;&#x53E3;</h2>
 <p>&#x5728;&#x672C;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5B66;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x6807;&#x51C6;&#x7684;&#x63A5;&#x53E3;&#x7C7B;&#x578B;flag.Value&#x662F;&#x600E;&#x4E48;&#x5E2E;&#x52A9;&#x547D;&#x4EE4;&#x884C;&#x6807;&#x8BB0;&#x5B9A;&#x4E49;&#x65B0;&#x7684;&#x7B26;&#x53F7;&#x7684;&#x3002;&#x601D;&#x8003;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F1A;&#x4F11;&#x7720;&#x7279;&#x5B9A;&#x65F6;&#x95F4;&#x7684;&#x7A0B;&#x5E8F;&#xFF1A;</p>
 <p><u><i>gopl.io/ch7/sleep</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> period <span class="token operator">=</span> flag<span class="token punctuation">.</span><span class="token function">Duration</span><span class="token punctuation">(</span><span class="token string">&quot;period&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">,</span> <span class="token string">&quot;sleep period&quot;</span><span class="token punctuation">)</span>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> period = flag.Duration(<span class="hljs-string">&quot;period&quot;</span>, <span class="hljs-number">1</span>*time.Second, <span class="hljs-string">&quot;sleep period&quot;</span>)
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    flag<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Sleeping for %v...&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>period<span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token operator">*</span>period<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+    fmt.Printf(<span class="hljs-string">&quot;Sleeping for %v...&quot;</span>, *period)
+    time.Sleep(*period)
+    fmt.Println()
+}
 </code></pre>
 <p>&#x5728;&#x5B83;&#x4F11;&#x7720;&#x524D;&#x5B83;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x4F11;&#x7720;&#x7684;&#x65F6;&#x95F4;&#x5468;&#x671F;&#x3002;fmt&#x5305;&#x8C03;&#x7528;time.Duration&#x7684;String&#x65B9;&#x6CD5;&#x6253;&#x5370;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x5468;&#x671F;&#x662F;&#x4EE5;&#x7528;&#x6237;&#x53CB;&#x597D;&#x7684;&#x6CE8;&#x89E3;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x7EB3;&#x79D2;&#x6570;&#x5B57;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch7/sleep
+<pre><code>$ go build gopl.io/ch7/sleep
 $ ./sleep
 Sleeping for 1s...
 </code></pre><p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F11;&#x7720;&#x5468;&#x671F;&#x662F;&#x4E00;&#x79D2;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; -period &#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x884C;&#x6807;&#x8BB0;&#x6765;&#x63A7;&#x5236;&#x3002;flag.Duration&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;time.Duration&#x7C7B;&#x578B;&#x7684;&#x6807;&#x8BB0;&#x53D8;&#x91CF;&#x5E76;&#x4E14;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x591A;&#x79CD;&#x7528;&#x6237;&#x53CB;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FD8;&#x5305;&#x62EC;&#x548C;String&#x65B9;&#x6CD5;&#x76F8;&#x540C;&#x7684;&#x7B26;&#x53F7;&#x6392;&#x7248;&#x5F62;&#x5F0F;&#x3002;&#x8FD9;&#x79CD;&#x5BF9;&#x79F0;&#x8BBE;&#x8BA1;&#x4F7F;&#x5F97;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x826F;&#x597D;&#x3002;</p>
-<pre class="language-"><code>$ ./sleep -period 50ms
+<pre><code>$ ./sleep -period 50ms
 Sleeping for 50ms...
 $ ./sleep -period 2m30s
 Sleeping for 2m30s...
@@ -702,57 +702,57 @@ Sleeping for 1h30m0s...
 $ ./sleep -period &quot;1 day&quot;
 invalid value &quot;1 day&quot; for flag -period: time: invalid duration 1 day
 </code></pre><p>&#x56E0;&#x4E3A;&#x65F6;&#x95F4;&#x5468;&#x671F;&#x6807;&#x8BB0;&#x503C;&#x975E;&#x5E38;&#x7684;&#x6709;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x88AB;&#x6784;&#x5EFA;&#x5230;&#x4E86;flag&#x5305;&#x4E2D;&#xFF1B;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4E3A;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x65B0;&#x7684;&#x6807;&#x8BB0;&#x7B26;&#x53F7;&#x662F;&#x7B80;&#x5355;&#x5BB9;&#x6613;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;flag.Value&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> flag
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> flag
 
-<span class="token comment">// Value is the interface to the value stored in a flag.</span>
-<span class="token keyword">type</span> Value <span class="token keyword">interface</span> <span class="token punctuation">{</span>
-    <span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span>
-    <span class="token function">Set</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">// Value is the interface to the value stored in a flag.</span>
+<span class="hljs-keyword">type</span> Value <span class="hljs-keyword">interface</span> {
+    String() <span class="hljs-keyword">string</span>
+    Set(<span class="hljs-keyword">string</span>) error
+}
 </code></pre>
 <p>String&#x65B9;&#x6CD5;&#x683C;&#x5F0F;&#x5316;&#x6807;&#x8BB0;&#x7684;&#x503C;&#x7528;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x5E2E;&#x52A9;&#x6D88;&#x606F;&#x4E2D;&#xFF1B;&#x8FD9;&#x6837;&#x6BCF;&#x4E00;&#x4E2A;flag.Value&#x4E5F;&#x662F;&#x4E00;&#x4E2A;fmt.Stringer&#x3002;Set&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x5B83;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570;&#x5E76;&#x4E14;&#x66F4;&#x65B0;&#x6807;&#x8BB0;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;Set&#x65B9;&#x6CD5;&#x548C;String&#x662F;&#x4E24;&#x4E2A;&#x76F8;&#x53CD;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x5BF9;&#x4ED6;&#x4EEC;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x6CE8;&#x89E3;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x8BA9;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x6444;&#x6C0F;&#x5EA6;&#x6216;&#x8005;&#x534E;&#x6C0F;&#x6E29;&#x5EA6;&#x53D8;&#x6362;&#x7684;&#x5F62;&#x5F0F;&#x6307;&#x5B9A;&#x6E29;&#x5EA6;&#x7684;celsiusFlag&#x7C7B;&#x578B;&#x3002;&#x6CE8;&#x610F;celsiusFlag&#x5185;&#x5D4C;&#x4E86;&#x4E00;&#x4E2A;Celsius&#x7C7B;&#x578B;&#xFF08;&#xA7;2.5&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x7528;&#x5B9E;&#x73B0;&#x672C;&#x8EAB;&#x5C31;&#x5DF2;&#x7ECF;&#x6709;String&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;flag.Value&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5B9A;&#x4E49;Set&#x65B9;&#x6CD5;&#xFF1A;</p>
 <p><u><i>gopl.io/ch7/tempconv</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token comment">// *celsiusFlag satisfies the flag.Value interface.</span>
-<span class="token keyword">type</span> celsiusFlag <span class="token keyword">struct</span><span class="token punctuation">{</span> Celsius <span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-comment">// *celsiusFlag satisfies the flag.Value interface.</span>
+<span class="hljs-keyword">type</span> celsiusFlag <span class="hljs-keyword">struct</span>{ Celsius }
 
-<span class="token keyword">func</span> <span class="token punctuation">(</span>f <span class="token operator">*</span>celsiusFlag<span class="token punctuation">)</span> <span class="token function">Set</span><span class="token punctuation">(</span>s <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> unit <span class="token builtin">string</span>
-    <span class="token keyword">var</span> value <span class="token builtin">float64</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Sscanf</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token string">&quot;%f%s&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>value<span class="token punctuation">,</span> <span class="token operator">&amp;</span>unit<span class="token punctuation">)</span> <span class="token comment">// no error check needed</span>
-    <span class="token keyword">switch</span> unit <span class="token punctuation">{</span>
-    <span class="token keyword">case</span> <span class="token string">&quot;C&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#xB0;C&quot;</span><span class="token punctuation">:</span>
-        f<span class="token punctuation">.</span>Celsius <span class="token operator">=</span> <span class="token function">Celsius</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span>
-    <span class="token keyword">case</span> <span class="token string">&quot;F&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&#xB0;F&quot;</span><span class="token punctuation">:</span>
-        f<span class="token punctuation">.</span>Celsius <span class="token operator">=</span> <span class="token function">FToC</span><span class="token punctuation">(</span><span class="token function">Fahrenheit</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token boolean">nil</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;invalid temperature %q&quot;</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">func</span> (f *celsiusFlag) Set(s <span class="hljs-keyword">string</span>) error {
+    <span class="hljs-keyword">var</span> unit <span class="hljs-keyword">string</span>
+    <span class="hljs-keyword">var</span> value <span class="hljs-keyword">float64</span>
+    fmt.Sscanf(s, <span class="hljs-string">&quot;%f%s&quot;</span>, &amp;value, &amp;unit) <span class="hljs-comment">// no error check needed</span>
+    <span class="hljs-keyword">switch</span> unit {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;&#xB0;C&quot;</span>:
+        f.Celsius = Celsius(value)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;F&quot;</span>, <span class="hljs-string">&quot;&#xB0;F&quot;</span>:
+        f.Celsius = FToC(Fahrenheit(value))
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;invalid temperature %q&quot;</span>, s)
+}
 </code></pre>
 <p>&#x8C03;&#x7528;fmt.Sscanf&#x51FD;&#x6570;&#x4ECE;&#x8F93;&#x5165;s&#x4E2D;&#x89E3;&#x6790;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#xFF08;value&#xFF09;&#x548C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF08;unit&#xFF09;&#x3002;&#x867D;&#x7136;&#x901A;&#x5E38;&#x5FC5;&#x987B;&#x68C0;&#x67E5;Sscanf&#x7684;&#x9519;&#x8BEF;&#x8FD4;&#x56DE;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x6709;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#xFF0C;&#x5C31;&#x6CA1;&#x6709;switch case&#x4F1A;&#x5339;&#x914D;&#x5230;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x7684;CelsiusFlag&#x51FD;&#x6570;&#x5C06;&#x6240;&#x6709;&#x903B;&#x8F91;&#x90FD;&#x5C01;&#x88C5;&#x5728;&#x4E00;&#x8D77;&#x3002;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5185;&#x5D4C;&#x5728;celsiusFlag&#x53D8;&#x91CF;f&#x4E2D;&#x7684;Celsius&#x6307;&#x9488;&#x7ED9;&#x8C03;&#x7528;&#x8005;&#x3002;Celsius&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x4F1A;&#x901A;&#x8FC7;Set&#x65B9;&#x6CD5;&#x5728;&#x6807;&#x8BB0;&#x5904;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x66F4;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x8C03;&#x7528;Var&#x65B9;&#x6CD5;&#x5C06;&#x6807;&#x8BB0;&#x52A0;&#x5165;&#x5E94;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x6807;&#x8BB0;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x6709;&#x5F02;&#x5E38;&#x590D;&#x6742;&#x547D;&#x4EE4;&#x884C;&#x63A5;&#x53E3;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;flag.CommandLine.Programs&#x53EF;&#x80FD;&#x6709;&#x51E0;&#x4E2A;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x8C03;&#x7528;Var&#x65B9;&#x6CD5;&#x5C06;&#x4E00;&#x4E2A;<code>*celsiusFlag</code>&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;flag.Value&#x53C2;&#x6570;&#xFF0C;&#x5BFC;&#x81F4;&#x7F16;&#x8BD1;&#x5668;&#x53BB;&#x68C0;&#x67E5;<code>*celsiusFlag</code>&#x662F;&#x5426;&#x6709;&#x5FC5;&#x987B;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token comment">// CelsiusFlag defines a Celsius flag with the specified name,</span>
-<span class="token comment">// default value, and usage, and returns the address of the flag variable.</span>
-<span class="token comment">// The flag argument must have a quantity and a unit, e.g., &quot;100C&quot;.</span>
-<span class="token keyword">func</span> <span class="token function">CelsiusFlag</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">,</span> value Celsius<span class="token punctuation">,</span> usage <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">*</span>Celsius <span class="token punctuation">{</span>
-    f <span class="token operator">:=</span> celsiusFlag<span class="token punctuation">{</span>value<span class="token punctuation">}</span>
-    flag<span class="token punctuation">.</span>CommandLine<span class="token punctuation">.</span><span class="token function">Var</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>f<span class="token punctuation">,</span> name<span class="token punctuation">,</span> usage<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token operator">&amp;</span>f<span class="token punctuation">.</span>Celsius
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-comment">// CelsiusFlag defines a Celsius flag with the specified name,</span>
+<span class="hljs-comment">// default value, and usage, and returns the address of the flag variable.</span>
+<span class="hljs-comment">// The flag argument must have a quantity and a unit, e.g., &quot;100C&quot;.</span>
+<span class="hljs-keyword">func</span> CelsiusFlag(name <span class="hljs-keyword">string</span>, value Celsius, usage <span class="hljs-keyword">string</span>) *Celsius {
+    f := celsiusFlag{value}
+    flag.CommandLine.Var(&amp;f, name, usage)
+    <span class="hljs-keyword">return</span> &amp;f.Celsius
+}
 </code></pre>
 <p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x6807;&#x8BB0;&#xFF1A;</p>
 <p><u><i>gopl.io/ch7/tempflag</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> temp <span class="token operator">=</span> tempconv<span class="token punctuation">.</span><span class="token function">CelsiusFlag</span><span class="token punctuation">(</span><span class="token string">&quot;temp&quot;</span><span class="token punctuation">,</span> <span class="token number">20.0</span><span class="token punctuation">,</span> <span class="token string">&quot;the temperature&quot;</span><span class="token punctuation">)</span>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> temp = tempconv.CelsiusFlag(<span class="hljs-string">&quot;temp&quot;</span>, <span class="hljs-number">20.0</span>, <span class="hljs-string">&quot;the temperature&quot;</span>)
 
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    flag<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token operator">*</span>temp<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+    fmt.Println(*temp)
+}
 </code></pre>
 <p>&#x4E0B;&#x9762;&#x662F;&#x5178;&#x578B;&#x7684;&#x573A;&#x666F;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch7/tempflag
+<pre><code>$ go build gopl.io/ch7/tempflag
 $ ./tempflag
 20&#xB0;C
 $ ./tempflag -temp -18C
@@ -815,9 +815,13 @@ Usage of ./tempflag:
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"flag.Value接口","level":"1.8.4","depth":2,"next":{"title":"接口值","level":"1.8.5","depth":2,"path":"ch7/ch7-05.md","ref":"ch7/ch7-05.md","articles":[]},"previous":{"title":"实现接口的条件","level":"1.8.3","depth":2,"path":"ch7/ch7-03.md","ref":"ch7/ch7-03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch7/ch7-04.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"flag.Value接口","level":"1.8.4","depth":2,"next":{"title":"接口值","level":"1.8.5","depth":2,"path":"ch7/ch7-05.md","ref":"ch7/ch7-05.md","articles":[]},"previous":{"title":"实现接口的条件","level":"1.8.3","depth":2,"path":"ch7/ch7-03.md","ref":"ch7/ch7-03.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch7/ch7-04.md","mtime":"2019-08-14T08:20:28.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

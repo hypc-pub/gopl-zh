@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -516,68 +516,68 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="33-&#x590D;&#x6570;">3.3. &#x590D;&#x6570;</h2>
 <p>Go&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x7CBE;&#x5EA6;&#x7684;&#x590D;&#x6570;&#x7C7B;&#x578B;&#xFF1A;complex64&#x548C;complex128&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;float32&#x548C;float64&#x4E24;&#x79CD;&#x6D6E;&#x70B9;&#x6570;&#x7CBE;&#x5EA6;&#x3002;&#x5185;&#x7F6E;&#x7684;complex&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x590D;&#x6570;&#xFF0C;&#x5185;&#x5EFA;&#x7684;real&#x548C;imag&#x51FD;&#x6570;&#x5206;&#x522B;&#x8FD4;&#x56DE;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x548C;&#x865A;&#x90E8;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">var x complex128 = complex(1, 2) // 1+2i
-var y complex128 = complex(3, 4) // 3+4i
-fmt.Println(x*y)                 // &quot;(-5+10i)&quot;
-fmt.Println(real(x*y))           // &quot;-5&quot;
-fmt.Println(imag(x*y))           // &quot;10&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">var</span> x <span class="hljs-keyword">complex128</span> = <span class="hljs-built_in">complex</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) <span class="hljs-comment">// 1+2i</span>
+<span class="hljs-keyword">var</span> y <span class="hljs-keyword">complex128</span> = <span class="hljs-built_in">complex</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>) <span class="hljs-comment">// 3+4i</span>
+fmt.Println(x*y)                 <span class="hljs-comment">// &quot;(-5+10i)&quot;</span>
+fmt.Println(<span class="hljs-built_in">real</span>(x*y))           <span class="hljs-comment">// &quot;-5&quot;</span>
+fmt.Println(<span class="hljs-built_in">imag</span>(x*y))           <span class="hljs-comment">// &quot;10&quot;</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x9762;&#x503C;&#x6216;&#x4E00;&#x4E2A;&#x5341;&#x8FDB;&#x5236;&#x6574;&#x6570;&#x9762;&#x503C;&#x540E;&#x9762;&#x8DDF;&#x7740;&#x4E00;&#x4E2A;i&#xFF0C;&#x4F8B;&#x5982;3.141592i&#x6216;2i&#xFF0C;&#x5B83;&#x5C06;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x590D;&#x6570;&#x7684;&#x865A;&#x90E8;&#xFF0C;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x662F;0&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(1i * 1i) // &quot;(-1+0i)&quot;, i^2 = -1
+<pre><code class="lang-Go">fmt.Println(<span class="hljs-number">1i</span> * <span class="hljs-number">1i</span>) <span class="hljs-comment">// &quot;(-1+0i)&quot;, i^2 = -1</span>
 </code></pre>
 <p>&#x5728;&#x5E38;&#x91CF;&#x7B97;&#x672F;&#x89C4;&#x5219;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x590D;&#x6570;&#x5E38;&#x91CF;&#x53EF;&#x4EE5;&#x52A0;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x6570;&#x503C;&#x5E38;&#x91CF;&#xFF08;&#x6574;&#x6570;&#x6216;&#x6D6E;&#x70B9;&#x6570;&#x3001;&#x5B9E;&#x90E8;&#x6216;&#x865A;&#x90E8;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x81EA;&#x7136;&#x7684;&#x65B9;&#x5F0F;&#x4E66;&#x5199;&#x590D;&#x6570;&#xFF0C;&#x5C31;&#x50CF;1+2i&#x6216;&#x4E0E;&#x4E4B;&#x7B49;&#x4EF7;&#x7684;&#x5199;&#x6CD5;2i+1&#x3002;&#x4E0A;&#x9762;x&#x548C;y&#x7684;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#x8FD8;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">x := 1 + 2i
-y := 3 + 4i
+<pre><code class="lang-Go">x := <span class="hljs-number">1</span> + <span class="hljs-number">2i</span>
+y := <span class="hljs-number">3</span> + <span class="hljs-number">4i</span>
 </code></pre>
 <p>&#x590D;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;==&#x548C;!=&#x8FDB;&#x884C;&#x76F8;&#x7B49;&#x6BD4;&#x8F83;&#x3002;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x590D;&#x6570;&#x7684;&#x5B9E;&#x90E8;&#x548C;&#x865A;&#x90E8;&#x90FD;&#x76F8;&#x7B49;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x4EEC;&#x624D;&#x662F;&#x76F8;&#x7B49;&#x7684;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x76F8;&#x7B49;&#x6BD4;&#x8F83;&#x662F;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x7279;&#x522B;&#x5C0F;&#x5FC3;&#x5904;&#x7406;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;&#xFF09;&#x3002;</p>
 <p>math/cmplx&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x590D;&#x6570;&#x5904;&#x7406;&#x7684;&#x8BB8;&#x591A;&#x51FD;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#x6C42;&#x590D;&#x6570;&#x7684;&#x5E73;&#x65B9;&#x6839;&#x51FD;&#x6570;&#x548C;&#x6C42;&#x5E42;&#x51FD;&#x6570;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(cmplx.Sqrt(-1)) // &quot;(0+1i)&quot;
+<pre><code class="lang-Go">fmt.Println(cmplx.Sqrt(<span class="hljs-number">-1</span>)) <span class="hljs-comment">// &quot;(0+1i)&quot;</span>
 </code></pre>
 <p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;complex128&#x590D;&#x6570;&#x7B97;&#x6CD5;&#x6765;&#x751F;&#x6210;&#x4E00;&#x4E2A;Mandelbrot&#x56FE;&#x50CF;&#x3002;</p>
 <p><u><i>gopl.io/ch3/mandelbrot</i></u></p>
-<pre class="language-"><code class="lang-Go">// Mandelbrot emits a PNG image of the Mandelbrot fractal.
-package main
+<pre><code class="lang-Go"><span class="hljs-comment">// Mandelbrot emits a PNG image of the Mandelbrot fractal.</span>
+<span class="hljs-keyword">package</span> main
 
-import (
-    &quot;image&quot;
-    &quot;image/color&quot;
-    &quot;image/png&quot;
-    &quot;math/cmplx&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;image&quot;</span>
+    <span class="hljs-string">&quot;image/color&quot;</span>
+    <span class="hljs-string">&quot;image/png&quot;</span>
+    <span class="hljs-string">&quot;math/cmplx&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 )
 
 
-func main() {
-    const (
-        xmin, ymin, xmax, ymax = -2, -2, +2, +2
-        width, height          = 1024, 1024
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">const</span> (
+        xmin, ymin, xmax, ymax = <span class="hljs-number">-2</span>, <span class="hljs-number">-2</span>, +<span class="hljs-number">2</span>, +<span class="hljs-number">2</span>
+        width, height          = <span class="hljs-number">1024</span>, <span class="hljs-number">1024</span>
     )
 
-    img := image.NewRGBA(image.Rect(0, 0, width, height))
-    for py := 0; py &lt; height; py++ {
-        y := float64(py)/height*(ymax-ymin) + ymin
-        for px := 0; px &lt; width; px++ {
-            x := float64(px)/width*(xmax-xmin) + xmin
-            z := complex(x, y)
-            // Image point (px, py) represents complex value z.
+    img := image.NewRGBA(image.Rect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height))
+    <span class="hljs-keyword">for</span> py := <span class="hljs-number">0</span>; py &lt; height; py++ {
+        y := <span class="hljs-keyword">float64</span>(py)/height*(ymax-ymin) + ymin
+        <span class="hljs-keyword">for</span> px := <span class="hljs-number">0</span>; px &lt; width; px++ {
+            x := <span class="hljs-keyword">float64</span>(px)/width*(xmax-xmin) + xmin
+            z := <span class="hljs-built_in">complex</span>(x, y)
+            <span class="hljs-comment">// Image point (px, py) represents complex value z.</span>
             img.Set(px, py, mandelbrot(z))
         }
     }
-    png.Encode(os.Stdout, img) // NOTE: ignoring errors
+    png.Encode(os.Stdout, img) <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring errors</span>
 }
 
-func mandelbrot(z complex128) color.Color {
-    const iterations = 200
-    const contrast = 15
+<span class="hljs-keyword">func</span> mandelbrot(z <span class="hljs-keyword">complex128</span>) color.Color {
+    <span class="hljs-keyword">const</span> iterations = <span class="hljs-number">200</span>
+    <span class="hljs-keyword">const</span> contrast = <span class="hljs-number">15</span>
 
-    var v complex128
-    for n := uint8(0); n &lt; iterations; n++ {
+    <span class="hljs-keyword">var</span> v <span class="hljs-keyword">complex128</span>
+    <span class="hljs-keyword">for</span> n := <span class="hljs-keyword">uint8</span>(<span class="hljs-number">0</span>); n &lt; iterations; n++ {
         v = v*v + z
-        if cmplx.Abs(v) &gt; 2 {
-            return color.Gray{255 - contrast*n}
+        <span class="hljs-keyword">if</span> cmplx.Abs(v) &gt; <span class="hljs-number">2</span> {
+            <span class="hljs-keyword">return</span> color.Gray{<span class="hljs-number">255</span> - contrast*n}
         }
     }
-    return color.Black
+    <span class="hljs-keyword">return</span> color.Black
 }
 </code></pre>
 <p>&#x7528;&#x4E8E;&#x904D;&#x5386;1024x1024&#x56FE;&#x50CF;&#x6BCF;&#x4E2A;&#x70B9;&#x7684;&#x4E24;&#x4E2A;&#x5D4C;&#x5957;&#x7684;&#x5FAA;&#x73AF;&#x5BF9;&#x5E94;-2&#x5230;+2&#x533A;&#x95F4;&#x7684;&#x590D;&#x6570;&#x5E73;&#x9762;&#x3002;&#x7A0B;&#x5E8F;&#x53CD;&#x590D;&#x6D4B;&#x8BD5;&#x6BCF;&#x4E2A;&#x70B9;&#x5BF9;&#x5E94;&#x590D;&#x6570;&#x503C;&#x5E73;&#x65B9;&#x503C;&#x52A0;&#x4E00;&#x4E2A;&#x589E;&#x91CF;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x70B9;&#x662F;&#x5426;&#x8D85;&#x51FA;&#x534A;&#x5F84;&#x4E3A;2&#x7684;&#x5706;&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#xFF0C;&#x901A;&#x8FC7;&#x6839;&#x636E;&#x9884;&#x8BBE;&#x7F6E;&#x7684;&#x9003;&#x9038;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x7070;&#x5EA6;&#x989C;&#x8272;&#x6765;&#x4EE3;&#x66FF;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x70B9;&#x5C5E;&#x4E8E;Mandelbrot&#x96C6;&#x5408;&#xFF0C;&#x4F7F;&#x7528;&#x9ED1;&#x8272;&#x989C;&#x8272;&#x6807;&#x8BB0;&#x3002;&#x6700;&#x7EC8;&#x7A0B;&#x5E8F;&#x5C06;&#x751F;&#x6210;&#x7684;PNG&#x683C;&#x5F0F;&#x5206;&#x5F62;&#x56FE;&#x50CF;&#x8F93;&#x51FA;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#xFF0C;&#x5982;&#x56FE;3.3&#x6240;&#x793A;&#x3002;</p>
@@ -632,9 +632,13 @@ func mandelbrot(z complex128) color.Color {
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"复数","level":"1.4.3","depth":2,"next":{"title":"布尔型","level":"1.4.4","depth":2,"path":"ch3/ch3-04.md","ref":"ch3/ch3-04.md","articles":[]},"previous":{"title":"浮点数","level":"1.4.2","depth":2,"path":"ch3/ch3-02.md","ref":"ch3/ch3-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-03.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"复数","level":"1.4.3","depth":2,"next":{"title":"布尔型","level":"1.4.4","depth":2,"path":"ch3/ch3-04.md","ref":"ch3/ch3-04.md","articles":[]},"previous":{"title":"浮点数","level":"1.4.2","depth":2,"path":"ch3/ch3-02.md","ref":"ch3/ch3-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-03.md","mtime":"2019-08-14T08:20:28.117Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

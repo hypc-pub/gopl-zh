@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -588,46 +588,46 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="83-&#x793A;&#x4F8B;-&#x5E76;&#x53D1;&#x7684;echo&#x670D;&#x52A1;">8.3. &#x793A;&#x4F8B;: &#x5E76;&#x53D1;&#x7684;Echo&#x670D;&#x52A1;</h2>
 <p>clock&#x670D;&#x52A1;&#x5668;&#x6BCF;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x90FD;&#x4F1A;&#x8D77;&#x4E00;&#x4E2A;goroutine&#x3002;&#x5728;&#x672C;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;echo&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x5728;&#x6BCF;&#x4E2A;&#x8FDE;&#x63A5;&#x4E2D;&#x4F1A;&#x6709;&#x591A;&#x4E2A;goroutine&#x3002;&#x5927;&#x591A;&#x6570;echo&#x670D;&#x52A1;&#x4EC5;&#x4EC5;&#x4F1A;&#x8FD4;&#x56DE;&#x4ED6;&#x4EEC;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;handleConn&#x51FD;&#x6570;&#x6240;&#x505A;&#x7684;&#x4E00;&#x6837;&#xFF1A;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">handleConn</span><span class="token punctuation">(</span>c net<span class="token punctuation">.</span>Conn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    io<span class="token punctuation">.</span><span class="token function">Copy</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> c<span class="token punctuation">)</span> <span class="token comment">// NOTE: ignoring errors</span>
-    c<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> handleConn(c net.Conn) {
+    io.Copy(c, c) <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring errors</span>
+    c.Close()
+}
 </code></pre>
 <p>&#x4E00;&#x4E2A;&#x66F4;&#x6709;&#x610F;&#x601D;&#x7684;echo&#x670D;&#x52A1;&#x5E94;&#x8BE5;&#x6A21;&#x62DF;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;echo&#x7684;&#x201C;&#x56DE;&#x54CD;&#x201D;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x5F00;&#x59CB;&#x8981;&#x7528;&#x5927;&#x5199;HELLO&#x6765;&#x8868;&#x793A;&#x201C;&#x58F0;&#x97F3;&#x5F88;&#x5927;&#x201D;&#xFF0C;&#x4E4B;&#x540E;&#x7ECF;&#x8FC7;&#x4E00;&#x5C0F;&#x6BB5;&#x5EF6;&#x8FDF;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6709;&#x6240;&#x7F13;&#x548C;&#x7684;Hello&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x5168;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x7684;hello&#x8868;&#x793A;&#x58F0;&#x97F3;&#x6E10;&#x6E10;&#x53D8;&#x5C0F;&#x76F4;&#x81F3;&#x6D88;&#x5931;&#xFF0C;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x7684;handleConn(&#x8BD1;&#x6CE8;&#xFF1A;&#x7B11;&#x770B;&#x4F5C;&#x8005;&#x8111;&#x6D1E;&#x5927;&#x5F00;)&#xFF1A;</p>
 <p><u><i>gopl.io/ch8/reverb1</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">echo</span><span class="token punctuation">(</span>c net<span class="token punctuation">.</span>Conn<span class="token punctuation">,</span> shout <span class="token builtin">string</span><span class="token punctuation">,</span> delay time<span class="token punctuation">.</span>Duration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Fprintln</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">,</span> strings<span class="token punctuation">.</span><span class="token function">ToUpper</span><span class="token punctuation">(</span>shout<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>delay<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Fprintln</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">,</span> shout<span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>delay<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Fprintln</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token string">&quot;\t&quot;</span><span class="token punctuation">,</span> strings<span class="token punctuation">.</span><span class="token function">ToLower</span><span class="token punctuation">(</span>shout<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> echo(c net.Conn, shout <span class="hljs-keyword">string</span>, delay time.Duration) {
+    fmt.Fprintln(c, <span class="hljs-string">&quot;\t&quot;</span>, strings.ToUpper(shout))
+    time.Sleep(delay)
+    fmt.Fprintln(c, <span class="hljs-string">&quot;\t&quot;</span>, shout)
+    time.Sleep(delay)
+    fmt.Fprintln(c, <span class="hljs-string">&quot;\t&quot;</span>, strings.ToLower(shout))
+}
 
-<span class="token keyword">func</span> <span class="token function">handleConn</span><span class="token punctuation">(</span>c net<span class="token punctuation">.</span>Conn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    input <span class="token operator">:=</span> bufio<span class="token punctuation">.</span><span class="token function">NewScanner</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> input<span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">echo</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> input<span class="token punctuation">.</span><span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// NOTE: ignoring potential errors from input.Err()</span>
-    c<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">func</span> handleConn(c net.Conn) {
+    input := bufio.NewScanner(c)
+    <span class="hljs-keyword">for</span> input.Scan() {
+        echo(c, input.Text(), <span class="hljs-number">1</span>*time.Second)
+    }
+    <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring potential errors from input.Err()</span>
+    c.Close()
+}
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5347;&#x7EA7;&#x6211;&#x4EEC;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD9;&#x6837;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x7EC8;&#x7AEF;&#x7684;&#x8F93;&#x5165;&#x5230;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x628A;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x8FD4;&#x56DE;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x4E0A;&#xFF0C;&#x8FD9;&#x4F7F;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4F7F;&#x7528;&#x5E76;&#x53D1;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x597D;&#x673A;&#x4F1A;&#xFF1A;</p>
 <p><u><i>gopl.io/ch8/netcat2</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> net<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">&quot;tcp&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;localhost:8000&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">defer</span> conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">go</span> <span class="token function">mustCopy</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Stdout<span class="token punctuation">,</span> conn<span class="token punctuation">)</span>
-    <span class="token function">mustCopy</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> os<span class="token punctuation">.</span>Stdin<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    conn, err := net.Dial(<span class="hljs-string">&quot;tcp&quot;</span>, <span class="hljs-string">&quot;localhost:8000&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatal(err)
+    }
+    <span class="hljs-keyword">defer</span> conn.Close()
+    <span class="hljs-keyword">go</span> mustCopy(os.Stdout, conn)
+    mustCopy(conn, os.Stdin)
+}
 </code></pre>
 <p>&#x5F53;main goroutine&#x4ECE;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x6D41;&#x4E2D;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;&#x5E76;&#x5C06;&#x5176;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x65F6;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;goroutine&#x4F1A;&#x8BFB;&#x53D6;&#x5E76;&#x6253;&#x5370;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x54CD;&#x5E94;&#x3002;&#x5F53;main goroutine&#x78B0;&#x5230;&#x8F93;&#x5165;&#x7EC8;&#x6B62;&#x65F6;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x6309;&#x4E86;Control-D(^D)&#xFF0C;&#x5728;windows&#x4E0A;&#x662F;Control-Z&#xFF0C;&#x8FD9;&#x65F6;&#x7A0B;&#x5E8F;&#x5C31;&#x4F1A;&#x88AB;&#x7EC8;&#x6B62;&#xFF0C;&#x5C3D;&#x7BA1;&#x5176;&#x5B83;goroutine&#x4E2D;&#x8FD8;&#x6709;&#x8FDB;&#x884C;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#xFF08;&#x5728;8.4.1&#x4E2D;&#x5F15;&#x5165;&#x4E86;channels&#x540E;&#x6211;&#x4EEC;&#x4F1A;&#x660E;&#x767D;&#x5982;&#x4F55;&#x8BA9;&#x7A0B;&#x5E8F;&#x7B49;&#x5F85;&#x4E24;&#x8FB9;&#x90FD;&#x7ED3;&#x675F;&#x3002;&#xFF09;</p>
 <p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F1A;&#x8BDD;&#x4E2D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8F93;&#x5165;&#x662F;&#x5DE6;&#x5BF9;&#x9F50;&#x7684;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x54CD;&#x5E94;&#x4F1A;&#x7528;&#x7F29;&#x8FDB;&#x6765;&#x533A;&#x522B;&#x663E;&#x793A;&#x3002;
 &#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5411;&#x670D;&#x52A1;&#x5668;&#x201C;&#x558A;&#x4E09;&#x6B21;&#x8BDD;&#x201D;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch8/reverb1
+<pre><code>$ go build gopl.io/ch8/reverb1
 $ ./reverb1 &amp;
 $ go build gopl.io/ch8/netcat2
 $ ./netcat2
@@ -647,18 +647,18 @@ yooo-hooo!
 $ killall reverb1
 </code></pre><p>&#x6CE8;&#x610F;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7B2C;&#x4E09;&#x6B21;shout&#x5728;&#x524D;&#x4E00;&#x4E2A;shout&#x5904;&#x7406;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x88AB;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x8C8C;&#x4F3C;&#x770B;&#x8D77;&#x6765;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x201C;&#x73B0;&#x5B9E;&#x201D;&#x3002;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x91CC;&#x7684;&#x56DE;&#x54CD;&#x5E94;&#x8BE5;&#x662F;&#x4F1A;&#x7531;&#x4E09;&#x6B21;shout&#x7684;&#x56DE;&#x58F0;&#x7EC4;&#x5408;&#x800C;&#x6210;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x7684;&#x56DE;&#x54CD;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;goroutine&#x6765;&#x505A;&#x8FD9;&#x4EF6;&#x4E8B;&#x60C5;&#x3002;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x518D;&#x4E00;&#x6B21;&#x5730;&#x9700;&#x8981;go&#x8FD9;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x4E86;&#xFF0C;&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x7528;&#x5B83;&#x6765;&#x8C03;&#x7528;echo&#xFF1A;</p>
 <p><u><i>gopl.io/ch8/reverb2</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">handleConn</span><span class="token punctuation">(</span>c net<span class="token punctuation">.</span>Conn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    input <span class="token operator">:=</span> bufio<span class="token punctuation">.</span><span class="token function">NewScanner</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> input<span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">go</span> <span class="token function">echo</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> input<span class="token punctuation">.</span><span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">*</span>time<span class="token punctuation">.</span>Second<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// NOTE: ignoring potential errors from input.Err()</span>
-    c<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> handleConn(c net.Conn) {
+    input := bufio.NewScanner(c)
+    <span class="hljs-keyword">for</span> input.Scan() {
+        <span class="hljs-keyword">go</span> echo(c, input.Text(), <span class="hljs-number">1</span>*time.Second)
+    }
+    <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring potential errors from input.Err()</span>
+    c.Close()
+}
 </code></pre>
 <p>go&#x540E;&#x8DDF;&#x7684;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4F1A;&#x5728;go&#x8BED;&#x53E5;&#x81EA;&#x8EAB;&#x6267;&#x884C;&#x65F6;&#x88AB;&#x6C42;&#x503C;&#xFF1B;&#x56E0;&#x6B64;input.Text()&#x4F1A;&#x5728;main goroutine&#x4E2D;&#x88AB;&#x6C42;&#x503C;&#x3002;
 &#x73B0;&#x5728;&#x56DE;&#x54CD;&#x662F;&#x5E76;&#x53D1;&#x5E76;&#x4E14;&#x4F1A;&#x6309;&#x65F6;&#x95F4;&#x6765;&#x8986;&#x76D6;&#x6389;&#x5176;&#x5B83;&#x54CD;&#x5E94;&#x4E86;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch8/reverb2
+<pre><code>$ go build gopl.io/ch8/reverb2
 $ ./reverb2 &amp;
 $ ./netcat2
 Is there anybody there?
@@ -717,9 +717,13 @@ $ killall reverb2
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"示例: 并发的Echo服务","level":"1.9.3","depth":2,"next":{"title":"Channels","level":"1.9.4","depth":2,"path":"ch8/ch8-04.md","ref":"ch8/ch8-04.md","articles":[]},"previous":{"title":"示例: 并发的Clock服务","level":"1.9.2","depth":2,"path":"ch8/ch8-02.md","ref":"ch8/ch8-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch8/ch8-03.md","mtime":"2019-03-26T06:34:32.118Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"示例: 并发的Echo服务","level":"1.9.3","depth":2,"next":{"title":"Channels","level":"1.9.4","depth":2,"path":"ch8/ch8-04.md","ref":"ch8/ch8-04.md","articles":[]},"previous":{"title":"示例: 并发的Clock服务","level":"1.9.2","depth":2,"path":"ch8/ch8-02.md","ref":"ch8/ch8-02.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch8/ch8-03.md","mtime":"2019-08-14T08:20:28.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

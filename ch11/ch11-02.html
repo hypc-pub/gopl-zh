@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -516,72 +516,72 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="112-&#x6D4B;&#x8BD5;&#x51FD;&#x6570;">11.2. &#x6D4B;&#x8BD5;&#x51FD;&#x6570;</h2>
 <p>&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x5BFC;&#x5165;testing&#x5305;&#x3002;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x6709;&#x5982;&#x4E0B;&#x7684;&#x7B7E;&#x540D;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func TestName(t *testing.T) {
-    // ...
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestName(t *testing.T) {
+    <span class="hljs-comment">// ...</span>
 }
 </code></pre>
 <p>&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;&#x5FC5;&#x987B;&#x4EE5;Test&#x5F00;&#x5934;&#xFF0C;&#x53EF;&#x9009;&#x7684;&#x540E;&#x7F00;&#x540D;&#x5FC5;&#x987B;&#x4EE5;&#x5927;&#x5199;&#x5B57;&#x6BCD;&#x5F00;&#x5934;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func TestSin(t *testing.T) { /* ... */ }
-func TestCos(t *testing.T) { /* ... */ }
-func TestLog(t *testing.T) { /* ... */ }
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestSin(t *testing.T) { <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-keyword">func</span> TestCos(t *testing.T) { <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-keyword">func</span> TestLog(t *testing.T) { <span class="hljs-comment">/* ... */</span> }
 </code></pre>
 <p>&#x5176;&#x4E2D;t&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x62A5;&#x544A;&#x6D4B;&#x8BD5;&#x5931;&#x8D25;&#x548C;&#x9644;&#x52A0;&#x7684;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5305;gopl.io/ch11/word1&#xFF0C;&#x5176;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x51FD;&#x6570;IsPalindrome&#x7528;&#x4E8E;&#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x4ECE;&#x524D;&#x5411;&#x540E;&#x548C;&#x4ECE;&#x540E;&#x5411;&#x524D;&#x8BFB;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#xFF08;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x662F;&#x56DE;&#x6587;&#x5B57;&#x7B26;&#x4E32;&#x524D;&#x540E;&#x91CD;&#x590D;&#x6D4B;&#x8BD5;&#x4E86;&#x4E24;&#x6B21;&#xFF1B;&#x6211;&#x4EEC;&#x7A0D;&#x540E;&#x4F1A;&#x518D;&#x8BA8;&#x8BBA;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#xFF09;</p>
 <p><u><i>gopl.io/ch11/word1</i></u></p>
-<pre class="language-"><code class="lang-Go">// Package word provides utilities for word games.
-package word
+<pre><code class="lang-Go"><span class="hljs-comment">// Package word provides utilities for word games.</span>
+<span class="hljs-keyword">package</span> word
 
-// IsPalindrome reports whether s reads the same forward and backward.
-// (Our first attempt.)
-func IsPalindrome(s string) bool {
-    for i := range s {
-        if s[i] != s[len(s)-1-i] {
-            return false
+<span class="hljs-comment">// IsPalindrome reports whether s reads the same forward and backward.</span>
+<span class="hljs-comment">// (Our first attempt.)</span>
+<span class="hljs-keyword">func</span> IsPalindrome(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> s {
+        <span class="hljs-keyword">if</span> s[i] != s[<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>-i] {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
         }
     }
-    return true
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 }
 </code></pre>
 <p>&#x5728;&#x76F8;&#x540C;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;word_test.go&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x4E2D;&#x5305;&#x542B;&#x4E86;TestPalindrome&#x548C;TestNonPalindrome&#x4E24;&#x4E2A;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x90FD;&#x662F;&#x6D4B;&#x8BD5;IsPalindrome&#x662F;&#x5426;&#x7ED9;&#x51FA;&#x6B63;&#x786E;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;t.Error&#x62A5;&#x544A;&#x5931;&#x8D25;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">package word
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> word
 
-import &quot;testing&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;testing&quot;</span>
 
-func TestPalindrome(t *testing.T) {
-    if !IsPalindrome(&quot;detartrated&quot;) {
-        t.Error(`IsPalindrome(&quot;detartrated&quot;) = false`)
+<span class="hljs-keyword">func</span> TestPalindrome(t *testing.T) {
+    <span class="hljs-keyword">if</span> !IsPalindrome(<span class="hljs-string">&quot;detartrated&quot;</span>) {
+        t.Error(<span class="hljs-string">`IsPalindrome(&quot;detartrated&quot;) = false`</span>)
     }
-    if !IsPalindrome(&quot;kayak&quot;) {
-        t.Error(`IsPalindrome(&quot;kayak&quot;) = false`)
+    <span class="hljs-keyword">if</span> !IsPalindrome(<span class="hljs-string">&quot;kayak&quot;</span>) {
+        t.Error(<span class="hljs-string">`IsPalindrome(&quot;kayak&quot;) = false`</span>)
     }
 }
 
-func TestNonPalindrome(t *testing.T) {
-    if IsPalindrome(&quot;palindrome&quot;) {
-        t.Error(`IsPalindrome(&quot;palindrome&quot;) = true`)
+<span class="hljs-keyword">func</span> TestNonPalindrome(t *testing.T) {
+    <span class="hljs-keyword">if</span> IsPalindrome(<span class="hljs-string">&quot;palindrome&quot;</span>) {
+        t.Error(<span class="hljs-string">`IsPalindrome(&quot;palindrome&quot;) = true`</span>)
     }
 }
 </code></pre>
 <p><code>go test</code>&#x547D;&#x4EE4;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x5305;&#x90A3;&#x4E48;&#x5C06;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x5BF9;&#x5E94;&#x7684;&#x5305;&#xFF08;&#x548C;<code>go build</code>&#x547D;&#x4EE4;&#x4E00;&#x6837;&#xFF09;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x6784;&#x5EFA;&#x548C;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x3002;</p>
-<pre class="language-"><code>$ cd $GOPATH/src/gopl.io/ch11/word1
+<pre><code>$ cd $GOPATH/src/gopl.io/ch11/word1
 $ go test
 ok   gopl.io/ch11/word1  0.008s
 </code></pre><p>&#x7ED3;&#x679C;&#x8FD8;&#x6BD4;&#x8F83;&#x6EE1;&#x610F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD0;&#x884C;&#x4E86;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C; &#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x63D0;&#x524D;&#x9000;&#x51FA;&#x662F;&#x56E0;&#x4E3A;&#x8FD8;&#x6CA1;&#x6709;&#x9047;&#x5230;BUG&#x62A5;&#x544A;&#x3002;&#x4E0D;&#x8FC7;&#x4E00;&#x4E2A;&#x6CD5;&#x56FD;&#x540D;&#x4E3A;&#x201C;Noelle Eve Elleon&#x201D;&#x7684;&#x7528;&#x6237;&#x4F1A;&#x62B1;&#x6028;IsPalindrome&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#x201C;&#xE9;t&#xE9;&#x201D;&#x3002;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6765;&#x81EA;&#x7F8E;&#x56FD;&#x4E2D;&#x90E8;&#x7528;&#x6237;&#x7684;&#x62B1;&#x6028;&#x5219;&#x662F;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#x201C;A man, a plan, a canal: Panama.&#x201D;&#x3002;&#x6267;&#x884C;&#x7279;&#x6B8A;&#x548C;&#x5C0F;&#x7684;BUG&#x62A5;&#x544A;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x65B0;&#x7684;&#x66F4;&#x81EA;&#x7136;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func TestFrenchPalindrome(t *testing.T) {
-    if !IsPalindrome(&quot;&#xE9;t&#xE9;&quot;) {
-        t.Error(`IsPalindrome(&quot;&#xE9;t&#xE9;&quot;) = false`)
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestFrenchPalindrome(t *testing.T) {
+    <span class="hljs-keyword">if</span> !IsPalindrome(<span class="hljs-string">&quot;&#xE9;t&#xE9;&quot;</span>) {
+        t.Error(<span class="hljs-string">`IsPalindrome(&quot;&#xE9;t&#xE9;&quot;) = false`</span>)
     }
 }
 
-func TestCanalPalindrome(t *testing.T) {
-    input := &quot;A man, a plan, a canal: Panama&quot;
-    if !IsPalindrome(input) {
-        t.Errorf(`IsPalindrome(%q) = false`, input)
+<span class="hljs-keyword">func</span> TestCanalPalindrome(t *testing.T) {
+    input := <span class="hljs-string">&quot;A man, a plan, a canal: Panama&quot;</span>
+    <span class="hljs-keyword">if</span> !IsPalindrome(input) {
+        t.Errorf(<span class="hljs-string">`IsPalindrome(%q) = false`</span>, input)
     }
 }
 </code></pre>
 <p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x4E24;&#x6B21;&#x8F93;&#x5165;&#x8F83;&#x957F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x63D0;&#x4F9B;&#x4E86;&#x6709;&#x7C7B;&#x4F3C;Printf&#x683C;&#x5F0F;&#x5316;&#x529F;&#x80FD;&#x7684; Errorf&#x51FD;&#x6570;&#x6765;&#x6C47;&#x62A5;&#x9519;&#x8BEF;&#x7ED3;&#x679C;&#x3002;</p>
 <p>&#x5F53;&#x6DFB;&#x52A0;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4E4B;&#x540E;&#xFF0C;<code>go test</code>&#x8FD4;&#x56DE;&#x4E86;&#x6D4B;&#x8BD5;&#x5931;&#x8D25;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
-<pre class="language-"><code>$ go test
+<pre><code>$ go test
 --- FAIL: TestFrenchPalindrome (0.00s)
     word_test.go:28: IsPalindrome(&quot;&#xE9;t&#xE9;&quot;) = false
 --- FAIL: TestCanalPalindrome (0.00s)
@@ -591,7 +591,7 @@ FAIL    gopl.io/ch11/word1  0.014s
 </code></pre><p>&#x5148;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5E76;&#x89C2;&#x5BDF;&#x5230;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x89E6;&#x53D1;&#x4E86;&#x548C;&#x7528;&#x6237;&#x62A5;&#x544A;&#x7684;&#x9519;&#x8BEF;&#x76F8;&#x540C;&#x7684;&#x63CF;&#x8FF0;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x6D4B;&#x8BD5;&#x4E60;&#x60EF;&#x3002;&#x53EA;&#x6709;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x624D;&#x80FD;&#x5B9A;&#x4F4D;&#x6211;&#x4EEC;&#x8981;&#x771F;&#x6B63;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
 <p>&#x5148;&#x5199;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x7684;&#x53E6;&#x5916;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF0C;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x901A;&#x5E38;&#x4F1A;&#x6BD4;&#x624B;&#x5DE5;&#x63CF;&#x8FF0;&#x62A5;&#x544A;&#x7684;&#x5904;&#x7406;&#x66F4;&#x5FEB;&#xFF0C;&#x8FD9;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5FEB;&#x901F;&#x5730;&#x8FED;&#x4EE3;&#x3002;&#x5982;&#x679C;&#x6D4B;&#x8BD5;&#x96C6;&#x6709;&#x5F88;&#x591A;&#x8FD0;&#x884C;&#x7F13;&#x6162;&#x7684;&#x6D4B;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53EA;&#x9009;&#x62E9;&#x8FD0;&#x884C;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x6D4B;&#x8BD5;&#x6765;&#x52A0;&#x5FEB;&#x6D4B;&#x8BD5;&#x901F;&#x5EA6;&#x3002;</p>
 <p>&#x53C2;&#x6570;<code>-v</code>&#x53EF;&#x7528;&#x4E8E;&#x6253;&#x5370;&#x6BCF;&#x4E2A;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;&#x548C;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#xFF1A;</p>
-<pre class="language-"><code>$ go test -v
+<pre><code>$ go test -v
 === RUN TestPalindrome
 --- PASS: TestPalindrome (0.00s)
 === RUN TestNonPalindrome
@@ -606,7 +606,7 @@ FAIL
 exit status 1
 FAIL    gopl.io/ch11/word1  0.017s
 </code></pre><p>&#x53C2;&#x6570;<code>-run</code>&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x53EA;&#x6709;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x540D;&#x88AB;&#x5B83;&#x6B63;&#x786E;&#x5339;&#x914D;&#x7684;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x624D;&#x4F1A;&#x88AB;<code>go test</code>&#x6D4B;&#x8BD5;&#x547D;&#x4EE4;&#x8FD0;&#x884C;&#xFF1A;</p>
-<pre class="language-"><code>$ go test -v -run=&quot;French|Canal&quot;
+<pre><code>$ go test -v -run=&quot;French|Canal&quot;
 === RUN TestFrenchPalindrome
 --- FAIL: TestFrenchPalindrome (0.00s)
     word_test.go:28: IsPalindrome(&quot;&#xE9;t&#xE9;&quot;) = false
@@ -620,57 +620,57 @@ FAIL    gopl.io/ch11/word1  0.014s
 <p>&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x7684;&#x4EFB;&#x52A1;&#x5C31;&#x662F;&#x4FEE;&#x590D;&#x8FD9;&#x4E9B;&#x9519;&#x8BEF;&#x3002;&#x7B80;&#x8981;&#x5206;&#x6790;&#x540E;&#x53D1;&#x73B0;&#x7B2C;&#x4E00;&#x4E2A;BUG&#x7684;&#x539F;&#x56E0;&#x662F;&#x6211;&#x4EEC;&#x91C7;&#x7528;&#x4E86; byte&#x800C;&#x4E0D;&#x662F;rune&#x5E8F;&#x5217;&#xFF0C;&#x6240;&#x4EE5;&#x50CF;&#x201C;&#xE9;t&#xE9;&#x201D;&#x4E2D;&#x7684;&#xE9;&#x7B49;&#x975E;ASCII&#x5B57;&#x7B26;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x5904;&#x7406;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;BUG&#x662F;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x5FFD;&#x7565;&#x7A7A;&#x683C;&#x548C;&#x5B57;&#x6BCD;&#x7684;&#x5927;&#x5C0F;&#x5199;&#x5BFC;&#x81F4;&#x7684;&#x3002;</p>
 <p>&#x9488;&#x5BF9;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;BUG&#xFF0C;&#x6211;&#x4EEC;&#x4ED4;&#x7EC6;&#x91CD;&#x5199;&#x4E86;&#x51FD;&#x6570;&#xFF1A;</p>
 <p><u><i>gopl.io/ch11/word2</i></u></p>
-<pre class="language-"><code class="lang-Go">// Package word provides utilities for word games.
-package word
+<pre><code class="lang-Go"><span class="hljs-comment">// Package word provides utilities for word games.</span>
+<span class="hljs-keyword">package</span> word
 
-import &quot;unicode&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;unicode&quot;</span>
 
-// IsPalindrome reports whether s reads the same forward and backward.
-// Letter case is ignored, as are non-letters.
-func IsPalindrome(s string) bool {
-    var letters []rune
-    for _, r := range s {
-        if unicode.IsLetter(r) {
-            letters = append(letters, unicode.ToLower(r))
+<span class="hljs-comment">// IsPalindrome reports whether s reads the same forward and backward.</span>
+<span class="hljs-comment">// Letter case is ignored, as are non-letters.</span>
+<span class="hljs-keyword">func</span> IsPalindrome(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">var</span> letters []<span class="hljs-keyword">rune</span>
+    <span class="hljs-keyword">for</span> _, r := <span class="hljs-keyword">range</span> s {
+        <span class="hljs-keyword">if</span> unicode.IsLetter(r) {
+            letters = <span class="hljs-built_in">append</span>(letters, unicode.ToLower(r))
         }
     }
-    for i := range letters {
-        if letters[i] != letters[len(letters)-1-i] {
-            return false
+    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> letters {
+        <span class="hljs-keyword">if</span> letters[i] != letters[<span class="hljs-built_in">len</span>(letters)<span class="hljs-number">-1</span>-i] {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
         }
     }
-    return true
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 }
 </code></pre>
 <p>&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x4E5F;&#x5C06;&#x4E4B;&#x524D;&#x7684;&#x6240;&#x6709;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x5408;&#x5E76;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x4E2D;&#x7684;&#x8868;&#x683C;&#x4E2D;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func TestIsPalindrome(t *testing.T) {
-    var tests = []struct {
-        input string
-        want  bool
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestIsPalindrome(t *testing.T) {
+    <span class="hljs-keyword">var</span> tests = []<span class="hljs-keyword">struct</span> {
+        input <span class="hljs-keyword">string</span>
+        want  <span class="hljs-keyword">bool</span>
     }{
-        {&quot;&quot;, true},
-        {&quot;a&quot;, true},
-        {&quot;aa&quot;, true},
-        {&quot;ab&quot;, false},
-        {&quot;kayak&quot;, true},
-        {&quot;detartrated&quot;, true},
-        {&quot;A man, a plan, a canal: Panama&quot;, true},
-        {&quot;Evil I did dwell; lewd did I live.&quot;, true},
-        {&quot;Able was I ere I saw Elba&quot;, true},
-        {&quot;&#xE9;t&#xE9;&quot;, true},
-        {&quot;Et se resservir, ivresse reste.&quot;, true},
-        {&quot;palindrome&quot;, false}, // non-palindrome
-        {&quot;desserts&quot;, false},   // semi-palindrome
+        {<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;ab&quot;</span>, <span class="hljs-literal">false</span>},
+        {<span class="hljs-string">&quot;kayak&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;detartrated&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;A man, a plan, a canal: Panama&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;Evil I did dwell; lewd did I live.&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;Able was I ere I saw Elba&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;&#xE9;t&#xE9;&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;Et se resservir, ivresse reste.&quot;</span>, <span class="hljs-literal">true</span>},
+        {<span class="hljs-string">&quot;palindrome&quot;</span>, <span class="hljs-literal">false</span>}, <span class="hljs-comment">// non-palindrome</span>
+        {<span class="hljs-string">&quot;desserts&quot;</span>, <span class="hljs-literal">false</span>},   <span class="hljs-comment">// semi-palindrome</span>
     }
-    for _, test := range tests {
-        if got := IsPalindrome(test.input); got != test.want {
-            t.Errorf(&quot;IsPalindrome(%q) = %v&quot;, test.input, got)
+    <span class="hljs-keyword">for</span> _, test := <span class="hljs-keyword">range</span> tests {
+        <span class="hljs-keyword">if</span> got := IsPalindrome(test.input); got != test.want {
+            t.Errorf(<span class="hljs-string">&quot;IsPalindrome(%q) = %v&quot;</span>, test.input, got)
         }
     }
 }
 </code></pre>
 <p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x65B0;&#x6D4B;&#x8BD5;&#x90FD;&#x901A;&#x8FC7;&#x4E86;&#xFF1A;</p>
-<pre class="language-"><code>$ go test gopl.io/ch11/word2
+<pre><code>$ go test gopl.io/ch11/word2
 ok      gopl.io/ch11/word2      0.015s
 </code></pre><p>&#x8FD9;&#x79CD;&#x8868;&#x683C;&#x9A71;&#x52A8;&#x7684;&#x6D4B;&#x8BD5;&#x5728;Go&#x8BED;&#x8A00;&#x4E2D;&#x5F88;&#x5E38;&#x89C1;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x5411;&#x8868;&#x683C;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x540E;&#x9762;&#x7684;&#x6D4B;&#x8BD5;&#x903B;&#x8F91;&#x4E5F;&#x6CA1;&#x6709;&#x5197;&#x4F59;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x66F4;&#x591A;&#x7684;&#x7CBE;&#x529B;&#x53BB;&#x5B8C;&#x5584;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;</p>
 <p>&#x5931;&#x8D25;&#x6D4B;&#x8BD5;&#x7684;&#x8F93;&#x51FA;&#x5E76;&#x4E0D;&#x5305;&#x62EC;&#x8C03;&#x7528;t.Errorf&#x65F6;&#x523B;&#x7684;&#x5806;&#x6808;&#x8C03;&#x7528;&#x4FE1;&#x606F;&#x3002;&#x548C;&#x5176;&#x4ED6;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x6216;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x7684;assert&#x65AD;&#x8A00;&#x4E0D;&#x540C;&#xFF0C;t.Errorf&#x8C03;&#x7528;&#x4E5F;&#x6CA1;&#x6709;&#x5F15;&#x8D77;panic&#x5F02;&#x5E38;&#x6216;&#x505C;&#x6B62;&#x6D4B;&#x8BD5;&#x7684;&#x6267;&#x884C;&#x3002;&#x5373;&#x4F7F;&#x8868;&#x683C;&#x4E2D;&#x524D;&#x9762;&#x7684;&#x6570;&#x636E;&#x5BFC;&#x81F4;&#x4E86;&#x6D4B;&#x8BD5;&#x7684;&#x5931;&#x8D25;&#xFF0C;&#x8868;&#x683C;&#x540E;&#x9762;&#x7684;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x4F9D;&#x7136;&#x4F1A;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4E86;&#x89E3;&#x591A;&#x4E2A;&#x5931;&#x8D25;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
@@ -682,31 +682,31 @@ ok      gopl.io/ch11/word2      0.015s
 <p>&#x8868;&#x683C;&#x9A71;&#x52A8;&#x7684;&#x6D4B;&#x8BD5;&#x4FBF;&#x4E8E;&#x6784;&#x9020;&#x57FA;&#x4E8E;&#x7CBE;&#x5FC3;&#x6311;&#x9009;&#x7684;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x6D4B;&#x8BD5;&#x601D;&#x8DEF;&#x662F;&#x968F;&#x673A;&#x6D4B;&#x8BD5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x66F4;&#x5E7F;&#x6CDB;&#x7684;&#x968F;&#x673A;&#x8F93;&#x5165;&#x6765;&#x6D4B;&#x8BD5;&#x63A2;&#x7D22;&#x51FD;&#x6570;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
 <p>&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x80FD;&#x77E5;&#x9053;&#x5E0C;&#x671B;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5462;&#xFF1F;&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x79CD;&#x5904;&#x7406;&#x7B56;&#x7565;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x7F16;&#x5199;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x7167;&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x548C;&#x6E05;&#x6670;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x867D;&#x7136;&#x6548;&#x7387;&#x8F83;&#x4F4E;&#x4F46;&#x662F;&#x884C;&#x4E3A;&#x548C;&#x8981;&#x6D4B;&#x8BD5;&#x7684;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x9488;&#x5BF9;&#x76F8;&#x540C;&#x7684;&#x968F;&#x673A;&#x8F93;&#x5165;&#x68C0;&#x67E5;&#x4E24;&#x8005;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002;&#x7B2C;&#x4E8C;&#x79CD;&#x662F;&#x751F;&#x6210;&#x7684;&#x968F;&#x673A;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x9075;&#x5FAA;&#x7279;&#x5B9A;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x671F;&#x671B;&#x7684;&#x8F93;&#x51FA;&#x7684;&#x6A21;&#x5F0F;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;randomPalindrome&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x968F;&#x673A;&#x751F;&#x6210;&#x56DE;&#x6587;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">import &quot;math/rand&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;math/rand&quot;</span>
 
-// randomPalindrome returns a palindrome whose length and contents
-// are derived from the pseudo-random number generator rng.
-func randomPalindrome(rng *rand.Rand) string {
-    n := rng.Intn(25) // random length up to 24
-    runes := make([]rune, n)
-    for i := 0; i &lt; (n+1)/2; i++ {
-        r := rune(rng.Intn(0x1000)) // random rune up to &apos;\u0999&apos;
+<span class="hljs-comment">// randomPalindrome returns a palindrome whose length and contents</span>
+<span class="hljs-comment">// are derived from the pseudo-random number generator rng.</span>
+<span class="hljs-keyword">func</span> randomPalindrome(rng *rand.Rand) <span class="hljs-keyword">string</span> {
+    n := rng.Intn(<span class="hljs-number">25</span>) <span class="hljs-comment">// random length up to 24</span>
+    runes := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">rune</span>, n)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; (n+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>; i++ {
+        r := <span class="hljs-keyword">rune</span>(rng.Intn(<span class="hljs-number">0x1000</span>)) <span class="hljs-comment">// random rune up to &apos;\u0999&apos;</span>
         runes[i] = r
-        runes[n-1-i] = r
+        runes[n<span class="hljs-number">-1</span>-i] = r
     }
-    return string(runes)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">string</span>(runes)
 }
 
-func TestRandomPalindromes(t *testing.T) {
-    // Initialize a pseudo-random number generator.
+<span class="hljs-keyword">func</span> TestRandomPalindromes(t *testing.T) {
+    <span class="hljs-comment">// Initialize a pseudo-random number generator.</span>
     seed := time.Now().UTC().UnixNano()
-    t.Logf(&quot;Random seed: %d&quot;, seed)
+    t.Logf(<span class="hljs-string">&quot;Random seed: %d&quot;</span>, seed)
     rng := rand.New(rand.NewSource(seed))
 
-    for i := 0; i &lt; 1000; i++ {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++ {
         p := randomPalindrome(rng)
-        if !IsPalindrome(p) {
-            t.Errorf(&quot;IsPalindrome(%q) = false&quot;, p)
+        <span class="hljs-keyword">if</span> !IsPalindrome(p) {
+            t.Errorf(<span class="hljs-string">&quot;IsPalindrome(%q) = false&quot;</span>, p)
         }
     }
 }
@@ -720,84 +720,84 @@ func TestRandomPalindromes(t *testing.T) {
 <p>&#x5BF9;&#x4E8E;&#x6D4B;&#x8BD5;&#x5305;<code>go test</code>&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x4F46;&#x662F;&#x7A0D;&#x52A0;&#x52AA;&#x529B;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x5B83;&#x6765;&#x6D4B;&#x8BD5;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5305;&#x7684;&#x540D;&#x5B57;&#x662F; main&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6784;&#x5EFA;&#x65F6;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E0D;&#x8FC7;main&#x5305;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5305;&#x88AB;&#x6D4B;&#x8BD5;&#x5668;&#x4EE3;&#x7801;&#x5BFC;&#x5165;&#x3002;</p>
 <p>&#x8BA9;&#x6211;&#x4EEC;&#x4E3A;2.3.2&#x8282;&#x7684;echo&#x7A0B;&#x5E8F;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x5C06;&#x7A0B;&#x5E8F;&#x62C6;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;echo&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x771F;&#x6B63;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;main&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x548C;echo&#x53EF;&#x80FD;&#x8FD4;&#x56DE;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
 <p><u><i>gopl.io/ch11/echo</i></u></p>
-<pre class="language-"><code class="lang-Go">// Echo prints its command-line arguments.
-package main
+<pre><code class="lang-Go"><span class="hljs-comment">// Echo prints its command-line arguments.</span>
+<span class="hljs-keyword">package</span> main
 
-import (
-    &quot;flag&quot;
-    &quot;fmt&quot;
-    &quot;io&quot;
-    &quot;os&quot;
-    &quot;strings&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;flag&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;io&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+    <span class="hljs-string">&quot;strings&quot;</span>
 )
 
-var (
-    n = flag.Bool(&quot;n&quot;, false, &quot;omit trailing newline&quot;)
-    s = flag.String(&quot;s&quot;, &quot; &quot;, &quot;separator&quot;)
+<span class="hljs-keyword">var</span> (
+    n = flag.Bool(<span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">&quot;omit trailing newline&quot;</span>)
+    s = flag.String(<span class="hljs-string">&quot;s&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;separator&quot;</span>)
 )
 
-var out io.Writer = os.Stdout // modified during testing
+<span class="hljs-keyword">var</span> out io.Writer = os.Stdout <span class="hljs-comment">// modified during testing</span>
 
-func main() {
+<span class="hljs-keyword">func</span> main() {
     flag.Parse()
-    if err := echo(!*n, *s, flag.Args()); err != nil {
-        fmt.Fprintf(os.Stderr, &quot;echo: %v\n&quot;, err)
-        os.Exit(1)
+    <span class="hljs-keyword">if</span> err := echo(!*n, *s, flag.Args()); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;echo: %v\n&quot;</span>, err)
+        os.Exit(<span class="hljs-number">1</span>)
     }
 }
 
-func echo(newline bool, sep string, args []string) error {
+<span class="hljs-keyword">func</span> echo(newline <span class="hljs-keyword">bool</span>, sep <span class="hljs-keyword">string</span>, args []<span class="hljs-keyword">string</span>) error {
     fmt.Fprint(out, strings.Join(args, sep))
-    if newline {
+    <span class="hljs-keyword">if</span> newline {
         fmt.Fprintln(out)
     }
-    return nil
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
 }
 </code></pre>
 <p>&#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x5404;&#x79CD;&#x53C2;&#x6570;&#x548C;&#x6807;&#x5FD7;&#x8C03;&#x7528;echo&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x68C0;&#x6D4B;&#x5B83;&#x7684;&#x8F93;&#x51FA;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x589E;&#x52A0;&#x53C2;&#x6570;&#x6765;&#x51CF;&#x5C11;echo&#x51FD;&#x6570;&#x5BF9;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x4F9D;&#x8D56;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x540D;&#x4E3A;out&#x7684;&#x53D8;&#x91CF;&#x6765;&#x66FF;&#x4EE3;&#x76F4;&#x63A5;&#x4F7F;&#x7528;os.Stdout&#xFF0C;&#x8FD9;&#x6837;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x5C06;out&#x4FEE;&#x6539;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x4EE5;&#x4FBF;&#x4E8E;&#x68C0;&#x67E5;&#x3002;&#x4E0B;&#x9762;&#x5C31;&#x662F;echo_test.go&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">package main
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;bytes&quot;
-    &quot;fmt&quot;
-    &quot;testing&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;bytes&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
 
-func TestEcho(t *testing.T) {
-    var tests = []struct {
-        newline bool
-        sep     string
-        args    []string
-        want    string
+<span class="hljs-keyword">func</span> TestEcho(t *testing.T) {
+    <span class="hljs-keyword">var</span> tests = []<span class="hljs-keyword">struct</span> {
+        newline <span class="hljs-keyword">bool</span>
+        sep     <span class="hljs-keyword">string</span>
+        args    []<span class="hljs-keyword">string</span>
+        want    <span class="hljs-keyword">string</span>
     }{
-        {true, &quot;&quot;, []string{}, &quot;\n&quot;},
-        {false, &quot;&quot;, []string{}, &quot;&quot;},
-        {true, &quot;\t&quot;, []string{&quot;one&quot;, &quot;two&quot;, &quot;three&quot;}, &quot;one\ttwo\tthree\n&quot;},
-        {true, &quot;,&quot;, []string{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}, &quot;a,b,c\n&quot;},
-        {false, &quot;:&quot;, []string{&quot;1&quot;, &quot;2&quot;, &quot;3&quot;}, &quot;1:2:3&quot;},
+        {<span class="hljs-literal">true</span>, <span class="hljs-string">&quot;&quot;</span>, []<span class="hljs-keyword">string</span>{}, <span class="hljs-string">&quot;\n&quot;</span>},
+        {<span class="hljs-literal">false</span>, <span class="hljs-string">&quot;&quot;</span>, []<span class="hljs-keyword">string</span>{}, <span class="hljs-string">&quot;&quot;</span>},
+        {<span class="hljs-literal">true</span>, <span class="hljs-string">&quot;\t&quot;</span>, []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>}, <span class="hljs-string">&quot;one\ttwo\tthree\n&quot;</span>},
+        {<span class="hljs-literal">true</span>, <span class="hljs-string">&quot;,&quot;</span>, []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>}, <span class="hljs-string">&quot;a,b,c\n&quot;</span>},
+        {<span class="hljs-literal">false</span>, <span class="hljs-string">&quot;:&quot;</span>, []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;3&quot;</span>}, <span class="hljs-string">&quot;1:2:3&quot;</span>},
     }
-    for _, test := range tests {
-        descr := fmt.Sprintf(&quot;echo(%v, %q, %q)&quot;,
+    <span class="hljs-keyword">for</span> _, test := <span class="hljs-keyword">range</span> tests {
+        descr := fmt.Sprintf(<span class="hljs-string">&quot;echo(%v, %q, %q)&quot;</span>,
             test.newline, test.sep, test.args)
 
-        out = new(bytes.Buffer) // captured output
-        if err := echo(test.newline, test.sep, test.args); err != nil {
-            t.Errorf(&quot;%s failed: %v&quot;, descr, err)
-            continue
+        out = <span class="hljs-built_in">new</span>(bytes.Buffer) <span class="hljs-comment">// captured output</span>
+        <span class="hljs-keyword">if</span> err := echo(test.newline, test.sep, test.args); err != <span class="hljs-literal">nil</span> {
+            t.Errorf(<span class="hljs-string">&quot;%s failed: %v&quot;</span>, descr, err)
+            <span class="hljs-keyword">continue</span>
         }
         got := out.(*bytes.Buffer).String()
-        if got != test.want {
-            t.Errorf(&quot;%s = %q, want %q&quot;, descr, got, test.want)
+        <span class="hljs-keyword">if</span> got != test.want {
+            t.Errorf(<span class="hljs-string">&quot;%s = %q, want %q&quot;</span>, descr, got, test.want)
         }
     }
 }
 </code></pre>
 <p>&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x548C;&#x4EA7;&#x54C1;&#x4EE3;&#x7801;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5305;&#x3002;&#x867D;&#x7136;&#x662F;main&#x5305;&#xFF0C;&#x4E5F;&#x6709;&#x5BF9;&#x5E94;&#x7684;main&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x5019;main&#x5305;&#x53EA;&#x662F;TestEcho&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x5BFC;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x5305;&#xFF0C;&#x91CC;&#x9762;main&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x5BFC;&#x51FA;&#xFF0C;&#x800C;&#x662F;&#x88AB;&#x5FFD;&#x7565;&#x7684;&#x3002;</p>
 <p>&#x901A;&#x8FC7;&#x5C06;&#x6D4B;&#x8BD5;&#x653E;&#x5230;&#x8868;&#x683C;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x3002;&#x8BA9;&#x6211;&#x901A;&#x8FC7;&#x589E;&#x52A0;&#x4E0B;&#x9762;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x6765;&#x770B;&#x770B;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">{true, &quot;,&quot;, []string{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}, &quot;a b c\n&quot;}, // NOTE: wrong expectation!
+<pre><code class="lang-Go">{<span class="hljs-literal">true</span>, <span class="hljs-string">&quot;,&quot;</span>, []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>}, <span class="hljs-string">&quot;a b c\n&quot;</span>}, <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> wrong expectation!</span>
 </code></pre>
 <p><code>go test</code>&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre class="language-"><code>$ go test gopl.io/ch11/echo
+<pre><code>$ go test gopl.io/ch11/echo
 --- FAIL: TestEcho (0.00s)
     echo_test.go:31: echo(true, &quot;,&quot;, [&quot;a&quot; &quot;b&quot; &quot;c&quot;]) = &quot;a,b,c&quot;, want &quot;a b c\n&quot;
 FAIL
@@ -811,106 +811,106 @@ FAIL        gopl.io/ch11/echo         0.006s
 <p>&#x5F53;&#x6211;&#x4EEC;&#x51C6;&#x5907;TestEcho&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x4E86;echo&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x5305;&#x7EA7;&#x7684;out&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4EE3;&#x66FF;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5BF9;&#x6BD4;echo&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#x3002;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x4EA7;&#x54C1;&#x4EE3;&#x7801;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x4E5F;&#x66FF;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5BB9;&#x6613;&#x6D4B;&#x8BD5;&#x7684;&#x4F2A;&#x5BF9;&#x8C61;&#x3002;&#x4F7F;&#x7528;&#x4F2A;&#x5BF9;&#x8C61;&#x7684;&#x597D;&#x5904;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x914D;&#x7F6E;&#xFF0C;&#x5BB9;&#x6613;&#x9884;&#x6D4B;&#xFF0C;&#x66F4;&#x53EF;&#x9760;&#xFF0C;&#x4E5F;&#x66F4;&#x5BB9;&#x6613;&#x89C2;&#x5BDF;&#x3002;&#x540C;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4E00;&#x4E9B;&#x4E0D;&#x826F;&#x7684;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&#x66F4;&#x65B0;&#x751F;&#x4EA7;&#x6570;&#x636E;&#x5E93;&#x6216;&#x4FE1;&#x7528;&#x5361;&#x6D88;&#x8D39;&#x884C;&#x4E3A;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x4E86;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x7F51;&#x7EDC;&#x5B58;&#x50A8;&#x7684;web&#x670D;&#x52A1;&#x4E2D;&#x7684;&#x914D;&#x989D;&#x68C0;&#x6D4B;&#x903B;&#x8F91;&#x3002;&#x5F53;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x4E86;&#x8D85;&#x8FC7;90%&#x7684;&#x5B58;&#x50A8;&#x914D;&#x989D;&#x4E4B;&#x540E;&#x5C06;&#x53D1;&#x9001;&#x63D0;&#x9192;&#x90AE;&#x4EF6;&#x3002;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x4E00;&#x822C;&#x5728;&#x5B9E;&#x73B0;&#x4E1A;&#x52A1;&#x673A;&#x5668;&#x76D1;&#x63A7;&#xFF0C;&#x5305;&#x62EC;&#x78C1;&#x76D8;&#x3001;cpu&#x3001;&#x7F51;&#x7EDC;&#x7B49;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x7C7B;&#x4F3C;&#x7684;&#x5230;&#x8FBE;&#x9608;&#x503C;=&gt;&#x89E6;&#x53D1;&#x62A5;&#x8B66;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x5F88;&#x5B9E;&#x7528;&#x7684;&#x6848;&#x4F8B;&#x3002;&#xFF09;</p>
 <p><u><i>gopl.io/ch11/storage1</i></u></p>
-<pre class="language-"><code class="lang-Go">package storage
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> storage
 
-import (
-    &quot;fmt&quot;
-    &quot;log&quot;
-    &quot;net/smtp&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;net/smtp&quot;</span>
 )
 
-func bytesInUse(username string) int64 { return 0 /* ... */ }
+<span class="hljs-keyword">func</span> bytesInUse(username <span class="hljs-keyword">string</span>) <span class="hljs-keyword">int64</span> { <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> <span class="hljs-comment">/* ... */</span> }
 
-// Email sender configuration.
-// NOTE: never put passwords in source code!
-const sender = &quot;notifications@example.com&quot;
-const password = &quot;correcthorsebatterystaple&quot;
-const hostname = &quot;smtp.example.com&quot;
+<span class="hljs-comment">// Email sender configuration.</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> never put passwords in source code!</span>
+<span class="hljs-keyword">const</span> sender = <span class="hljs-string">&quot;notifications@example.com&quot;</span>
+<span class="hljs-keyword">const</span> password = <span class="hljs-string">&quot;correcthorsebatterystaple&quot;</span>
+<span class="hljs-keyword">const</span> hostname = <span class="hljs-string">&quot;smtp.example.com&quot;</span>
 
-const template = `Warning: you are using %d bytes of storage,
-%d%% of your quota.`
+<span class="hljs-keyword">const</span> template = <span class="hljs-string">`Warning: you are using %d bytes of storage,
+%d%% of your quota.`</span>
 
-func CheckQuota(username string) {
+<span class="hljs-keyword">func</span> CheckQuota(username <span class="hljs-keyword">string</span>) {
     used := bytesInUse(username)
-    const quota = 1000000000 // 1GB
-    percent := 100 * used / quota
-    if percent &lt; 90 {
-        return // OK
+    <span class="hljs-keyword">const</span> quota = <span class="hljs-number">1000000000</span> <span class="hljs-comment">// 1GB</span>
+    percent := <span class="hljs-number">100</span> * used / quota
+    <span class="hljs-keyword">if</span> percent &lt; <span class="hljs-number">90</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-comment">// OK</span>
     }
     msg := fmt.Sprintf(template, used, percent)
-    auth := smtp.PlainAuth(&quot;&quot;, sender, password, hostname)
-    err := smtp.SendMail(hostname+&quot;:587&quot;, auth, sender,
-        []string{username}, []byte(msg))
-    if err != nil {
-        log.Printf(&quot;smtp.SendMail(%s) failed: %s&quot;, username, err)
+    auth := smtp.PlainAuth(<span class="hljs-string">&quot;&quot;</span>, sender, password, hostname)
+    err := smtp.SendMail(hostname+<span class="hljs-string">&quot;:587&quot;</span>, auth, sender,
+        []<span class="hljs-keyword">string</span>{username}, []<span class="hljs-keyword">byte</span>(msg))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Printf(<span class="hljs-string">&quot;smtp.SendMail(%s) failed: %s&quot;</span>, username, err)
     }
 }
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x60F3;&#x6D4B;&#x8BD5;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x5E0C;&#x671B;&#x53D1;&#x9001;&#x771F;&#x5B9E;&#x7684;&#x90AE;&#x4EF6;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5C06;&#x90AE;&#x4EF6;&#x5904;&#x7406;&#x903B;&#x8F91;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x79C1;&#x6709;&#x7684;notifyUser&#x51FD;&#x6570;&#x4E2D;&#x3002;</p>
 <p><u><i>gopl.io/ch11/storage2</i></u></p>
-<pre class="language-"><code class="lang-Go">var notifyUser = func(username, msg string) {
-    auth := smtp.PlainAuth(&quot;&quot;, sender, password, hostname)
-    err := smtp.SendMail(hostname+&quot;:587&quot;, auth, sender,
-        []string{username}, []byte(msg))
-    if err != nil {
-        log.Printf(&quot;smtp.SendEmail(%s) failed: %s&quot;, username, err)
+<pre><code class="lang-Go"><span class="hljs-keyword">var</span> notifyUser = <span class="hljs-keyword">func</span>(username, msg <span class="hljs-keyword">string</span>) {
+    auth := smtp.PlainAuth(<span class="hljs-string">&quot;&quot;</span>, sender, password, hostname)
+    err := smtp.SendMail(hostname+<span class="hljs-string">&quot;:587&quot;</span>, auth, sender,
+        []<span class="hljs-keyword">string</span>{username}, []<span class="hljs-keyword">byte</span>(msg))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Printf(<span class="hljs-string">&quot;smtp.SendEmail(%s) failed: %s&quot;</span>, username, err)
     }
 }
 
-func CheckQuota(username string) {
+<span class="hljs-keyword">func</span> CheckQuota(username <span class="hljs-keyword">string</span>) {
     used := bytesInUse(username)
-    const quota = 1000000000 // 1GB
-    percent := 100 * used / quota
-    if percent &lt; 90 {
-        return // OK
+    <span class="hljs-keyword">const</span> quota = <span class="hljs-number">1000000000</span> <span class="hljs-comment">// 1GB</span>
+    percent := <span class="hljs-number">100</span> * used / quota
+    <span class="hljs-keyword">if</span> percent &lt; <span class="hljs-number">90</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-comment">// OK</span>
     }
     msg := fmt.Sprintf(template, used, percent)
     notifyUser(username, msg)
 }
 </code></pre>
 <p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x7528;&#x4F2A;&#x90AE;&#x4EF6;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x66FF;&#x4EE3;&#x771F;&#x5B9E;&#x7684;&#x90AE;&#x4EF6;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x8BB0;&#x5F55;&#x8981;&#x901A;&#x77E5;&#x7684;&#x7528;&#x6237;&#x548C;&#x90AE;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">package storage
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> storage
 
-import (
-    &quot;strings&quot;
-    &quot;testing&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;strings&quot;</span>
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
-func TestCheckQuotaNotifiesUser(t *testing.T) {
-    var notifiedUser, notifiedMsg string
-    notifyUser = func(user, msg string) {
+<span class="hljs-keyword">func</span> TestCheckQuotaNotifiesUser(t *testing.T) {
+    <span class="hljs-keyword">var</span> notifiedUser, notifiedMsg <span class="hljs-keyword">string</span>
+    notifyUser = <span class="hljs-keyword">func</span>(user, msg <span class="hljs-keyword">string</span>) {
         notifiedUser, notifiedMsg = user, msg
     }
 
-    // ...simulate a 980MB-used condition...
+    <span class="hljs-comment">// ...simulate a 980MB-used condition...</span>
 
-    const user = &quot;joe@example.org&quot;
+    <span class="hljs-keyword">const</span> user = <span class="hljs-string">&quot;joe@example.org&quot;</span>
     CheckQuota(user)
-    if notifiedUser == &quot;&quot; &amp;&amp; notifiedMsg == &quot;&quot; {
-        t.Fatalf(&quot;notifyUser not called&quot;)
+    <span class="hljs-keyword">if</span> notifiedUser == <span class="hljs-string">&quot;&quot;</span> &amp;&amp; notifiedMsg == <span class="hljs-string">&quot;&quot;</span> {
+        t.Fatalf(<span class="hljs-string">&quot;notifyUser not called&quot;</span>)
     }
-    if notifiedUser != user {
-        t.Errorf(&quot;wrong user (%s) notified, want %s&quot;,
+    <span class="hljs-keyword">if</span> notifiedUser != user {
+        t.Errorf(<span class="hljs-string">&quot;wrong user (%s) notified, want %s&quot;</span>,
             notifiedUser, user)
     }
-    const wantSubstring = &quot;98% of your quota&quot;
-    if !strings.Contains(notifiedMsg, wantSubstring) {
-        t.Errorf(&quot;unexpected notification message &lt;&lt;%s&gt;&gt;, &quot;+
-            &quot;want substring %q&quot;, notifiedMsg, wantSubstring)
+    <span class="hljs-keyword">const</span> wantSubstring = <span class="hljs-string">&quot;98% of your quota&quot;</span>
+    <span class="hljs-keyword">if</span> !strings.Contains(notifiedMsg, wantSubstring) {
+        t.Errorf(<span class="hljs-string">&quot;unexpected notification message &lt;&lt;%s&gt;&gt;, &quot;</span>+
+            <span class="hljs-string">&quot;want substring %q&quot;</span>, notifiedMsg, wantSubstring)
     }
 }
 </code></pre>
 <p>&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5F53;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x540E;&#xFF0C;CheckQuota&#x5C06;&#x4E0D;&#x80FD;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;notifyUsers&#x4F9D;&#x7136;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x7684;&#x4F2A;&#x53D1;&#x9001;&#x90AE;&#x4EF6;&#x51FD;&#x6570;&#xFF08;&#x5F53;&#x66F4;&#x65B0;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x603B;&#x4F1A;&#x6709;&#x8FD9;&#x79CD;&#x98CE;&#x9669;&#xFF09;&#x3002; &#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x6062;&#x590D;notifyUsers&#x539F;&#x5148;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x4FBF;&#x540E;&#x7EED;&#x5176;&#x4ED6;&#x7684;&#x6D4B;&#x8BD5;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#xFF0C;&#x8981;&#x786E;&#x4FDD;&#x6240;&#x6709;&#x7684;&#x6267;&#x884C;&#x8DEF;&#x5F84;&#x540E;&#x90FD;&#x80FD;&#x6062;&#x590D;&#xFF0C;&#x5305;&#x62EC;&#x6D4B;&#x8BD5;&#x5931;&#x8D25;&#x6216;panic&#x5F02;&#x5E38;&#x7684;&#x60C5;&#x5F62;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;defer&#x8BED;&#x53E5;&#x6765;&#x5EF6;&#x540E;&#x6267;&#x884C;&#x5904;&#x7406;&#x6062;&#x590D;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func TestCheckQuotaNotifiesUser(t *testing.T) {
-    // Save and restore original notifyUser.
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestCheckQuotaNotifiesUser(t *testing.T) {
+    <span class="hljs-comment">// Save and restore original notifyUser.</span>
     saved := notifyUser
-    defer func() { notifyUser = saved }()
+    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() { notifyUser = saved }()
 
-    // Install the test&apos;s fake notifyUser.
-    var notifiedUser, notifiedMsg string
-    notifyUser = func(user, msg string) {
+    <span class="hljs-comment">// Install the test&apos;s fake notifyUser.</span>
+    <span class="hljs-keyword">var</span> notifiedUser, notifiedMsg <span class="hljs-keyword">string</span>
+    notifyUser = <span class="hljs-keyword">func</span>(user, msg <span class="hljs-keyword">string</span>) {
         notifiedUser, notifiedMsg = user, msg
     }
-    // ...rest of test...
+    <span class="hljs-comment">// ...rest of test...</span>
 }
 </code></pre>
 <p>&#x8FD9;&#x79CD;&#x5904;&#x7406;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6682;&#x65F6;&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x6240;&#x6709;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5305;&#x62EC;&#x547D;&#x4EE4;&#x884C;&#x6807;&#x5FD7;&#x53C2;&#x6570;&#x3001;&#x8C03;&#x8BD5;&#x9009;&#x9879;&#x548C;&#x4F18;&#x5316;&#x53C2;&#x6570;&#xFF1B;&#x5B89;&#x88C5;&#x548C;&#x79FB;&#x9664;&#x5BFC;&#x81F4;&#x751F;&#x4EA7;&#x4EE3;&#x7801;&#x4EA7;&#x751F;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#xFF1B;&#x8FD8;&#x6709;&#x6709;&#x4E9B;&#x8BF1;&#x5BFC;&#x751F;&#x4EA7;&#x4EE3;&#x7801;&#x8FDB;&#x5165;&#x67D0;&#x4E9B;&#x91CD;&#x8981;&#x72B6;&#x6001;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x6BD4;&#x5982;&#x8D85;&#x65F6;&#x3001;&#x9519;&#x8BEF;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x4E00;&#x4E9B;&#x523B;&#x610F;&#x5236;&#x9020;&#x7684;&#x5E76;&#x53D1;&#x884C;&#x4E3A;&#x7B49;&#x56E0;&#x7D20;&#x3002;</p>
@@ -924,53 +924,53 @@ func TestCheckQuotaNotifiesUser(t *testing.T) {
 <p><img src="../images/ch11-02.png" alt=""></p>
 <p>&#x901A;&#x8FC7;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x7684;&#x5BFC;&#x5165;&#x4F9D;&#x8D56;&#xFF0C;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x53EF;&#x4EE5;&#x66F4;&#x7075;&#x6D3B;&#x5730;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#xFF08;&#x9700;&#x8981;&#x6D4B;&#x8BD5;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x50CF;&#x666E;&#x901A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x90A3;&#x6837;&#x81EA;&#x7531;&#x5730;&#x5BFC;&#x5165;&#x5176;&#x4ED6;&#x5305;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;go list&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x5305;&#x5BF9;&#x5E94;&#x76EE;&#x5F55;&#x4E2D;&#x54EA;&#x4E9B;Go&#x6E90;&#x6587;&#x4EF6;&#x662F;&#x4EA7;&#x54C1;&#x4EE3;&#x7801;&#xFF0C;&#x54EA;&#x4E9B;&#x662F;&#x5305;&#x5185;&#x6D4B;&#x8BD5;&#xFF0C;&#x8FD8;&#x6709;&#x54EA;&#x4E9B;&#x662F;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x3002;&#x6211;&#x4EEC;&#x4EE5;fmt&#x5305;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;GoFiles&#x8868;&#x793A;&#x4EA7;&#x54C1;&#x4EE3;&#x7801;&#x5BF9;&#x5E94;&#x7684;Go&#x6E90;&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF1B;&#x4E5F;&#x5C31;&#x662F;go build&#x547D;&#x4EE4;&#x8981;&#x7F16;&#x8BD1;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
-<pre class="language-"><code>$ go list -f={{.GoFiles}} fmt
+<pre><code>$ go list -f={{.GoFiles}} fmt
 [doc.go format.go print.go scan.go]
 </code></pre><p>TestGoFiles&#x8868;&#x793A;&#x7684;&#x662F;fmt&#x5305;&#x5185;&#x90E8;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF0C;&#x4EE5;_test.go&#x4E3A;&#x540E;&#x7F00;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E0D;&#x8FC7;&#x53EA;&#x5728;&#x6D4B;&#x8BD5;&#x65F6;&#x88AB;&#x6784;&#x5EFA;&#xFF1A;</p>
-<pre class="language-"><code>$ go list -f={{.TestGoFiles}} fmt
+<pre><code>$ go list -f={{.TestGoFiles}} fmt
 [export_test.go]
 </code></pre><p>&#x5305;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x901A;&#x5E38;&#x90FD;&#x5728;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4E0D;&#x8FC7;fmt&#x5305;&#x5E76;&#x975E;&#x5982;&#x6B64;&#xFF1B;&#x7A0D;&#x540E;&#x6211;&#x4EEC;&#x518D;&#x89E3;&#x91CA;export_test.go&#x6587;&#x4EF6;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
 <p>XTestGoFiles&#x8868;&#x793A;&#x7684;&#x662F;&#x5C5E;&#x4E8E;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;fmt_test&#x5305;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x4EEC;&#x5FC5;&#x987B;&#x5148;&#x5BFC;&#x5165;fmt&#x5305;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x4E5F;&#x53EA;&#x662F;&#x5728;&#x6D4B;&#x8BD5;&#x65F6;&#x88AB;&#x6784;&#x5EFA;&#x8FD0;&#x884C;&#xFF1A;</p>
-<pre class="language-"><code>$ go list -f={{.XTestGoFiles}} fmt
+<pre><code>$ go list -f={{.XTestGoFiles}} fmt
 [fmt_test.go scan_test.go stringer_test.go]
 </code></pre><p>&#x6709;&#x65F6;&#x5019;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x4E5F;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x88AB;&#x6D4B;&#x8BD5;&#x5305;&#x5185;&#x90E8;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x4E00;&#x4E2A;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5FAA;&#x73AF;&#x5BFC;&#x5165;&#x800C;&#x88AB;&#x72EC;&#x7ACB;&#x5230;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x7684;&#x767D;&#x76D2;&#x6D4B;&#x8BD5;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x6280;&#x5DE7;&#x89E3;&#x51B3;&#xFF1A;&#x6211;&#x4EEC;&#x5728;&#x5305;&#x5185;&#x7684;&#x4E00;&#x4E2A;_test.go&#x6587;&#x4EF6;&#x4E2D;&#x5BFC;&#x51FA;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7684;&#x5B9E;&#x73B0;&#x7ED9;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x53EA;&#x6709;&#x5728;&#x6D4B;&#x8BD5;&#x65F6;&#x624D;&#x9700;&#x8981;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x822C;&#x4F1A;&#x653E;&#x5728;export_test.go&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF0C;fmt&#x5305;&#x7684;fmt.Scanf&#x51FD;&#x6570;&#x9700;&#x8981;unicode.IsSpace&#x51FD;&#x6570;&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x592A;&#x591A;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;fmt&#x5305;&#x5E76;&#x6CA1;&#x6709;&#x5BFC;&#x5165;&#x5305;&#x542B;&#x5DE8;&#x5927;&#x8868;&#x683C;&#x6570;&#x636E;&#x7684;unicode&#x5305;&#xFF1B;&#x76F8;&#x53CD;fmt&#x5305;&#x6709;&#x4E00;&#x4E2A;&#x53EB;isSpace&#x5185;&#x90E8;&#x7684;&#x7B80;&#x6613;&#x5B9E;&#x73B0;&#x3002;</p>
 <p>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;fmt.isSpace&#x548C;unicode.IsSpace&#x51FD;&#x6570;&#x7684;&#x884C;&#x4E3A;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;fmt&#x5305;&#x8C28;&#x614E;&#x5730;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x3002;&#x4E00;&#x4E2A;&#x5728;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x5185;&#x7684;&#x767D;&#x76D2;&#x6D4B;&#x8BD5;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230;isSpace&#x5185;&#x90E8;&#x51FD;&#x6570;&#x7684;&#xFF0C;&#x56E0;&#x6B64;fmt&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x540E;&#x95E8;&#x5BFC;&#x51FA;&#x4E86;isSpace&#x51FD;&#x6570;&#x3002;export_test.go&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x7684;&#x540E;&#x95E8;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">package fmt
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> fmt
 
-var IsSpace = isSpace
+<span class="hljs-keyword">var</span> IsSpace = isSpace
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x5E76;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF1B;&#x5B83;&#x53EA;&#x662F;&#x901A;&#x8FC7;fmt.IsSpace&#x7B80;&#x5355;&#x5BFC;&#x51FA;&#x4E86;&#x5185;&#x90E8;&#x7684;isSpace&#x51FD;&#x6570;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x4E2A;&#x6280;&#x5DE7;&#x53EF;&#x4EE5;&#x5E7F;&#x6CDB;&#x7528;&#x4E8E;&#x4F4D;&#x4E8E;&#x5916;&#x90E8;&#x6D4B;&#x8BD5;&#x5305;&#x7684;&#x767D;&#x76D2;&#x6D4B;&#x8BD5;&#x3002;</p>
 <h3 id="1125-&#x7F16;&#x5199;&#x6709;&#x6548;&#x7684;&#x6D4B;&#x8BD5;">11.2.5. &#x7F16;&#x5199;&#x6709;&#x6548;&#x7684;&#x6D4B;&#x8BD5;</h3>
 <p>&#x8BB8;&#x591A;Go&#x8BED;&#x8A00;&#x65B0;&#x4EBA;&#x4F1A;&#x60CA;&#x5F02;&#x4E8E;Go&#x8BED;&#x8A00;&#x6781;&#x7B80;&#x7684;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x3002;&#x5F88;&#x591A;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#x7684;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x8BC6;&#x522B;&#x6D4B;&#x8BD5;&#x51FD;&#x6570;&#x7684;&#x673A;&#x5236;&#xFF08;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x53CD;&#x5C04;&#x6216;&#x5143;&#x6570;&#x636E;&#xFF09;&#xFF0C;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4E00;&#x4E9B;&#x201C;setup&#x201D;&#x548C;&#x201C;teardown&#x201D;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x6765;&#x6267;&#x884C;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x8FD0;&#x884C;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x4E4B;&#x540E;&#x7684;&#x6E05;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x540C;&#x65F6;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x7BB1;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x7C7B;&#x4F3C;assert&#x65AD;&#x8A00;&#x3001;&#x503C;&#x6BD4;&#x8F83;&#x51FD;&#x6570;&#x3001;&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x548C;&#x505C;&#x6B62;&#x4E00;&#x4E2A;&#x5931;&#x8D25;&#x7684;&#x6D4B;&#x8BD5;&#x7B49;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF08;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x5F02;&#x5E38;&#x673A;&#x5236;&#xFF09;&#x3002;&#x867D;&#x7136;&#x8FD9;&#x4E9B;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x4F7F;&#x5F97;&#x6D4B;&#x8BD5;&#x975E;&#x5E38;&#x7B80;&#x6D01;&#xFF0C;&#x4F46;&#x662F;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x7684;&#x65E5;&#x5FD7;&#x5374;&#x4F1A;&#x50CF;&#x706B;&#x661F;&#x6587;&#x4E00;&#x822C;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x867D;&#x7136;&#x6D4B;&#x8BD5;&#x6700;&#x7EC8;&#x4E5F;&#x4F1A;&#x8F93;&#x51FA;PASS&#x6216;FAIL&#x7684;&#x62A5;&#x544A;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x63D0;&#x4F9B;&#x7684;&#x4FE1;&#x606F;&#x683C;&#x5F0F;&#x5374;&#x975E;&#x5E38;&#x4E0D;&#x5229;&#x4E8E;&#x4EE3;&#x7801;&#x7EF4;&#x62A4;&#x8005;&#x5FEB;&#x901F;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5931;&#x8D25;&#x4FE1;&#x606F;&#x7684;&#x5177;&#x4F53;&#x542B;&#x4E49;&#x975E;&#x5E38;&#x9690;&#x6666;&#xFF0C;&#x6BD4;&#x5982;&#x201C;assert: 0 == 1&#x201D;&#x6216;&#x6210;&#x9875;&#x7684;&#x6D77;&#x91CF;&#x8DDF;&#x8E2A;&#x65E5;&#x5FD7;&#x3002;</p>
 <p>Go&#x8BED;&#x8A00;&#x7684;&#x6D4B;&#x8BD5;&#x98CE;&#x683C;&#x5219;&#x5F62;&#x6210;&#x9C9C;&#x660E;&#x5BF9;&#x6BD4;&#x3002;&#x5B83;&#x671F;&#x671B;&#x6D4B;&#x8BD5;&#x8005;&#x81EA;&#x5DF1;&#x5B8C;&#x6210;&#x5927;&#x90E8;&#x5206;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x907F;&#x514D;&#x91CD;&#x590D;&#xFF0C;&#x5C31;&#x50CF;&#x666E;&#x901A;&#x7F16;&#x7A0B;&#x90A3;&#x6837;&#x3002;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x673A;&#x68B0;&#x7684;&#x586B;&#x7A7A;&#x8FC7;&#x7A0B;&#xFF1B;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x4E5F;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5C3D;&#x7BA1;&#x5B83;&#x7684;&#x7EF4;&#x62A4;&#x8005;&#x4E5F;&#x662F;&#x6D4B;&#x8BD5;&#x4EC5;&#x6709;&#x7684;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x3002;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x6D4B;&#x8BD5;&#x4E0D;&#x5E94;&#x8BE5;&#x5F15;&#x53D1;&#x5176;&#x4ED6;&#x65E0;&#x5173;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5B83;&#x53EA;&#x8981;&#x6E05;&#x6670;&#x7B80;&#x6D01;&#x5730;&#x63CF;&#x8FF0;&#x95EE;&#x9898;&#x7684;&#x75C7;&#x72B6;&#x5373;&#x53EF;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x8FD8;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;&#x5728;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7EF4;&#x62A4;&#x8005;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x770B;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5C31;&#x80FD;&#x6839;&#x636E;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5B9A;&#x4F4D;&#x9519;&#x8BEF;&#x4EA7;&#x751F;&#x7684;&#x539F;&#x56E0;&#x3002;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x6D4B;&#x8BD5;&#x4E0D;&#x5E94;&#x8BE5;&#x5728;&#x9047;&#x5230;&#x4E00;&#x70B9;&#x5C0F;&#x9519;&#x8BEF;&#x65F6;&#x5C31;&#x7ACB;&#x523B;&#x9000;&#x51FA;&#x6D4B;&#x8BD5;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x5C1D;&#x8BD5;&#x62A5;&#x544A;&#x66F4;&#x591A;&#x7684;&#x76F8;&#x5173;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4ECE;&#x591A;&#x4E2A;&#x5931;&#x8D25;&#x6D4B;&#x8BD5;&#x7684;&#x6A21;&#x5F0F;&#x4E2D;&#x53D1;&#x73B0;&#x9519;&#x8BEF;&#x4EA7;&#x751F;&#x7684;&#x89C4;&#x5F8B;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x7684;&#x65AD;&#x8A00;&#x51FD;&#x6570;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x505C;&#x6B62;&#x7A0B;&#x5E8F;&#x3002;&#x5B83;&#x5F88;&#x597D;&#x7528;&#x4E5F;&#x786E;&#x5B9E;&#x6709;&#x6548;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x6D4B;&#x8BD5;&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6253;&#x5370;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5374;&#x51E0;&#x4E4E;&#x662F;&#x6CA1;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x3002;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x4E3A;&#x5FEB;&#x901F;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x5165;&#x53E3;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">import (
-    &quot;fmt&quot;
-    &quot;strings&quot;
-    &quot;testing&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;strings&quot;</span>
+    <span class="hljs-string">&quot;testing&quot;</span>
 )
-// A poor assertion function.
-func assertEqual(x, y int) {
-    if x != y {
-        panic(fmt.Sprintf(&quot;%d != %d&quot;, x, y))
+<span class="hljs-comment">// A poor assertion function.</span>
+<span class="hljs-keyword">func</span> assertEqual(x, y <span class="hljs-keyword">int</span>) {
+    <span class="hljs-keyword">if</span> x != y {
+        <span class="hljs-built_in">panic</span>(fmt.Sprintf(<span class="hljs-string">&quot;%d != %d&quot;</span>, x, y))
     }
 }
-func TestSplit(t *testing.T) {
-    words := strings.Split(&quot;a:b:c&quot;, &quot;:&quot;)
-    assertEqual(len(words), 3)
-    // ...
+<span class="hljs-keyword">func</span> TestSplit(t *testing.T) {
+    words := strings.Split(<span class="hljs-string">&quot;a:b:c&quot;</span>, <span class="hljs-string">&quot;:&quot;</span>)
+    assertEqual(<span class="hljs-built_in">len</span>(words), <span class="hljs-number">3</span>)
+    <span class="hljs-comment">// ...</span>
 }
 </code></pre>
 <p>&#x4ECE;&#x8FD9;&#x4E2A;&#x610F;&#x4E49;&#x4E0A;&#x8BF4;&#xFF0C;&#x65AD;&#x8A00;&#x51FD;&#x6570;&#x72AF;&#x4E86;&#x8FC7;&#x65E9;&#x62BD;&#x8C61;&#x7684;&#x9519;&#x8BEF;&#xFF1A;&#x4EC5;&#x4EC5;&#x6D4B;&#x8BD5;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x662F;&#x5426;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x6CA1;&#x80FD;&#x6839;&#x636E;&#x4E0A;&#x4E0B;&#x6587;&#x63D0;&#x4F9B;&#x66F4;&#x6709;&#x610F;&#x4E49;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5177;&#x4F53;&#x7684;&#x9519;&#x8BEF;&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x66F4;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5C31;&#x50CF;&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x90A3;&#x6837;&#x3002;&#x53EA;&#x6709;&#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x6A21;&#x5F0F;&#x65F6;&#x624D;&#x91C7;&#x7528;&#x62BD;&#x8C61;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func TestSplit(t *testing.T) {
-    s, sep := &quot;a:b:c&quot;, &quot;:&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> TestSplit(t *testing.T) {
+    s, sep := <span class="hljs-string">&quot;a:b:c&quot;</span>, <span class="hljs-string">&quot;:&quot;</span>
     words := strings.Split(s, sep)
-    if got, want := len(words), 3; got != want {
-        t.Errorf(&quot;Split(%q, %q) returned %d words, want %d&quot;,
+    <span class="hljs-keyword">if</span> got, want := <span class="hljs-built_in">len</span>(words), <span class="hljs-number">3</span>; got != want {
+        t.Errorf(<span class="hljs-string">&quot;Split(%q, %q) returned %d words, want %d&quot;</span>,
             s, sep, got, want)
     }
-    // ...
+    <span class="hljs-comment">// ...</span>
 }
 </code></pre>
 <p>&#x73B0;&#x5728;&#x7684;&#x6D4B;&#x8BD5;&#x4E0D;&#x4EC5;&#x62A5;&#x544A;&#x4E86;&#x8C03;&#x7528;&#x7684;&#x5177;&#x4F53;&#x51FD;&#x6570;&#x3001;&#x5B83;&#x7684;&#x8F93;&#x5165;&#x548C;&#x7ED3;&#x679C;&#x7684;&#x610F;&#x4E49;&#xFF1B;&#x5E76;&#x4E14;&#x6253;&#x5370;&#x7684;&#x771F;&#x5B9E;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x548C;&#x671F;&#x671B;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#xFF1B;&#x5E76;&#x4E14;&#x5373;&#x4F7F;&#x65AD;&#x8A00;&#x5931;&#x8D25;&#x4F9D;&#x7136;&#x4F1A;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#x8FD0;&#x884C;&#x66F4;&#x591A;&#x7684;&#x6D4B;&#x8BD5;&#x3002;&#x4E00;&#x65E6;&#x6211;&#x4EEC;&#x5199;&#x4E86;&#x8FD9;&#x6837;&#x7ED3;&#x6784;&#x7684;&#x6D4B;&#x8BD5;&#xFF0C;&#x4E0B;&#x4E00;&#x6B65;&#x81EA;&#x7136;&#x4E0D;&#x662F;&#x7528;&#x66F4;&#x591A;&#x7684;if&#x8BED;&#x53E5;&#x6765;&#x6269;&#x5C55;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x50CF;IsPalindrome&#x7684;&#x8868;&#x9A71;&#x52A8;&#x6D4B;&#x8BD5;&#x90A3;&#x6837;&#x6765;&#x51C6;&#x5907;&#x66F4;&#x591A;&#x7684;s&#x548C;sep&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x3002;</p>
@@ -1025,9 +1025,13 @@ func TestSplit(t *testing.T) {
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"测试函数","level":"1.12.2","depth":2,"next":{"title":"测试覆盖率","level":"1.12.3","depth":2,"path":"ch11/ch11-03.md","ref":"ch11/ch11-03.md","articles":[]},"previous":{"title":"go test","level":"1.12.1","depth":2,"path":"ch11/ch11-01.md","ref":"ch11/ch11-01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch11/ch11-02.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"测试函数","level":"1.12.2","depth":2,"next":{"title":"测试覆盖率","level":"1.12.3","depth":2,"path":"ch11/ch11-03.md","ref":"ch11/ch11-03.md","articles":[]},"previous":{"title":"go test","level":"1.12.1","depth":2,"path":"ch11/ch11-01.md","ref":"ch11/ch11-01.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch11/ch11-02.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -498,8 +498,8 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="131-unsafesizeof-alignof-&#x548C;-offsetof">13.1. unsafe.Sizeof, Alignof &#x548C; Offsetof</h2>
 <p>unsafe.Sizeof&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x64CD;&#x4F5C;&#x6570;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5B57;&#x8282;&#x5927;&#x5C0F;&#xFF0C;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5E76;&#x4E0D;&#x4F1A;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x6C42;&#x503C;&#x3002;&#x4E00;&#x4E2A;Sizeof&#x51FD;&#x6570;&#x8C03;&#x7528;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;uintptr&#x7C7B;&#x578B;&#x7684;&#x5E38;&#x91CF;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x56E0;&#x6B64;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x7684;&#x957F;&#x5EA6;&#x5927;&#x5C0F;&#xFF0C;&#x6216;&#x8005;&#x7528;&#x4F5C;&#x8BA1;&#x7B97;&#x5176;&#x4ED6;&#x7684;&#x5E38;&#x91CF;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">import &quot;unsafe&quot;
-fmt.Println(unsafe.Sizeof(float64(0))) // &quot;8&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;unsafe&quot;</span>
+fmt.Println(unsafe.Sizeof(<span class="hljs-keyword">float64</span>(<span class="hljs-number">0</span>))) <span class="hljs-comment">// &quot;8&quot;</span>
 </code></pre>
 <p>Sizeof&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x5927;&#x5C0F;&#x53EA;&#x5305;&#x62EC;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x56FA;&#x5B9A;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F8B;&#x5982;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x5E94;&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x7684;&#x6307;&#x9488;&#x548C;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x90E8;&#x5206;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5185;&#x5BB9;&#x3002;Go&#x8BED;&#x8A00;&#x4E2D;&#x975E;&#x805A;&#x5408;&#x7C7B;&#x578B;&#x901A;&#x5E38;&#x6709;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5C3D;&#x7BA1;&#x5728;&#x4E0D;&#x540C;&#x5DE5;&#x5177;&#x94FE;&#x4E0B;&#x751F;&#x6210;&#x7684;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x8003;&#x8651;&#x5230;&#x53EF;&#x79FB;&#x690D;&#x6027;&#xFF0C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x6216;&#x5305;&#x542B;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x7684;&#x5927;&#x5C0F;&#x5728;32&#x4F4D;&#x5E73;&#x53F0;&#x4E0A;&#x662F;4&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5728;64&#x4F4D;&#x5E73;&#x53F0;&#x4E0A;&#x662F;8&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
 <p>&#x8BA1;&#x7B97;&#x673A;&#x5728;&#x52A0;&#x8F7D;&#x548C;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5185;&#x5B58;&#x5730;&#x5740;&#x5408;&#x7406;&#x5730;&#x5BF9;&#x9F50;&#x7684;&#x5C06;&#x4F1A;&#x66F4;&#x6709;&#x6548;&#x7387;&#x3002;&#x4F8B;&#x5982;2&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x7684;int16&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x5E94;&#x8BE5;&#x662F;&#x5076;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;4&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x7684;rune&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x5E94;&#x8BE5;&#x662F;4&#x7684;&#x500D;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;8&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x7684;float64&#x3001;uint64&#x6216;64-bit&#x6307;&#x9488;&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x5E94;&#x8BE5;&#x662F;8&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x518D;&#x5927;&#x7684;&#x5730;&#x5740;&#x5BF9;&#x9F50;&#x500D;&#x6570;&#x5219;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x7684;&#xFF0C;&#x5373;&#x4F7F;&#x662F;complex128&#x7B49;&#x8F83;&#x5927;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6700;&#x591A;&#x4E5F;&#x53EA;&#x662F;8&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x3002;</p>
@@ -555,30 +555,30 @@ fmt.Println(unsafe.Sizeof(float64(0))) // &quot;8&quot;
 </tbody>
 </table>
 <p>Go&#x8BED;&#x8A00;&#x7684;&#x89C4;&#x8303;&#x5E76;&#x6CA1;&#x6709;&#x8981;&#x6C42;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x58F0;&#x660E;&#x987A;&#x5E8F;&#x548C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x987A;&#x5E8F;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x7406;&#x8BBA;&#x4E0A;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x5730;&#x91CD;&#x65B0;&#x6392;&#x5217;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#xFF0C;&#x867D;&#x7136;&#x5728;&#x5199;&#x4F5C;&#x672C;&#x4E66;&#x7684;&#x65F6;&#x5019;&#x7F16;&#x8BD1;&#x5668;&#x8FD8;&#x6CA1;&#x6709;&#x8FD9;&#x4E48;&#x505A;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x4E09;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x867D;&#x7136;&#x6709;&#x7740;&#x76F8;&#x540C;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4F46;&#x662F;&#x7B2C;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#x6BD4;&#x53E6;&#x5916;&#x7684;&#x4E24;&#x4E2A;&#x9700;&#x8981;&#x591A;50%&#x7684;&#x5185;&#x5B58;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">                               // 64-bit  32-bit
-struct{ bool; float64; int16 } // 3 words 4words
-struct{ float64; int16; bool } // 2 words 3words
-struct{ bool; int16; float64 } // 2 words 3words
+<pre><code class="lang-Go">                               <span class="hljs-comment">// 64-bit  32-bit</span>
+<span class="hljs-keyword">struct</span>{ <span class="hljs-keyword">bool</span>; <span class="hljs-keyword">float64</span>; <span class="hljs-keyword">int16</span> } <span class="hljs-comment">// 3 words 4words</span>
+<span class="hljs-keyword">struct</span>{ <span class="hljs-keyword">float64</span>; <span class="hljs-keyword">int16</span>; <span class="hljs-keyword">bool</span> } <span class="hljs-comment">// 2 words 3words</span>
+<span class="hljs-keyword">struct</span>{ <span class="hljs-keyword">bool</span>; <span class="hljs-keyword">int16</span>; <span class="hljs-keyword">float64</span> } <span class="hljs-comment">// 2 words 3words</span>
 </code></pre>
 <p>&#x5173;&#x4E8E;&#x5185;&#x5B58;&#x5730;&#x5740;&#x5BF9;&#x9F50;&#x7B97;&#x6CD5;&#x7684;&#x7EC6;&#x8282;&#x8D85;&#x51FA;&#x4E86;&#x672C;&#x4E66;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x6BCF;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x90FD;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E0D;&#x8FC7;&#x6709;&#x6548;&#x7684;&#x5305;&#x88C5;&#x53EF;&#x4EE5;&#x4F7F;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x66F4;&#x52A0;&#x7D27;&#x51D1;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x672A;&#x6765;&#x7684;Go&#x8BED;&#x8A00;&#x7F16;&#x8BD1;&#x5668;&#x5E94;&#x8BE5;&#x4F1A;&#x9ED8;&#x8BA4;&#x4F18;&#x5316;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x5F53;&#x7136;&#x5E94;&#x8BE5;&#x4E5F;&#x80FD;&#x591F;&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#xFF0C;&#x76F8;&#x540C;&#x8BA8;&#x8BBA;&#x8BF7;&#x53C2;&#x8003; <a href="https://github.com/golang/go/issues/10014" target="_blank">Issue10014</a> &#xFF09;&#xFF0C;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x7387;&#x548C;&#x6027;&#x80FD;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x53D7;&#x76CA;&#x3002;</p>
 <p><code>unsafe.Alignof</code> &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x9700;&#x8981;&#x5BF9;&#x9F50;&#x7684;&#x500D;&#x6570;&#x3002;&#x548C; Sizeof &#x7C7B;&#x4F3C;&#xFF0C; Alignof &#x4E5F;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x3002;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x5E03;&#x5C14;&#x548C;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x9700;&#x8981;&#x5BF9;&#x9F50;&#x5230;&#x5B83;&#x4EEC;&#x672C;&#x8EAB;&#x7684;&#x5927;&#x5C0F;&#xFF08;&#x6700;&#x591A;8&#x4E2A;&#x5B57;&#x8282;&#xFF09;&#xFF0C;&#x5176;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x5BF9;&#x9F50;&#x5230;&#x673A;&#x5668;&#x5B57;&#x5927;&#x5C0F;&#x3002;</p>
 <p><code>unsafe.Offsetof</code> &#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5; <code>x.f</code>&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE; <code>f</code> &#x5B57;&#x6BB5;&#x76F8;&#x5BF9;&#x4E8E; <code>x</code> &#x8D77;&#x59CB;&#x5730;&#x5740;&#x7684;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x5305;&#x62EC;&#x53EF;&#x80FD;&#x7684;&#x7A7A;&#x6D1E;&#x3002;</p>
 <p>&#x56FE; 13.1 &#x663E;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x53D8;&#x91CF; x &#x4EE5;&#x53CA;&#x5176;&#x5728;32&#x4F4D;&#x548C;64&#x4F4D;&#x673A;&#x5668;&#x4E0A;&#x7684;&#x5178;&#x578B;&#x7684;&#x5185;&#x5B58;&#x3002;&#x7070;&#x8272;&#x533A;&#x57DF;&#x662F;&#x7A7A;&#x6D1E;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">var x struct {
-    a bool
-    b int16
-    c []int
+<pre><code class="lang-Go"><span class="hljs-keyword">var</span> x <span class="hljs-keyword">struct</span> {
+    a <span class="hljs-keyword">bool</span>
+    b <span class="hljs-keyword">int16</span>
+    c []<span class="hljs-keyword">int</span>
 }
 </code></pre>
 <p>&#x4E0B;&#x9762;&#x663E;&#x793A;&#x4E86;&#x5BF9;x&#x548C;&#x5B83;&#x7684;&#x4E09;&#x4E2A;&#x5B57;&#x6BB5;&#x8C03;&#x7528;unsafe&#x5305;&#x76F8;&#x5173;&#x51FD;&#x6570;&#x7684;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF1A;</p>
 <p><img src="../images/ch13-01.png" alt=""></p>
 <p>32&#x4F4D;&#x7CFB;&#x7EDF;&#xFF1A;</p>
-<pre class="language-"><code>Sizeof(x)   = 16  Alignof(x)   = 4
+<pre><code>Sizeof(x)   = 16  Alignof(x)   = 4
 Sizeof(x.a) = 1   Alignof(x.a) = 1 Offsetof(x.a) = 0
 Sizeof(x.b) = 2   Alignof(x.b) = 2 Offsetof(x.b) = 2
 Sizeof(x.c) = 12  Alignof(x.c) = 4 Offsetof(x.c) = 4
 </code></pre><p>64&#x4F4D;&#x7CFB;&#x7EDF;&#xFF1A;</p>
-<pre class="language-"><code>Sizeof(x)   = 32  Alignof(x)   = 8
+<pre><code>Sizeof(x)   = 32  Alignof(x)   = 8
 Sizeof(x.a) = 1   Alignof(x.a) = 1 Offsetof(x.a) = 0
 Sizeof(x.b) = 2   Alignof(x.b) = 2 Offsetof(x.b) = 2
 Sizeof(x.c) = 24  Alignof(x.c) = 8 Offsetof(x.c) = 8
@@ -628,9 +628,13 @@ Sizeof(x.c) = 24  Alignof(x.c) = 8 Offsetof(x.c) = 8
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"unsafe.Sizeof, Alignof 和 Offsetof","level":"1.14.1","depth":2,"next":{"title":"unsafe.Pointer","level":"1.14.2","depth":2,"path":"ch13/ch13-02.md","ref":"ch13/ch13-02.md","articles":[]},"previous":{"title":"底层编程","level":"1.14","depth":1,"path":"ch13/ch13.md","ref":"ch13/ch13.md","articles":[{"title":"unsafe.Sizeof, Alignof 和 Offsetof","level":"1.14.1","depth":2,"path":"ch13/ch13-01.md","ref":"ch13/ch13-01.md","articles":[]},{"title":"unsafe.Pointer","level":"1.14.2","depth":2,"path":"ch13/ch13-02.md","ref":"ch13/ch13-02.md","articles":[]},{"title":"示例: 深度相等判断","level":"1.14.3","depth":2,"path":"ch13/ch13-03.md","ref":"ch13/ch13-03.md","articles":[]},{"title":"通过cgo调用C代码","level":"1.14.4","depth":2,"path":"ch13/ch13-04.md","ref":"ch13/ch13-04.md","articles":[]},{"title":"几点忠告","level":"1.14.5","depth":2,"path":"ch13/ch13-05.md","ref":"ch13/ch13-05.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch13/ch13-01.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"unsafe.Sizeof, Alignof 和 Offsetof","level":"1.14.1","depth":2,"next":{"title":"unsafe.Pointer","level":"1.14.2","depth":2,"path":"ch13/ch13-02.md","ref":"ch13/ch13-02.md","articles":[]},"previous":{"title":"底层编程","level":"1.14","depth":1,"path":"ch13/ch13.md","ref":"ch13/ch13.md","articles":[{"title":"unsafe.Sizeof, Alignof 和 Offsetof","level":"1.14.1","depth":2,"path":"ch13/ch13-01.md","ref":"ch13/ch13-01.md","articles":[]},{"title":"unsafe.Pointer","level":"1.14.2","depth":2,"path":"ch13/ch13-02.md","ref":"ch13/ch13-02.md","articles":[]},{"title":"示例: 深度相等判断","level":"1.14.3","depth":2,"path":"ch13/ch13-03.md","ref":"ch13/ch13-03.md","articles":[]},{"title":"通过cgo调用C代码","level":"1.14.4","depth":2,"path":"ch13/ch13-04.md","ref":"ch13/ch13-04.md","articles":[]},{"title":"几点忠告","level":"1.14.5","depth":2,"path":"ch13/ch13-05.md","ref":"ch13/ch13-05.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch13/ch13-01.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

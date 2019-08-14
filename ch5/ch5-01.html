@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -588,42 +588,42 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="51-&#x51FD;&#x6570;&#x58F0;&#x660E;">5.1. &#x51FD;&#x6570;&#x58F0;&#x660E;</h2>
 <p>&#x51FD;&#x6570;&#x58F0;&#x660E;&#x5305;&#x62EC;&#x51FD;&#x6570;&#x540D;&#x3001;&#x5F62;&#x5F0F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#xFF08;&#x53EF;&#x7701;&#x7565;&#xFF09;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x4F53;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func name(parameter-list) (result-list) {
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> name(parameter-list) (result-list) {
     body
 }
 </code></pre>
 <p>&#x5F62;&#x5F0F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x63CF;&#x8FF0;&#x4E86;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x540D;&#x4EE5;&#x53CA;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4F5C;&#x4E3A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5176;&#x503C;&#x7531;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x8005;&#x63D0;&#x4F9B;&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#x63CF;&#x8FF0;&#x4E86;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x4EE5;&#x53CA;&#x7C7B;&#x578B;&#x3002;&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65E0;&#x540D;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#x7684;&#x62EC;&#x53F7;&#x662F;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#x7684;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x4E0D;&#x5305;&#x62EC;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#xFF0C;&#x90A3;&#x4E48;&#x51FD;&#x6570;&#x4F53;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x503C;&#x3002;&#x5728;hypot&#x51FD;&#x6570;&#x4E2D;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func hypot(x, y float64) float64 {
-    return math.Sqrt(x*x + y*y)
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> hypot(x, y <span class="hljs-keyword">float64</span>) <span class="hljs-keyword">float64</span> {
+    <span class="hljs-keyword">return</span> math.Sqrt(x*x + y*y)
 }
-fmt.Println(hypot(3,4)) // &quot;5&quot;
+fmt.Println(hypot(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)) <span class="hljs-comment">// &quot;5&quot;</span>
 </code></pre>
 <p>x&#x548C;y&#x662F;&#x5F62;&#x53C2;&#x540D;&#xFF0C;3&#x548C;4&#x662F;&#x8C03;&#x7528;&#x65F6;&#x7684;&#x4F20;&#x5165;&#x7684;&#x5B9E;&#x53C2;&#xFF0C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;float64&#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;
 &#x8FD4;&#x56DE;&#x503C;&#x4E5F;&#x53EF;&#x4EE5;&#x50CF;&#x5F62;&#x5F0F;&#x53C2;&#x6570;&#x4E00;&#x6837;&#x88AB;&#x547D;&#x540D;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#x88AB;&#x58F0;&#x660E;&#x6210;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x8BE5;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5C06;&#x5176;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x8BE5;&#x7C7B;&#x578B;&#x7684;&#x96F6;&#x503C;&#x3002;
 &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x58F0;&#x660E;&#x65F6;&#xFF0C;&#x5305;&#x542B;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x4EE5; return&#x8BED;&#x53E5;&#x7ED3;&#x5C3E;&#xFF0C;&#x9664;&#x975E;&#x51FD;&#x6570;&#x660E;&#x663E;&#x65E0;&#x6CD5;&#x8FD0;&#x884C;&#x5230;&#x7ED3;&#x5C3E;&#x5904;&#x3002;&#x4F8B;&#x5982;&#x51FD;&#x6570;&#x5728;&#x7ED3;&#x5C3E;&#x65F6;&#x8C03;&#x7528;&#x4E86;panic&#x5F02;&#x5E38;&#x6216;&#x51FD;&#x6570;&#x4E2D;&#x5B58;&#x5728;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;</p>
 <p>&#x6B63;&#x5982;hypot&#x4E00;&#x6837;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x7EC4;&#x5F62;&#x53C2;&#x6216;&#x8FD4;&#x56DE;&#x503C;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5FC5;&#x4E3A;&#x6BCF;&#x4E2A;&#x5F62;&#x53C2;&#x90FD;&#x5199;&#x51FA;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x4E0B;&#x9762;2&#x4E2A;&#x58F0;&#x660E;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func f(i, j, k int, s, t string)                 { /* ... */ }
-func f(i int, j int, k int,  s string, t string) { /* ... */ }
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> f(i, j, k <span class="hljs-keyword">int</span>, s, t <span class="hljs-keyword">string</span>)                 { <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-keyword">func</span> f(i <span class="hljs-keyword">int</span>, j <span class="hljs-keyword">int</span>, k <span class="hljs-keyword">int</span>,  s <span class="hljs-keyword">string</span>, t <span class="hljs-keyword">string</span>) { <span class="hljs-comment">/* ... */</span> }
 </code></pre>
 <p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;&#x51FA;4&#x79CD;&#x65B9;&#x6CD5;&#x58F0;&#x660E;&#x62E5;&#x6709;2&#x4E2A;int&#x578B;&#x53C2;&#x6570;&#x548C;1&#x4E2A;int&#x578B;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;.blank identifier(&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x5373;&#x4E0B;&#x6587;&#x7684;_&#x7B26;&#x53F7;)&#x53EF;&#x4EE5;&#x5F3A;&#x8C03;&#x67D0;&#x4E2A;&#x53C2;&#x6570;&#x672A;&#x88AB;&#x4F7F;&#x7528;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func add(x int, y int) int   {return x + y}
-func sub(x, y int) (z int)   { z = x - y; return}
-func first(x int, _ int) int { return x }
-func zero(int, int) int      { return 0 }
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> add(x <span class="hljs-keyword">int</span>, y <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span>   {<span class="hljs-keyword">return</span> x + y}
+<span class="hljs-keyword">func</span> sub(x, y <span class="hljs-keyword">int</span>) (z <span class="hljs-keyword">int</span>)   { z = x - y; <span class="hljs-keyword">return</span>}
+<span class="hljs-keyword">func</span> first(x <span class="hljs-keyword">int</span>, _ <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span> { <span class="hljs-keyword">return</span> x }
+<span class="hljs-keyword">func</span> zero(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>) <span class="hljs-keyword">int</span>      { <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> }
 
-fmt.Printf(&quot;%T\n&quot;, add)   // &quot;func(int, int) int&quot;
-fmt.Printf(&quot;%T\n&quot;, sub)   // &quot;func(int, int) int&quot;
-fmt.Printf(&quot;%T\n&quot;, first) // &quot;func(int, int) int&quot;
-fmt.Printf(&quot;%T\n&quot;, zero)  // &quot;func(int, int) int&quot;
+fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, add)   <span class="hljs-comment">// &quot;func(int, int) int&quot;</span>
+fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, sub)   <span class="hljs-comment">// &quot;func(int, int) int&quot;</span>
+fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, first) <span class="hljs-comment">// &quot;func(int, int) int&quot;</span>
+fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, zero)  <span class="hljs-comment">// &quot;func(int, int) int&quot;</span>
 </code></pre>
 <p>&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x88AB;&#x79F0;&#x4E3A;&#x51FD;&#x6570;&#x7684;&#x7B7E;&#x540D;&#x3002;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x5F62;&#x5F0F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x8BA4;&#x4E3A;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x6216;&#x7B7E;&#x540D;&#x3002;&#x5F62;&#x53C2;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x4E0D;&#x5F71;&#x54CD;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#xFF0C;&#x4E5F;&#x4E0D;&#x5F71;&#x54CD;&#x5B83;&#x4EEC;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4EE5;&#x7701;&#x7565;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x5F62;&#x5F0F;&#x8868;&#x793A;&#x3002;</p>
 <p>&#x6BCF;&#x4E00;&#x6B21;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x90FD;&#x5FC5;&#x987B;&#x6309;&#x7167;&#x58F0;&#x660E;&#x987A;&#x5E8F;&#x4E3A;&#x6240;&#x6709;&#x53C2;&#x6570;&#x63D0;&#x4F9B;&#x5B9E;&#x53C2;&#xFF08;&#x53C2;&#x6570;&#x503C;&#xFF09;&#x3002;&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#xFF0C;Go&#x8BED;&#x8A00;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x503C;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x540D;&#x6307;&#x5B9A;&#x5F62;&#x53C2;&#xFF0C;&#x56E0;&#x6B64;&#x5F62;&#x53C2;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8005;&#x800C;&#x8A00;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x3002;</p>
 <p>&#x5728;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x5F62;&#x53C2;&#x4F5C;&#x4E3A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x8C03;&#x7528;&#x8005;&#x63D0;&#x4F9B;&#x7684;&#x503C;&#x3002;&#x51FD;&#x6570;&#x7684;&#x5F62;&#x53C2;&#x548C;&#x6709;&#x540D;&#x8FD4;&#x56DE;&#x503C;&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x6700;&#x5916;&#x5C42;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x76F8;&#x540C;&#x7684;&#x8BCD;&#x6CD5;&#x5757;&#x4E2D;&#x3002;</p>
 <p>&#x5B9E;&#x53C2;&#x901A;&#x8FC7;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#xFF0C;&#x56E0;&#x6B64;&#x51FD;&#x6570;&#x7684;&#x5F62;&#x53C2;&#x662F;&#x5B9E;&#x53C2;&#x7684;&#x62F7;&#x8D1D;&#x3002;&#x5BF9;&#x5F62;&#x53C2;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5B9E;&#x53C2;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x5B9E;&#x53C2;&#x5305;&#x62EC;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x6307;&#x9488;&#xFF0C;slice(&#x5207;&#x7247;)&#x3001;map&#x3001;function&#x3001;channel&#x7B49;&#x7C7B;&#x578B;&#xFF0C;&#x5B9E;&#x53C2;&#x53EF;&#x80FD;&#x4F1A;&#x7531;&#x4E8E;&#x51FD;&#x6570;&#x7684;&#x95F4;&#x63A5;&#x5F15;&#x7528;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
 <p>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x5076;&#x5C14;&#x9047;&#x5230;&#x6CA1;&#x6709;&#x51FD;&#x6570;&#x4F53;&#x7684;&#x51FD;&#x6570;&#x58F0;&#x660E;&#xFF0C;&#x8FD9;&#x8868;&#x793A;&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x662F;&#x4EE5;Go&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x58F0;&#x660E;&#x5B9A;&#x4E49;&#x4E86;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">package math
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> math
 
-func Sin(x float64) float //implemented in assembly language
+<span class="hljs-keyword">func</span> Sin(x <span class="hljs-keyword">float64</span>) float <span class="hljs-comment">//implemented in assembly language</span>
 </code></pre>
 
                             </div>
@@ -670,9 +670,13 @@ func Sin(x float64) float //implemented in assembly language
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"函数声明","level":"1.6.1","depth":2,"next":{"title":"递归","level":"1.6.2","depth":2,"path":"ch5/ch5-02.md","ref":"ch5/ch5-02.md","articles":[]},"previous":{"title":"函数","level":"1.6","depth":1,"path":"ch5/ch5.md","ref":"ch5/ch5.md","articles":[{"title":"函数声明","level":"1.6.1","depth":2,"path":"ch5/ch5-01.md","ref":"ch5/ch5-01.md","articles":[]},{"title":"递归","level":"1.6.2","depth":2,"path":"ch5/ch5-02.md","ref":"ch5/ch5-02.md","articles":[]},{"title":"多返回值","level":"1.6.3","depth":2,"path":"ch5/ch5-03.md","ref":"ch5/ch5-03.md","articles":[]},{"title":"错误","level":"1.6.4","depth":2,"path":"ch5/ch5-04.md","ref":"ch5/ch5-04.md","articles":[]},{"title":"函数值","level":"1.6.5","depth":2,"path":"ch5/ch5-05.md","ref":"ch5/ch5-05.md","articles":[]},{"title":"匿名函数","level":"1.6.6","depth":2,"path":"ch5/ch5-06.md","ref":"ch5/ch5-06.md","articles":[]},{"title":"可变参数","level":"1.6.7","depth":2,"path":"ch5/ch5-07.md","ref":"ch5/ch5-07.md","articles":[]},{"title":"Deferred函数","level":"1.6.8","depth":2,"path":"ch5/ch5-08.md","ref":"ch5/ch5-08.md","articles":[]},{"title":"Panic异常","level":"1.6.9","depth":2,"path":"ch5/ch5-09.md","ref":"ch5/ch5-09.md","articles":[]},{"title":"Recover捕获异常","level":"1.6.10","depth":2,"path":"ch5/ch5-10.md","ref":"ch5/ch5-10.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch5/ch5-01.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"函数声明","level":"1.6.1","depth":2,"next":{"title":"递归","level":"1.6.2","depth":2,"path":"ch5/ch5-02.md","ref":"ch5/ch5-02.md","articles":[]},"previous":{"title":"函数","level":"1.6","depth":1,"path":"ch5/ch5.md","ref":"ch5/ch5.md","articles":[{"title":"函数声明","level":"1.6.1","depth":2,"path":"ch5/ch5-01.md","ref":"ch5/ch5-01.md","articles":[]},{"title":"递归","level":"1.6.2","depth":2,"path":"ch5/ch5-02.md","ref":"ch5/ch5-02.md","articles":[]},{"title":"多返回值","level":"1.6.3","depth":2,"path":"ch5/ch5-03.md","ref":"ch5/ch5-03.md","articles":[]},{"title":"错误","level":"1.6.4","depth":2,"path":"ch5/ch5-04.md","ref":"ch5/ch5-04.md","articles":[]},{"title":"函数值","level":"1.6.5","depth":2,"path":"ch5/ch5-05.md","ref":"ch5/ch5-05.md","articles":[]},{"title":"匿名函数","level":"1.6.6","depth":2,"path":"ch5/ch5-06.md","ref":"ch5/ch5-06.md","articles":[]},{"title":"可变参数","level":"1.6.7","depth":2,"path":"ch5/ch5-07.md","ref":"ch5/ch5-07.md","articles":[]},{"title":"Deferred函数","level":"1.6.8","depth":2,"path":"ch5/ch5-08.md","ref":"ch5/ch5-08.md","articles":[]},{"title":"Panic异常","level":"1.6.9","depth":2,"path":"ch5/ch5-09.md","ref":"ch5/ch5-09.md","articles":[]},{"title":"Recover捕获异常","level":"1.6.10","depth":2,"path":"ch5/ch5-10.md","ref":"ch5/ch5-10.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch5/ch5-01.md","mtime":"2019-08-14T08:20:28.117Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

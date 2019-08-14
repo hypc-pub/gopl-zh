@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -590,82 +590,82 @@
 <p>&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x804A;&#x5929;&#x670D;&#x52A1;&#x5668;&#x6765;&#x7EC8;&#x7ED3;&#x672C;&#x7AE0;&#x8282;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x8BA9;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x5411;&#x5176;&#x5B83;&#x6240;&#x6709;&#x7528;&#x6237;&#x5E7F;&#x64AD;&#x6587;&#x672C;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x4E2D;&#x6709;&#x56DB;&#x79CD;goroutine&#x3002;main&#x548C;broadcaster&#x5404;&#x81EA;&#x662F;&#x4E00;&#x4E2A;goroutine&#x5B9E;&#x4F8B;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;handleConn&#x548C;clientWriter&#x7684;goroutine&#x3002;broadcaster&#x662F;select&#x7528;&#x6CD5;&#x7684;&#x4E0D;&#x9519;&#x7684;&#x6837;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x5904;&#x7406;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x7684;main goroutine&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x662F;listen&#x548C;accept(&#x8BD1;&#x6CE8;&#xFF1A;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x91CC;&#x7684;&#x6982;&#x5FF5;)&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x8FC7;&#x6765;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#xFF0C;&#x7A0B;&#x5E8F;&#x90FD;&#x4F1A;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x65B0;&#x7684;handleConn&#x7684;goroutine&#xFF0C;&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x5728;&#x672C;&#x7AE0;&#x5F00;&#x5934;&#x7684;&#x5E76;&#x53D1;&#x7684;echo&#x670D;&#x52A1;&#x5668;&#x91CC;&#x6240;&#x505A;&#x7684;&#x90A3;&#x6837;&#x3002;</p>
 <p><u><i>gopl.io/ch8/chat</i></u></p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    listener<span class="token punctuation">,</span> err <span class="token operator">:=</span> net<span class="token punctuation">.</span><span class="token function">Listen</span><span class="token punctuation">(</span><span class="token string">&quot;tcp&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;localhost:8000&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">go</span> <span class="token function">broadcaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">{</span>
-        conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> listener<span class="token punctuation">.</span><span class="token function">Accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            log<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-            <span class="token keyword">continue</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">go</span> <span class="token function">handleConn</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    listener, err := net.Listen(<span class="hljs-string">&quot;tcp&quot;</span>, <span class="hljs-string">&quot;localhost:8000&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatal(err)
+    }
+    <span class="hljs-keyword">go</span> broadcaster()
+    <span class="hljs-keyword">for</span> {
+        conn, err := listener.Accept()
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            log.Print(err)
+            <span class="hljs-keyword">continue</span>
+        }
+        <span class="hljs-keyword">go</span> handleConn(conn)
+    }
+}
 </code></pre>
 <p>&#x7136;&#x540E;&#x662F;broadcaster&#x7684;goroutine&#x3002;&#x4ED6;&#x7684;&#x5185;&#x90E8;&#x53D8;&#x91CF;clients&#x4F1A;&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x96C6;&#x5408;&#x3002;&#x5176;&#x8BB0;&#x5F55;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x6BCF;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6D88;&#x606F;&#x53D1;&#x51FA;channel&#x7684;&#x201C;&#x8D44;&#x683C;&#x201D;&#x4FE1;&#x606F;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">type</span> client <span class="token keyword">chan</span><span class="token operator">&lt;-</span> <span class="token builtin">string</span> <span class="token comment">// an outgoing message channel</span>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> client <span class="hljs-keyword">chan</span>&lt;- <span class="hljs-keyword">string</span> <span class="hljs-comment">// an outgoing message channel</span>
 
-<span class="token keyword">var</span> <span class="token punctuation">(</span>
-    entering <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> client<span class="token punctuation">)</span>
-    leaving  <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> client<span class="token punctuation">)</span>
-    messages <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token comment">// all incoming client messages</span>
-<span class="token punctuation">)</span>
+<span class="hljs-keyword">var</span> (
+    entering = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> client)
+    leaving  = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> client)
+    messages = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">string</span>) <span class="hljs-comment">// all incoming client messages</span>
+)
 
-<span class="token keyword">func</span> <span class="token function">broadcaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    clients <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span>client<span class="token punctuation">]</span><span class="token builtin">bool</span><span class="token punctuation">)</span> <span class="token comment">// all connected clients</span>
-    <span class="token keyword">for</span> <span class="token punctuation">{</span>
-        <span class="token keyword">select</span> <span class="token punctuation">{</span>
-        <span class="token keyword">case</span> msg <span class="token operator">:=</span> <span class="token operator">&lt;-</span>messages<span class="token punctuation">:</span>
-            <span class="token comment">// Broadcast incoming message to all</span>
-            <span class="token comment">// clients&apos; outgoing message channels.</span>
-            <span class="token keyword">for</span> cli <span class="token operator">:=</span> <span class="token keyword">range</span> clients <span class="token punctuation">{</span>
-                cli <span class="token operator">&lt;-</span> msg
-            <span class="token punctuation">}</span>
-        <span class="token keyword">case</span> cli <span class="token operator">:=</span> <span class="token operator">&lt;-</span>entering<span class="token punctuation">:</span>
-            clients<span class="token punctuation">[</span>cli<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="hljs-keyword">func</span> broadcaster() {
+    clients := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[client]<span class="hljs-keyword">bool</span>) <span class="hljs-comment">// all connected clients</span>
+    <span class="hljs-keyword">for</span> {
+        <span class="hljs-keyword">select</span> {
+        <span class="hljs-keyword">case</span> msg := &lt;-messages:
+            <span class="hljs-comment">// Broadcast incoming message to all</span>
+            <span class="hljs-comment">// clients&apos; outgoing message channels.</span>
+            <span class="hljs-keyword">for</span> cli := <span class="hljs-keyword">range</span> clients {
+                cli &lt;- msg
+            }
+        <span class="hljs-keyword">case</span> cli := &lt;-entering:
+            clients[cli] = <span class="hljs-literal">true</span>
 
-        <span class="token keyword">case</span> cli <span class="token operator">:=</span> <span class="token operator">&lt;-</span>leaving<span class="token punctuation">:</span>
-            <span class="token function">delete</span><span class="token punctuation">(</span>clients<span class="token punctuation">,</span> cli<span class="token punctuation">)</span>
-            <span class="token function">close</span><span class="token punctuation">(</span>cli<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+        <span class="hljs-keyword">case</span> cli := &lt;-leaving:
+            <span class="hljs-built_in">delete</span>(clients, cli)
+            <span class="hljs-built_in">close</span>(cli)
+        }
+    }
+}
 </code></pre>
 <p>broadcaster&#x76D1;&#x542C;&#x6765;&#x81EA;&#x5168;&#x5C40;&#x7684;entering&#x548C;leaving&#x7684;channel&#x6765;&#x83B7;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5230;&#x6765;&#x548C;&#x79BB;&#x5F00;&#x4E8B;&#x4EF6;&#x3002;&#x5F53;&#x5176;&#x63A5;&#x6536;&#x5230;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x4F1A;&#x66F4;&#x65B0;clients&#x96C6;&#x5408;&#xFF0C;&#x5F53;&#x8BE5;&#x4E8B;&#x4EF6;&#x662F;&#x79BB;&#x5F00;&#x884C;&#x4E3A;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x5173;&#x95ED;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6D88;&#x606F;&#x53D1;&#x9001;channel&#x3002;broadcaster&#x4E5F;&#x4F1A;&#x76D1;&#x542C;&#x5168;&#x5C40;&#x7684;&#x6D88;&#x606F;channel&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x4F1A;&#x5411;&#x8FD9;&#x4E2A;channel&#x4E2D;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x3002;&#x5F53;broadcaster&#x63A5;&#x6536;&#x5230;&#x4EC0;&#x4E48;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x5C06;&#x5176;&#x5E7F;&#x64AD;&#x81F3;&#x6240;&#x6709;&#x8FDE;&#x63A5;&#x5230;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
 <p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x6BCF;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;goroutine&#x3002;handleConn&#x51FD;&#x6570;&#x4F1A;&#x4E3A;&#x5B83;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x53D1;&#x9001;channel&#x5E76;&#x901A;&#x8FC7;entering channel&#x6765;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5230;&#x6765;&#x3002;&#x7136;&#x540E;&#x5B83;&#x4F1A;&#x8BFB;&#x53D6;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x6765;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x6587;&#x672C;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x5168;&#x5C40;&#x7684;&#x6D88;&#x606F;channel&#x6765;&#x5C06;&#x8FD9;&#x4E9B;&#x6587;&#x672C;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x5E76;&#x4E3A;&#x6BCF;&#x6761;&#x6D88;&#x606F;&#x5E26;&#x4E0A;&#x53D1;&#x9001;&#x8005;&#x7684;&#x524D;&#x7F00;&#x6765;&#x6807;&#x660E;&#x6D88;&#x606F;&#x8EAB;&#x4EFD;&#x3002;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;handleConn&#x4F1A;&#x901A;&#x8FC7;leaving&#x8FD9;&#x4E2A;channel&#x6765;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x79BB;&#x5F00;&#x5E76;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">handleConn</span><span class="token punctuation">(</span>conn net<span class="token punctuation">.</span>Conn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    ch <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token comment">// outgoing client messages</span>
-    <span class="token keyword">go</span> <span class="token function">clientWriter</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> ch<span class="token punctuation">)</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> handleConn(conn net.Conn) {
+    ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">string</span>) <span class="hljs-comment">// outgoing client messages</span>
+    <span class="hljs-keyword">go</span> clientWriter(conn, ch)
 
-    who <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">RemoteAddr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    ch <span class="token operator">&lt;-</span> <span class="token string">&quot;You are &quot;</span> <span class="token operator">+</span> who
-    messages <span class="token operator">&lt;-</span> who <span class="token operator">+</span> <span class="token string">&quot; has arrived&quot;</span>
-    entering <span class="token operator">&lt;-</span> ch
+    who := conn.RemoteAddr().String()
+    ch &lt;- <span class="hljs-string">&quot;You are &quot;</span> + who
+    messages &lt;- who + <span class="hljs-string">&quot; has arrived&quot;</span>
+    entering &lt;- ch
 
-    input <span class="token operator">:=</span> bufio<span class="token punctuation">.</span><span class="token function">NewScanner</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> input<span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        messages <span class="token operator">&lt;-</span> who <span class="token operator">+</span> <span class="token string">&quot;: &quot;</span> <span class="token operator">+</span> input<span class="token punctuation">.</span><span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// NOTE: ignoring potential errors from input.Err()</span>
+    input := bufio.NewScanner(conn)
+    <span class="hljs-keyword">for</span> input.Scan() {
+        messages &lt;- who + <span class="hljs-string">&quot;: &quot;</span> + input.Text()
+    }
+    <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring potential errors from input.Err()</span>
 
-    leaving <span class="token operator">&lt;-</span> ch
-    messages <span class="token operator">&lt;-</span> who <span class="token operator">+</span> <span class="token string">&quot; has left&quot;</span>
-    conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+    leaving &lt;- ch
+    messages &lt;- who + <span class="hljs-string">&quot; has left&quot;</span>
+    conn.Close()
+}
 
-<span class="token keyword">func</span> <span class="token function">clientWriter</span><span class="token punctuation">(</span>conn net<span class="token punctuation">.</span>Conn<span class="token punctuation">,</span> ch <span class="token operator">&lt;-</span><span class="token keyword">chan</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> msg <span class="token operator">:=</span> <span class="token keyword">range</span> ch <span class="token punctuation">{</span>
-        fmt<span class="token punctuation">.</span><span class="token function">Fprintln</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> msg<span class="token punctuation">)</span> <span class="token comment">// NOTE: ignoring network errors</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="hljs-keyword">func</span> clientWriter(conn net.Conn, ch &lt;-<span class="hljs-keyword">chan</span> <span class="hljs-keyword">string</span>) {
+    <span class="hljs-keyword">for</span> msg := <span class="hljs-keyword">range</span> ch {
+        fmt.Fprintln(conn, msg) <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> ignoring network errors</span>
+    }
+}
 </code></pre>
 <p>&#x53E6;&#x5916;&#xFF0C;handleConn&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;clientWriter&#x7684;goroutine&#xFF0C;&#x7528;&#x6765;&#x63A5;&#x6536;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;channel&#x4E2D;&#x7684;&#x5E7F;&#x64AD;&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x4EEC;&#x5199;&#x5165;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BFB;&#x53D6;&#x5FAA;&#x73AF;&#x4F1A;&#x5728;broadcaster&#x63A5;&#x6536;&#x5230;leaving&#x901A;&#x77E5;&#x5E76;&#x5173;&#x95ED;&#x4E86;channel&#x540E;&#x7EC8;&#x6B62;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x6F14;&#x793A;&#x7684;&#x662F;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x6709;&#x4E24;&#x4E2A;&#x6D3B;&#x52A8;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x7528;netcat&#x6765;&#x804A;&#x5929;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch8/chat
+<pre><code>$ go build gopl.io/ch8/chat
 $ go build gopl.io/ch8/netcat3
 $ ./chat &amp;
 $ ./netcat3
@@ -733,9 +733,13 @@ You are 127.0.0.1:64216               127.0.0.1:64216 has arrived
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"示例: 聊天服务","level":"1.9.10","depth":2,"next":{"title":"基于共享变量的并发","level":"1.10","depth":1,"path":"ch9/ch9.md","ref":"ch9/ch9.md","articles":[{"title":"竞争条件","level":"1.10.1","depth":2,"path":"ch9/ch9-01.md","ref":"ch9/ch9-01.md","articles":[]},{"title":"sync.Mutex互斥锁","level":"1.10.2","depth":2,"path":"ch9/ch9-02.md","ref":"ch9/ch9-02.md","articles":[]},{"title":"sync.RWMutex读写锁","level":"1.10.3","depth":2,"path":"ch9/ch9-03.md","ref":"ch9/ch9-03.md","articles":[]},{"title":"内存同步","level":"1.10.4","depth":2,"path":"ch9/ch9-04.md","ref":"ch9/ch9-04.md","articles":[]},{"title":"sync.Once惰性初始化","level":"1.10.5","depth":2,"path":"ch9/ch9-05.md","ref":"ch9/ch9-05.md","articles":[]},{"title":"竞争条件检测","level":"1.10.6","depth":2,"path":"ch9/ch9-06.md","ref":"ch9/ch9-06.md","articles":[]},{"title":"示例: 并发的非阻塞缓存","level":"1.10.7","depth":2,"path":"ch9/ch9-07.md","ref":"ch9/ch9-07.md","articles":[]},{"title":"Goroutines和线程","level":"1.10.8","depth":2,"path":"ch9/ch9-08.md","ref":"ch9/ch9-08.md","articles":[]}]},"previous":{"title":"并发的退出","level":"1.9.9","depth":2,"path":"ch8/ch8-09.md","ref":"ch8/ch8-09.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch8/ch8-10.md","mtime":"2019-03-26T06:34:32.118Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"示例: 聊天服务","level":"1.9.10","depth":2,"next":{"title":"基于共享变量的并发","level":"1.10","depth":1,"path":"ch9/ch9.md","ref":"ch9/ch9.md","articles":[{"title":"竞争条件","level":"1.10.1","depth":2,"path":"ch9/ch9-01.md","ref":"ch9/ch9-01.md","articles":[]},{"title":"sync.Mutex互斥锁","level":"1.10.2","depth":2,"path":"ch9/ch9-02.md","ref":"ch9/ch9-02.md","articles":[]},{"title":"sync.RWMutex读写锁","level":"1.10.3","depth":2,"path":"ch9/ch9-03.md","ref":"ch9/ch9-03.md","articles":[]},{"title":"内存同步","level":"1.10.4","depth":2,"path":"ch9/ch9-04.md","ref":"ch9/ch9-04.md","articles":[]},{"title":"sync.Once惰性初始化","level":"1.10.5","depth":2,"path":"ch9/ch9-05.md","ref":"ch9/ch9-05.md","articles":[]},{"title":"竞争条件检测","level":"1.10.6","depth":2,"path":"ch9/ch9-06.md","ref":"ch9/ch9-06.md","articles":[]},{"title":"示例: 并发的非阻塞缓存","level":"1.10.7","depth":2,"path":"ch9/ch9-07.md","ref":"ch9/ch9-07.md","articles":[]},{"title":"Goroutines和线程","level":"1.10.8","depth":2,"path":"ch9/ch9-08.md","ref":"ch9/ch9-08.md","articles":[]}]},"previous":{"title":"并发的退出","level":"1.9.9","depth":2,"path":"ch8/ch8-09.md","ref":"ch8/ch8-09.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch8/ch8-10.md","mtime":"2019-08-14T08:20:28.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -573,100 +573,100 @@
 <p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;web&#x670D;&#x52A1;&#xFF0C;&#x5927;&#x90E8;&#x5206;HTTP&#x5904;&#x7406;&#x51FD;&#x6570;&#x8981;&#x505A;&#x7684;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x5C55;&#x5F00;&#x8BF7;&#x6C42;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x5230;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x4E2D;&#x3002;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#xFF0C;&#x53EB;params.Unpack&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x6807;&#x7B7E;&#x673A;&#x5236;&#x6765;&#x8BA9;HTTP&#x5904;&#x7406;&#x51FD;&#x6570;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x66F4;&#x65B9;&#x4FBF;&#x3002;</p>
 <p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x4E0B;&#x9762;&#x7684;search&#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;HTTP&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x533F;&#x540D;&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7528;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x8868;&#x793A;HTTP&#x8BF7;&#x6C42;&#x7684;&#x53C2;&#x6570;&#x3002;&#x5176;&#x4E2D;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x6807;&#x7B7E;&#x6307;&#x660E;&#x4E86;&#x5BF9;&#x4E8E;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;URL&#x7684;&#x957F;&#x5EA6;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x540D;&#x901A;&#x5E38;&#x90FD;&#x662F;&#x795E;&#x79D8;&#x7684;&#x7F29;&#x7565;&#x8BCD;&#x3002;Unpack&#x5C06;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x586B;&#x5145;&#x5230;&#x5408;&#x9002;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5730;&#x901A;&#x8FC7;&#x5408;&#x9002;&#x7684;&#x7C7B;&#x578B;&#x7C7B;&#x6765;&#x8BBF;&#x95EE;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x3002;</p>
 <p><u><i>gopl.io/ch12/search</i></u></p>
-<pre class="language-"><code class="lang-Go">import &quot;gopl.io/ch12/params&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;gopl.io/ch12/params&quot;</span>
 
-// search implements the /search URL endpoint.
-func search(resp http.ResponseWriter, req *http.Request) {
-    var data struct {
-        Labels     []string `http:&quot;l&quot;`
-        MaxResults int      `http:&quot;max&quot;`
-        Exact      bool     `http:&quot;x&quot;`
+<span class="hljs-comment">// search implements the /search URL endpoint.</span>
+<span class="hljs-keyword">func</span> search(resp http.ResponseWriter, req *http.Request) {
+    <span class="hljs-keyword">var</span> data <span class="hljs-keyword">struct</span> {
+        Labels     []<span class="hljs-keyword">string</span> <span class="hljs-string">`http:&quot;l&quot;`</span>
+        MaxResults <span class="hljs-keyword">int</span>      <span class="hljs-string">`http:&quot;max&quot;`</span>
+        Exact      <span class="hljs-keyword">bool</span>     <span class="hljs-string">`http:&quot;x&quot;`</span>
     }
-    data.MaxResults = 10 // set default
-    if err := params.Unpack(req, &amp;data); err != nil {
-        http.Error(resp, err.Error(), http.StatusBadRequest) // 400
-        return
+    data.MaxResults = <span class="hljs-number">10</span> <span class="hljs-comment">// set default</span>
+    <span class="hljs-keyword">if</span> err := params.Unpack(req, &amp;data); err != <span class="hljs-literal">nil</span> {
+        http.Error(resp, err.Error(), http.StatusBadRequest) <span class="hljs-comment">// 400</span>
+        <span class="hljs-keyword">return</span>
     }
 
-    // ...rest of handler...
-    fmt.Fprintf(resp, &quot;Search: %+v\n&quot;, data)
+    <span class="hljs-comment">// ...rest of handler...</span>
+    fmt.Fprintf(resp, <span class="hljs-string">&quot;Search: %+v\n&quot;</span>, data)
 }
 </code></pre>
 <p>&#x4E0B;&#x9762;&#x7684;Unpack&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x5B8C;&#x6210;&#x4E09;&#x4EF6;&#x4E8B;&#x60C5;&#x3002;&#x7B2C;&#x4E00;&#xFF0C;&#x5B83;&#x8C03;&#x7528;req.ParseForm()&#x6765;&#x89E3;&#x6790;HTTP&#x8BF7;&#x6C42;&#x3002;&#x7136;&#x540E;&#xFF0C;req.Form&#x5C06;&#x5305;&#x542B;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#xFF0C;&#x4E0D;&#x7BA1;HTTP&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;&#x7684;&#x662F;GET&#x8FD8;&#x662F;POST&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;Unpack&#x51FD;&#x6570;&#x5C06;&#x6784;&#x5EFA;&#x6BCF;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x6709;&#x6548;&#x53C2;&#x6570;&#x540D;&#x5B57;&#x5230;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7684;&#x6620;&#x5C04;&#x3002;&#x5982;&#x679C;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x6709;&#x6210;&#x5458;&#x6807;&#x7B7E;&#x7684;&#x8BDD;&#xFF0C;&#x6709;&#x6548;&#x53C2;&#x6570;&#x540D;&#x5B57;&#x53EF;&#x80FD;&#x548C;&#x5B9E;&#x9645;&#x7684;&#x6210;&#x5458;&#x540D;&#x5B57;&#x4E0D;&#x76F8;&#x540C;&#x3002;reflect.Type&#x7684;Field&#x65B9;&#x6CD5;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;reflect.StructField&#xFF0C;&#x91CC;&#x9762;&#x542B;&#x6709;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x7684;&#x540D;&#x5B57;&#x3001;&#x7C7B;&#x578B;&#x548C;&#x53EF;&#x9009;&#x7684;&#x6210;&#x5458;&#x6807;&#x7B7E;&#x7B49;&#x4FE1;&#x606F;&#x3002;&#x5176;&#x4E2D;&#x6210;&#x5458;&#x6807;&#x7B7E;&#x4FE1;&#x606F;&#x5BF9;&#x5E94;reflect.StructTag&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x4E14;&#x63D0;&#x4F9B;&#x4E86;Get&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x548C;&#x6839;&#x636E;&#x7279;&#x5B9A;key&#x63D0;&#x53D6;&#x7684;&#x5B50;&#x4E32;&#xFF0C;&#x4F8B;&#x5982;&#x8FD9;&#x91CC;&#x7684;http:&quot;...&quot;&#x5F62;&#x5F0F;&#x7684;&#x5B50;&#x4E32;&#x3002;</p>
 <p><u><i>gopl.io/ch12/params</i></u></p>
-<pre class="language-"><code class="lang-Go">// Unpack populates the fields of the struct pointed to by ptr
-// from the HTTP request parameters in req.
-func Unpack(req *http.Request, ptr interface{}) error {
-    if err := req.ParseForm(); err != nil {
-        return err
+<pre><code class="lang-Go"><span class="hljs-comment">// Unpack populates the fields of the struct pointed to by ptr</span>
+<span class="hljs-comment">// from the HTTP request parameters in req.</span>
+<span class="hljs-keyword">func</span> Unpack(req *http.Request, ptr <span class="hljs-keyword">interface</span>{}) error {
+    <span class="hljs-keyword">if</span> err := req.ParseForm(); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
     }
 
-    // Build map of fields keyed by effective name.
-    fields := make(map[string]reflect.Value)
-    v := reflect.ValueOf(ptr).Elem() // the struct variable
-    for i := 0; i &lt; v.NumField(); i++ {
-        fieldInfo := v.Type().Field(i) // a reflect.StructField
-        tag := fieldInfo.Tag           // a reflect.StructTag
-        name := tag.Get(&quot;http&quot;)
-        if name == &quot;&quot; {
+    <span class="hljs-comment">// Build map of fields keyed by effective name.</span>
+    fields := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]reflect.Value)
+    v := reflect.ValueOf(ptr).Elem() <span class="hljs-comment">// the struct variable</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; v.NumField(); i++ {
+        fieldInfo := v.Type().Field(i) <span class="hljs-comment">// a reflect.StructField</span>
+        tag := fieldInfo.Tag           <span class="hljs-comment">// a reflect.StructTag</span>
+        name := tag.Get(<span class="hljs-string">&quot;http&quot;</span>)
+        <span class="hljs-keyword">if</span> name == <span class="hljs-string">&quot;&quot;</span> {
             name = strings.ToLower(fieldInfo.Name)
         }
         fields[name] = v.Field(i)
     }
 
-    // Update struct field for each parameter in the request.
-    for name, values := range req.Form {
+    <span class="hljs-comment">// Update struct field for each parameter in the request.</span>
+    <span class="hljs-keyword">for</span> name, values := <span class="hljs-keyword">range</span> req.Form {
         f := fields[name]
-        if !f.IsValid() {
-            continue // ignore unrecognized HTTP parameters
+        <span class="hljs-keyword">if</span> !f.IsValid() {
+            <span class="hljs-keyword">continue</span> <span class="hljs-comment">// ignore unrecognized HTTP parameters</span>
         }
-        for _, value := range values {
-            if f.Kind() == reflect.Slice {
+        <span class="hljs-keyword">for</span> _, value := <span class="hljs-keyword">range</span> values {
+            <span class="hljs-keyword">if</span> f.Kind() == reflect.Slice {
                 elem := reflect.New(f.Type().Elem()).Elem()
-                if err := populate(elem, value); err != nil {
-                    return fmt.Errorf(&quot;%s: %v&quot;, name, err)
+                <span class="hljs-keyword">if</span> err := populate(elem, value); err != <span class="hljs-literal">nil</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;%s: %v&quot;</span>, name, err)
                 }
                 f.Set(reflect.Append(f, elem))
-            } else {
-                if err := populate(f, value); err != nil {
-                    return fmt.Errorf(&quot;%s: %v&quot;, name, err)
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">if</span> err := populate(f, value); err != <span class="hljs-literal">nil</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;%s: %v&quot;</span>, name, err)
                 }
             }
         }
     }
-    return nil
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
 }
 </code></pre>
 <p>&#x6700;&#x540E;&#xFF0C;Unpack&#x904D;&#x5386;HTTP&#x8BF7;&#x6C42;&#x7684;name/valu&#x53C2;&#x6570;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5E76;&#x4E14;&#x6839;&#x636E;&#x66F4;&#x65B0;&#x76F8;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x3002;&#x56DE;&#x60F3;&#x4E00;&#x4E0B;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x7684;&#x53C2;&#x6570;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x591A;&#x6B21;&#x3002;&#x5982;&#x679C;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x5E94;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x662F;&#x4E00;&#x4E2A;slice&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5C06;&#x6240;&#x6709;&#x7684;&#x53C2;&#x6570;&#x6DFB;&#x52A0;&#x5230;slice&#x4E2D;&#x3002;&#x5176;&#x5B83;&#x60C5;&#x51B5;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x6210;&#x5458;&#x503C;&#x5C06;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x53EA;&#x6709;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x7684;&#x53C2;&#x6570;&#x503C;&#x624D;&#x662F;&#x8D77;&#x4F5C;&#x7528;&#x7684;&#x3002;</p>
 <p>populate&#x51FD;&#x6570;&#x5C0F;&#x5FC3;&#x7528;&#x8BF7;&#x6C42;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x503C;&#x6765;&#x586B;&#x5145;&#x5355;&#x4E00;&#x7684;&#x6210;&#x5458;v&#xFF08;&#x6216;&#x8005;&#x662F;slice&#x7C7B;&#x578B;&#x6210;&#x5458;&#x4E2D;&#x7684;&#x5355;&#x4E00;&#x7684;&#x5143;&#x7D20;&#xFF09;&#x3002;&#x76EE;&#x524D;&#xFF0C;&#x5B83;&#x4EC5;&#x652F;&#x6301;&#x5B57;&#x7B26;&#x4E32;&#x3001;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x548C;&#x5E03;&#x5C14;&#x578B;&#x3002;&#x5176;&#x4E2D;&#x5176;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x5C06;&#x7559;&#x505A;&#x7EC3;&#x4E60;&#x4EFB;&#x52A1;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">func populate(v reflect.Value, value string) error {
-    switch v.Kind() {
-    case reflect.String:
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> populate(v reflect.Value, value <span class="hljs-keyword">string</span>) error {
+    <span class="hljs-keyword">switch</span> v.Kind() {
+    <span class="hljs-keyword">case</span> reflect.String:
         v.SetString(value)
 
-    case reflect.Int:
-        i, err := strconv.ParseInt(value, 10, 64)
-        if err != nil {
-            return err
+    <span class="hljs-keyword">case</span> reflect.Int:
+        i, err := strconv.ParseInt(value, <span class="hljs-number">10</span>, <span class="hljs-number">64</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
         }
         v.SetInt(i)
 
-    case reflect.Bool:
+    <span class="hljs-keyword">case</span> reflect.Bool:
         b, err := strconv.ParseBool(value)
-        if err != nil {
-            return err
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
         }
         v.SetBool(b)
 
-    default:
-        return fmt.Errorf(&quot;unsupported kind %s&quot;, v.Type())
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;unsupported kind %s&quot;</span>, v.Type())
     }
-    return nil
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
 }
 </code></pre>
 <p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0A;&#x4E0A;&#x9762;&#x7684;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;web&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x4EE5;&#x4E0B;&#x7684;&#x4F1A;&#x8BDD;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch12/search
+<pre><code>$ go build gopl.io/ch12/search
 $ ./search &amp;
 $ ./fetch &apos;http://localhost:12345/search&apos;
 Search: {Labels:[] MaxResults:10 Exact:false}
@@ -728,9 +728,13 @@ max: strconv.ParseInt: parsing &quot;lots&quot;: invalid syntax
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"获取结构体字段标签","level":"1.13.7","depth":2,"next":{"title":"显示一个类型的方法集","level":"1.13.8","depth":2,"path":"ch12/ch12-08.md","ref":"ch12/ch12-08.md","articles":[]},"previous":{"title":"示例: 解码S表达式","level":"1.13.6","depth":2,"path":"ch12/ch12-06.md","ref":"ch12/ch12-06.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch12/ch12-07.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"获取结构体字段标签","level":"1.13.7","depth":2,"next":{"title":"显示一个类型的方法集","level":"1.13.8","depth":2,"path":"ch12/ch12-08.md","ref":"ch12/ch12-08.md","articles":[]},"previous":{"title":"示例: 解码S表达式","level":"1.13.6","depth":2,"path":"ch12/ch12-06.md","ref":"ch12/ch12-06.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch12/ch12-07.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

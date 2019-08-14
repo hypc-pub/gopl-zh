@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -534,71 +534,71 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="105-&#x5305;&#x7684;&#x533F;&#x540D;&#x5BFC;&#x5165;">10.5. &#x5305;&#x7684;&#x533F;&#x540D;&#x5BFC;&#x5165;</h2>
 <p>&#x5982;&#x679C;&#x53EA;&#x662F;&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x5305;&#x800C;&#x5E76;&#x4E0D;&#x4F7F;&#x7528;&#x5BFC;&#x5165;&#x7684;&#x5305;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x60F3;&#x5229;&#x7528;&#x5BFC;&#x5165;&#x5305;&#x800C;&#x4EA7;&#x751F;&#x7684;&#x526F;&#x4F5C;&#x7528;&#xFF1A;&#x5B83;&#x4F1A;&#x8BA1;&#x7B97;&#x5305;&#x7EA7;&#x53D8;&#x91CF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x6267;&#x884C;&#x5BFC;&#x5165;&#x5305;&#x7684;init&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#xFF08;&#xA7;2.6.2&#xFF09;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6291;&#x5236;&#x201C;unused import&#x201D;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x5212;&#x7EBF;<code>_</code>&#x6765;&#x91CD;&#x547D;&#x540D;&#x5BFC;&#x5165;&#x7684;&#x5305;&#x3002;&#x50CF;&#x5F80;&#x5E38;&#x4E00;&#x6837;&#xFF0C;&#x4E0B;&#x5212;&#x7EBF;<code>_</code>&#x4E3A;&#x7A7A;&#x767D;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x88AB;&#x8BBF;&#x95EE;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">import _ &quot;image/png&quot; // register PNG decoder
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> _ <span class="hljs-string">&quot;image/png&quot;</span> <span class="hljs-comment">// register PNG decoder</span>
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x88AB;&#x79F0;&#x4E3A;&#x5305;&#x7684;&#x533F;&#x540D;&#x5BFC;&#x5165;&#x3002;&#x5B83;&#x901A;&#x5E38;&#x662F;&#x7528;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x65F6;&#x673A;&#x5236;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x5728;main&#x4E3B;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#x9009;&#x62E9;&#x6027;&#x5730;&#x5BFC;&#x5165;&#x9644;&#x52A0;&#x7684;&#x5305;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x8BE5;&#x7279;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x770B;&#x770B;&#x5B83;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
 <p>&#x6807;&#x51C6;&#x5E93;&#x7684;image&#x56FE;&#x50CF;&#x5305;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;<code>Decode</code>&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x4ECE;<code>io.Reader</code>&#x63A5;&#x53E3;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x89E3;&#x7801;&#x56FE;&#x50CF;&#xFF0C;&#x5B83;&#x8C03;&#x7528;&#x5E95;&#x5C42;&#x6CE8;&#x518C;&#x7684;&#x56FE;&#x50CF;&#x89E3;&#x7801;&#x5668;&#x6765;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;image.Image&#x7C7B;&#x578B;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x4F7F;&#x7528;<code>image.Decode</code>&#x5F88;&#x5BB9;&#x6613;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x56FE;&#x50CF;&#x683C;&#x5F0F;&#x7684;&#x8F6C;&#x6362;&#x5DE5;&#x5177;&#xFF0C;&#x8BFB;&#x53D6;&#x4E00;&#x79CD;&#x683C;&#x5F0F;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x7136;&#x540E;&#x7F16;&#x7801;&#x4E3A;&#x53E6;&#x4E00;&#x79CD;&#x56FE;&#x50CF;&#x683C;&#x5F0F;&#xFF1A;</p>
 <p><u><i>gopl.io/ch10/jpeg</i></u></p>
-<pre class="language-"><code class="lang-Go">// The jpeg command reads a PNG image from the standard input
-// and writes it as a JPEG image to the standard output.
-package main
+<pre><code class="lang-Go"><span class="hljs-comment">// The jpeg command reads a PNG image from the standard input</span>
+<span class="hljs-comment">// and writes it as a JPEG image to the standard output.</span>
+<span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;image&quot;
-    &quot;image/jpeg&quot;
-    _ &quot;image/png&quot; // register PNG decoder
-    &quot;io&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;image&quot;</span>
+    <span class="hljs-string">&quot;image/jpeg&quot;</span>
+    _ <span class="hljs-string">&quot;image/png&quot;</span> <span class="hljs-comment">// register PNG decoder</span>
+    <span class="hljs-string">&quot;io&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 )
 
-func main() {
-    if err := toJPEG(os.Stdin, os.Stdout); err != nil {
-        fmt.Fprintf(os.Stderr, &quot;jpeg: %v\n&quot;, err)
-        os.Exit(1)
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">if</span> err := toJPEG(os.Stdin, os.Stdout); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;jpeg: %v\n&quot;</span>, err)
+        os.Exit(<span class="hljs-number">1</span>)
     }
 }
 
-func toJPEG(in io.Reader, out io.Writer) error {
+<span class="hljs-keyword">func</span> toJPEG(in io.Reader, out io.Writer) error {
     img, kind, err := image.Decode(in)
-    if err != nil {
-        return err
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
     }
-    fmt.Fprintln(os.Stderr, &quot;Input format =&quot;, kind)
-    return jpeg.Encode(out, img, &amp;jpeg.Options{Quality: 95})
+    fmt.Fprintln(os.Stderr, <span class="hljs-string">&quot;Input format =&quot;</span>, kind)
+    <span class="hljs-keyword">return</span> jpeg.Encode(out, img, &amp;jpeg.Options{Quality: <span class="hljs-number">95</span>})
 }
 </code></pre>
 <p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06;<code>gopl.io/ch3/mandelbrot</code>&#xFF08;&#xA7;3.3&#xFF09;&#x7684;&#x8F93;&#x51FA;&#x5BFC;&#x5165;&#x5230;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x6807;&#x51C6;&#x8F93;&#x5165;&#xFF0C;&#x5B83;&#x5C06;&#x89E3;&#x7801;&#x8F93;&#x5165;&#x7684;PNG&#x683C;&#x5F0F;&#x56FE;&#x50CF;&#xFF0C;&#x7136;&#x540E;&#x8F6C;&#x6362;&#x4E3A;JPEG&#x683C;&#x5F0F;&#x7684;&#x56FE;&#x50CF;&#x8F93;&#x51FA;&#xFF08;&#x56FE;3.3&#xFF09;&#x3002;</p>
-<pre class="language-"><code>$ go build gopl.io/ch3/mandelbrot
+<pre><code>$ go build gopl.io/ch3/mandelbrot
 $ go build gopl.io/ch10/jpeg
 $ ./mandelbrot | ./jpeg &gt;mandelbrot.jpg
 Input format = png
 </code></pre><p>&#x8981;&#x6CE8;&#x610F;image/png&#x5305;&#x7684;&#x533F;&#x540D;&#x5BFC;&#x5165;&#x8BED;&#x53E5;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x4E00;&#x884C;&#x8BED;&#x53E5;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;&#x548C;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5C06;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x8BC6;&#x522B;&#x548C;&#x89E3;&#x7801;PNG&#x683C;&#x5F0F;&#x7684;&#x56FE;&#x50CF;&#xFF1A;</p>
-<pre class="language-"><code>$ go build gopl.io/ch10/jpeg
+<pre><code>$ go build gopl.io/ch10/jpeg
 $ ./mandelbrot | ./jpeg &gt;mandelbrot.jpg
 jpeg: image: unknown format
 </code></pre><p>&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x4E86;&#x5B83;&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x3002;&#x6807;&#x51C6;&#x5E93;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;GIF&#x3001;PNG&#x548C;JPEG&#x7B49;&#x683C;&#x5F0F;&#x56FE;&#x50CF;&#x7684;&#x89E3;&#x7801;&#x5668;&#xFF0C;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x81EA;&#x5DF1;&#x7684;&#x89E3;&#x7801;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x7A0B;&#x5E8F;&#x4F53;&#x79EF;&#x8F83;&#x5C0F;&#xFF0C;&#x5F88;&#x591A;&#x89E3;&#x7801;&#x5668;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x5168;&#x90E8;&#x5305;&#x542B;&#xFF0C;&#x9664;&#x975E;&#x662F;&#x660E;&#x786E;&#x9700;&#x8981;&#x652F;&#x6301;&#x7684;&#x683C;&#x5F0F;&#x3002;image.Decode&#x51FD;&#x6570;&#x5728;&#x89E3;&#x7801;&#x65F6;&#x4F1A;&#x4F9D;&#x6B21;&#x67E5;&#x8BE2;&#x652F;&#x6301;&#x7684;&#x683C;&#x5F0F;&#x5217;&#x8868;&#x3002;&#x6BCF;&#x4E2A;&#x683C;&#x5F0F;&#x9A71;&#x52A8;&#x5217;&#x8868;&#x7684;&#x6BCF;&#x4E2A;&#x5165;&#x53E3;&#x6307;&#x5B9A;&#x4E86;&#x56DB;&#x4EF6;&#x4E8B;&#x60C5;&#xFF1A;&#x683C;&#x5F0F;&#x7684;&#x540D;&#x79F0;&#xFF1B;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x8FD9;&#x79CD;&#x56FE;&#x50CF;&#x6570;&#x636E;&#x5F00;&#x5934;&#x90E8;&#x5206;&#x6A21;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7528;&#x4E8E;&#x89E3;&#x7801;&#x5668;&#x68C0;&#x6D4B;&#x8BC6;&#x522B;&#xFF1B;&#x4E00;&#x4E2A;Decode&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5B8C;&#x6210;&#x89E3;&#x7801;&#x56FE;&#x50CF;&#x5DE5;&#x4F5C;&#xFF1B;&#x4E00;&#x4E2A;DecodeConfig&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x89E3;&#x7801;&#x56FE;&#x50CF;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x989C;&#x8272;&#x7A7A;&#x95F4;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x6BCF;&#x4E2A;&#x9A71;&#x52A8;&#x5165;&#x53E3;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;image.RegisterFormat&#x51FD;&#x6570;&#x6CE8;&#x518C;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x5728;&#x6BCF;&#x4E2A;&#x683C;&#x5F0F;&#x5305;&#x7684;init&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#xFF0C;&#x4F8B;&#x5982;image/png&#x5305;&#x662F;&#x8FD9;&#x6837;&#x6CE8;&#x518C;&#x7684;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">package png // image/png
+<pre><code class="lang-Go"><span class="hljs-keyword">package</span> png <span class="hljs-comment">// image/png</span>
 
-func Decode(r io.Reader) (image.Image, error)
-func DecodeConfig(r io.Reader) (image.Config, error)
+<span class="hljs-keyword">func</span> Decode(r io.Reader) (image.Image, error)
+<span class="hljs-keyword">func</span> DecodeConfig(r io.Reader) (image.Config, error)
 
-func init() {
-    const pngHeader = &quot;\x89PNG\r\n\x1a\n&quot;
-    image.RegisterFormat(&quot;png&quot;, pngHeader, Decode, DecodeConfig)
+<span class="hljs-keyword">func</span> init() {
+    <span class="hljs-keyword">const</span> pngHeader = <span class="hljs-string">&quot;\x89PNG\r\n\x1a\n&quot;</span>
+    image.RegisterFormat(<span class="hljs-string">&quot;png&quot;</span>, pngHeader, Decode, DecodeConfig)
 }
 </code></pre>
 <p>&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#x662F;&#xFF0C;&#x4E3B;&#x7A0B;&#x5E8F;&#x53EA;&#x9700;&#x8981;&#x533F;&#x540D;&#x5BFC;&#x5165;&#x7279;&#x5B9A;&#x56FE;&#x50CF;&#x9A71;&#x52A8;&#x5305;&#x5C31;&#x53EF;&#x4EE5;&#x7528;image.Decode&#x89E3;&#x7801;&#x5BF9;&#x5E94;&#x683C;&#x5F0F;&#x7684;&#x56FE;&#x50CF;&#x4E86;&#x3002;</p>
 <p>&#x6570;&#x636E;&#x5E93;&#x5305;database/sql&#x4E5F;&#x662F;&#x91C7;&#x7528;&#x4E86;&#x7C7B;&#x4F3C;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x8BA9;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x9009;&#x62E9;&#x5BFC;&#x5165;&#x5FC5;&#x8981;&#x7684;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">import (
-    &quot;database/sql&quot;
-    _ &quot;github.com/lib/pq&quot;              // enable support for Postgres
-    _ &quot;github.com/go-sql-driver/mysql&quot; // enable support for MySQL
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;database/sql&quot;</span>
+    _ <span class="hljs-string">&quot;github.com/lib/pq&quot;</span>              <span class="hljs-comment">// enable support for Postgres</span>
+    _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span> <span class="hljs-comment">// enable support for MySQL</span>
 )
 
-db, err = sql.Open(&quot;postgres&quot;, dbname) // OK
-db, err = sql.Open(&quot;mysql&quot;, dbname)    // OK
-db, err = sql.Open(&quot;sqlite3&quot;, dbname)  // returns error: unknown driver &quot;sqlite3&quot;
+db, err = sql.Open(<span class="hljs-string">&quot;postgres&quot;</span>, dbname) <span class="hljs-comment">// OK</span>
+db, err = sql.Open(<span class="hljs-string">&quot;mysql&quot;</span>, dbname)    <span class="hljs-comment">// OK</span>
+db, err = sql.Open(<span class="hljs-string">&quot;sqlite3&quot;</span>, dbname)  <span class="hljs-comment">// returns error: unknown driver &quot;sqlite3&quot;</span>
 </code></pre>
 <p><strong>&#x7EC3;&#x4E60; 10.1&#xFF1A;</strong> &#x6269;&#x5C55;jpeg&#x7A0B;&#x5E8F;&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x4EFB;&#x610F;&#x56FE;&#x50CF;&#x683C;&#x5F0F;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#xFF0C;&#x4F7F;&#x7528;image.Decode&#x68C0;&#x6D4B;&#x652F;&#x6301;&#x7684;&#x683C;&#x5F0F;&#x7C7B;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;flag&#x547D;&#x4EE4;&#x884C;&#x6807;&#x5FD7;&#x53C2;&#x6570;&#x9009;&#x62E9;&#x8F93;&#x51FA;&#x7684;&#x683C;&#x5F0F;&#x3002;</p>
 <p><strong>&#x7EC3;&#x4E60; 10.2&#xFF1A;</strong> &#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6846;&#x67B6;&#xFF0C;&#x7528;&#x6765;&#x8BFB;&#x53D6;ZIP&#xFF08;archive/zip&#xFF09;&#x548C;POSIX tar&#xFF08;archive/tar&#xFF09;&#x683C;&#x5F0F;&#x538B;&#x7F29;&#x7684;&#x6587;&#x6863;&#x3002;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x4E0A;&#x9762;&#x7684;&#x6CE8;&#x518C;&#x6280;&#x672F;&#x6765;&#x6269;&#x5C55;&#x652F;&#x6301;&#x4E0D;&#x540C;&#x7684;&#x538B;&#x7F29;&#x683C;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x533F;&#x540D;&#x5BFC;&#x5165;&#x9009;&#x62E9;&#x5BFC;&#x5165;&#x8981;&#x652F;&#x6301;&#x7684;&#x538B;&#x7F29;&#x683C;&#x5F0F;&#x7684;&#x9A71;&#x52A8;&#x5305;&#x3002;</p>
@@ -647,9 +647,13 @@ db, err = sql.Open(&quot;sqlite3&quot;, dbname)  // returns error: unknown drive
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"包的匿名导入","level":"1.11.5","depth":2,"next":{"title":"包和命名","level":"1.11.6","depth":2,"path":"ch10/ch10-06.md","ref":"ch10/ch10-06.md","articles":[]},"previous":{"title":"导入声明","level":"1.11.4","depth":2,"path":"ch10/ch10-04.md","ref":"ch10/ch10-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch10/ch10-05.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"包的匿名导入","level":"1.11.5","depth":2,"next":{"title":"包和命名","level":"1.11.6","depth":2,"path":"ch10/ch10-06.md","ref":"ch10/ch10-06.md","articles":[]},"previous":{"title":"导入声明","level":"1.11.4","depth":2,"path":"ch10/ch10-04.md","ref":"ch10/ch10-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch10/ch10-05.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -517,47 +517,47 @@
                                 <h2 id="35-&#x5B57;&#x7B26;&#x4E32;">3.5. &#x5B57;&#x7B26;&#x4E32;</h2>
 <p>&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x6539;&#x53D8;&#x7684;&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x3002;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5305;&#x62EC;byte&#x503C;0&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x662F;&#x7528;&#x6765;&#x5305;&#x542B;&#x4EBA;&#x7C7B;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x672C;&#x3002;&#x6587;&#x672C;&#x5B57;&#x7B26;&#x4E32;&#x901A;&#x5E38;&#x88AB;&#x89E3;&#x91CA;&#x4E3A;&#x91C7;&#x7528;UTF8&#x7F16;&#x7801;&#x7684;Unicode&#x7801;&#x70B9;&#xFF08;rune&#xFF09;&#x5E8F;&#x5217;&#xFF0C;&#x6211;&#x4EEC;&#x7A0D;&#x540E;&#x4F1A;&#x8BE6;&#x7EC6;&#x8BA8;&#x8BBA;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
 <p>&#x5185;&#x7F6E;&#x7684;len&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x8282;&#x6570;&#x76EE;&#xFF08;&#x4E0D;&#x662F;rune&#x5B57;&#x7B26;&#x6570;&#x76EE;&#xFF09;&#xFF0C;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;s[i]&#x8FD4;&#x56DE;&#x7B2C;i&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5B57;&#x8282;&#x503C;&#xFF0C;i&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;0 &#x2264; i&lt; len(s)&#x6761;&#x4EF6;&#x7EA6;&#x675F;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">s := &quot;hello, world&quot;
-fmt.Println(len(s))     // &quot;12&quot;
-fmt.Println(s[0], s[7]) // &quot;104 119&quot; (&apos;h&apos; and &apos;w&apos;)
+<pre><code class="lang-Go">s := <span class="hljs-string">&quot;hello, world&quot;</span>
+fmt.Println(<span class="hljs-built_in">len</span>(s))     <span class="hljs-comment">// &quot;12&quot;</span>
+fmt.Println(s[<span class="hljs-number">0</span>], s[<span class="hljs-number">7</span>]) <span class="hljs-comment">// &quot;104 119&quot; (&apos;h&apos; and &apos;w&apos;)</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x8BD5;&#x56FE;&#x8BBF;&#x95EE;&#x8D85;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x7D22;&#x5F15;&#x8303;&#x56F4;&#x7684;&#x5B57;&#x8282;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;panic&#x5F02;&#x5E38;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">c := s[len(s)] // panic: index out of range
+<pre><code class="lang-Go">c := s[<span class="hljs-built_in">len</span>(s)] <span class="hljs-comment">// panic: index out of range</span>
 </code></pre>
 <p>&#x7B2C;i&#x4E2A;&#x5B57;&#x8282;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7B2C;i&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x975E;ASCII&#x5B57;&#x7B26;&#x7684;UTF8&#x7F16;&#x7801;&#x4F1A;&#x8981;&#x4E24;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5B57;&#x8282;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x7B80;&#x5355;&#x8BF4;&#x4E0B;&#x5B57;&#x7B26;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x5B50;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;s[i:j]&#x57FA;&#x4E8E;&#x539F;&#x59CB;&#x7684;s&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7B2C;i&#x4E2A;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#x5230;&#x7B2C;j&#x4E2A;&#x5B57;&#x8282;&#xFF08;&#x5E76;&#x4E0D;&#x5305;&#x542B;j&#x672C;&#x8EAB;&#xFF09;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x751F;&#x6210;&#x7684;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#x5C06;&#x5305;&#x542B;j-i&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(s[0:5]) // &quot;hello&quot;
+<pre><code class="lang-Go">fmt.Println(s[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>]) <span class="hljs-comment">// &quot;hello&quot;</span>
 </code></pre>
 <p>&#x540C;&#x6837;&#xFF0C;&#x5982;&#x679C;&#x7D22;&#x5F15;&#x8D85;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x8303;&#x56F4;&#x6216;&#x8005;j&#x5C0F;&#x4E8E;i&#x7684;&#x8BDD;&#x5C06;&#x5BFC;&#x81F4;panic&#x5F02;&#x5E38;&#x3002;</p>
 <p>&#x4E0D;&#x7BA1;i&#x8FD8;&#x662F;j&#x90FD;&#x53EF;&#x80FD;&#x88AB;&#x5FFD;&#x7565;&#xFF0C;&#x5F53;&#x5B83;&#x4EEC;&#x88AB;&#x5FFD;&#x7565;&#x65F6;&#x5C06;&#x91C7;&#x7528;0&#x4F5C;&#x4E3A;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x91C7;&#x7528;len(s)&#x4F5C;&#x4E3A;&#x7ED3;&#x675F;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(s[:5]) // &quot;hello&quot;
-fmt.Println(s[7:]) // &quot;world&quot;
-fmt.Println(s[:])  // &quot;hello, world&quot;
+<pre><code class="lang-Go">fmt.Println(s[:<span class="hljs-number">5</span>]) <span class="hljs-comment">// &quot;hello&quot;</span>
+fmt.Println(s[<span class="hljs-number">7</span>:]) <span class="hljs-comment">// &quot;world&quot;</span>
+fmt.Println(s[:])  <span class="hljs-comment">// &quot;hello, world&quot;</span>
 </code></pre>
 <p>&#x5176;&#x4E2D;+&#x64CD;&#x4F5C;&#x7B26;&#x5C06;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8FDE;&#x63A5;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(&quot;goodbye&quot; + s[5:]) // &quot;goodbye, world&quot;
+<pre><code class="lang-Go">fmt.Println(<span class="hljs-string">&quot;goodbye&quot;</span> + s[<span class="hljs-number">5</span>:]) <span class="hljs-comment">// &quot;goodbye, world&quot;</span>
 </code></pre>
 <p>&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x4EE5;&#x7528;==&#x548C;&lt;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF1B;&#x6BD4;&#x8F83;&#x901A;&#x8FC7;&#x9010;&#x4E2A;&#x5B57;&#x8282;&#x6BD4;&#x8F83;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6BD4;&#x8F83;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x81EA;&#x7136;&#x7F16;&#x7801;&#x7684;&#x987A;&#x5E8F;&#x3002;</p>
 <p>&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x503C;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF1A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5305;&#x542B;&#x7684;&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x6539;&#x53D8;&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED9;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x53D8;&#x91CF;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x3002;&#x53EF;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8FFD;&#x52A0;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">s := &quot;left foot&quot;
+<pre><code class="lang-Go">s := <span class="hljs-string">&quot;left foot&quot;</span>
 t := s
-s += &quot;, right foot&quot;
+s += <span class="hljs-string">&quot;, right foot&quot;</span>
 </code></pre>
 <p>&#x8FD9;&#x5E76;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x539F;&#x59CB;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x88AB;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x662F;&#x53D8;&#x91CF;s&#x5C06;&#x56E0;&#x4E3A;+=&#x8BED;&#x53E5;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x4F46;&#x662F;t&#x4F9D;&#x7136;&#x662F;&#x5305;&#x542B;&#x539F;&#x5148;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(s) // &quot;left foot, right foot&quot;
-fmt.Println(t) // &quot;left foot&quot;
+<pre><code class="lang-Go">fmt.Println(s) <span class="hljs-comment">// &quot;left foot, right foot&quot;</span>
+fmt.Println(t) <span class="hljs-comment">// &quot;left foot&quot;</span>
 </code></pre>
 <p>&#x56E0;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5C1D;&#x8BD5;&#x4FEE;&#x6539;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x90E8;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;&#x4E5F;&#x662F;&#x88AB;&#x7981;&#x6B62;&#x7684;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">s[0] = &apos;L&apos; // compile error: cannot assign to s[0]
+<pre><code class="lang-Go">s[<span class="hljs-number">0</span>] = <span class="hljs-string">&apos;L&apos;</span> <span class="hljs-comment">// compile error: cannot assign to s[0]</span>
 </code></pre>
 <p>&#x4E0D;&#x53D8;&#x6027;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x7684;&#x8BDD;&#x4E5F;&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x590D;&#x5236;&#x4EFB;&#x4F55;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4EE3;&#x4EF7;&#x662F;&#x4F4E;&#x5EC9;&#x7684;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;s&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x5B57;&#x7B26;&#x4E32;&#x5207;&#x7247;s[7:]&#x7684;&#x64CD;&#x4F5C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B89;&#x5168;&#x5730;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x56E0;&#x6B64;&#x5B57;&#x7B26;&#x4E32;&#x5207;&#x7247;&#x64CD;&#x4F5C;&#x4EE3;&#x4EF7;&#x4E5F;&#x662F;&#x4F4E;&#x5EC9;&#x7684;&#x3002;&#x5728;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x90FD;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5206;&#x914D;&#x65B0;&#x7684;&#x5185;&#x5B58;&#x3002; &#x56FE;3.4&#x6F14;&#x793A;&#x4E86;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x4E24;&#x4E2A;&#x5B50;&#x4E32;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x3002;</p>
 <h3 id="351-&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;">3.5.1. &#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;</h3>
 <p>&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#xFF0C;&#x53EA;&#x8981;&#x5C06;&#x4E00;&#x7CFB;&#x5217;&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x5305;&#x542B;&#x5728;&#x53CC;&#x5F15;&#x53F7;&#x5185;&#x5373;&#x53EF;&#xFF1A;</p>
-<pre class="language-"><code>&quot;Hello, &#x4E16;&#x754C;&quot;
+<pre><code>&quot;Hello, &#x4E16;&#x754C;&quot;
 </code></pre><p><img src="../images/ch3-04.png" alt=""></p>
 <p>&#x56E0;&#x4E3A;Go&#x8BED;&#x8A00;&#x6E90;&#x6587;&#x4EF6;&#x603B;&#x662F;&#x7528;UTF8&#x7F16;&#x7801;&#xFF0C;&#x5E76;&#x4E14;Go&#x8BED;&#x8A00;&#x7684;&#x6587;&#x672C;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x4EE5;UTF8&#x7F16;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;Unicode&#x7801;&#x70B9;&#x4E5F;&#x5199;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#x3002;</p>
 <p>&#x5728;&#x4E00;&#x4E2A;&#x53CC;&#x5F15;&#x53F7;&#x5305;&#x542B;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x53CD;&#x659C;&#x6760;<code>\</code>&#x5F00;&#x5934;&#x7684;&#x8F6C;&#x4E49;&#x5E8F;&#x5217;&#x63D2;&#x5165;&#x4EFB;&#x610F;&#x7684;&#x6570;&#x636E;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x6362;&#x884C;&#x3001;&#x56DE;&#x8F66;&#x548C;&#x5236;&#x8868;&#x7B26;&#x7B49;&#x662F;&#x5E38;&#x89C1;&#x7684;ASCII&#x63A7;&#x5236;&#x4EE3;&#x7801;&#x7684;&#x8F6C;&#x4E49;&#x65B9;&#x5F0F;&#xFF1A;</p>
-<pre class="language-"><code>\a      &#x54CD;&#x94C3;
+<pre><code>\a      &#x54CD;&#x94C3;
 \b      &#x9000;&#x683C;
 \f      &#x6362;&#x9875;
 \n      &#x6362;&#x884C;
@@ -570,11 +570,11 @@ fmt.Println(t) // &quot;left foot&quot;
 </code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x6216;&#x516B;&#x8FDB;&#x5236;&#x8F6C;&#x4E49;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x7684;&#x5B57;&#x8282;&#x3002;&#x4E00;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x7684;&#x8F6C;&#x4E49;&#x5F62;&#x5F0F;&#x662F;<code>\xhh</code>&#xFF0C;&#x5176;&#x4E2D;&#x4E24;&#x4E2A;h&#x8868;&#x793A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x6570;&#x5B57;&#xFF08;&#x5927;&#x5199;&#x6216;&#x5C0F;&#x5199;&#x90FD;&#x53EF;&#x4EE5;&#xFF09;&#x3002;&#x4E00;&#x4E2A;&#x516B;&#x8FDB;&#x5236;&#x8F6C;&#x4E49;&#x5F62;&#x5F0F;&#x662F;<code>\ooo</code>&#xFF0C;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x516B;&#x8FDB;&#x5236;&#x7684;o&#x6570;&#x5B57;&#xFF08;0&#x5230;7&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;<code>\377</code>&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5341;&#x8FDB;&#x5236;&#x4E3A;255&#xFF09;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x7684;&#x5B57;&#x8282;&#x8868;&#x8FBE;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x503C;&#x3002;&#x7A0D;&#x540E;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x5C06;&#x4E00;&#x4E2A;Unicode&#x7801;&#x70B9;&#x5199;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#x3002;</p>
 <p>&#x4E00;&#x4E2A;&#x539F;&#x751F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x5F62;&#x5F0F;&#x662F;`...`&#xFF0C;&#x4F7F;&#x7528;&#x53CD;&#x5F15;&#x53F7;&#x4EE3;&#x66FF;&#x53CC;&#x5F15;&#x53F7;&#x3002;&#x5728;&#x539F;&#x751F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#xFF0C;&#x6CA1;&#x6709;&#x8F6C;&#x4E49;&#x64CD;&#x4F5C;&#xFF1B;&#x5168;&#x90E8;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x662F;&#x5B57;&#x9762;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x5305;&#x542B;&#x9000;&#x683C;&#x548C;&#x6362;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x539F;&#x751F;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x53EF;&#x80FD;&#x8DE8;&#x8D8A;&#x591A;&#x884C;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x5728;&#x539F;&#x751F;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x5185;&#x90E8;&#x662F;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x5199;`&#x5B57;&#x7B26;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x516B;&#x8FDB;&#x5236;&#x6216;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8F6C;&#x4E49;&#x6216;+&quot;`&quot;&#x8FDE;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x5E38;&#x91CF;&#x5B8C;&#x6210;&#xFF09;&#x3002;&#x552F;&#x4E00;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x662F;&#x4F1A;&#x5220;&#x9664;&#x56DE;&#x8F66;&#x4EE5;&#x4FDD;&#x8BC1;&#x5728;&#x6240;&#x6709;&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x503C;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x5305;&#x62EC;&#x90A3;&#x4E9B;&#x628A;&#x56DE;&#x8F66;&#x4E5F;&#x653E;&#x5165;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x7CFB;&#x7EDF;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;Windows&#x7CFB;&#x7EDF;&#x4F1A;&#x628A;&#x56DE;&#x8F66;&#x548C;&#x6362;&#x884C;&#x4E00;&#x8D77;&#x653E;&#x5165;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#xFF09;&#x3002;</p>
 <p>&#x539F;&#x751F;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x7528;&#x4E8E;&#x7F16;&#x5199;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4F1A;&#x5F88;&#x65B9;&#x4FBF;&#xFF0C;&#x56E0;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5F80;&#x5F80;&#x4F1A;&#x5305;&#x542B;&#x5F88;&#x591A;&#x53CD;&#x659C;&#x6760;&#x3002;&#x539F;&#x751F;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x540C;&#x65F6;&#x88AB;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x4E8E;HTML&#x6A21;&#x677F;&#x3001;JSON&#x9762;&#x503C;&#x3001;&#x547D;&#x4EE4;&#x884C;&#x63D0;&#x793A;&#x4FE1;&#x606F;&#x4EE5;&#x53CA;&#x90A3;&#x4E9B;&#x9700;&#x8981;&#x6269;&#x5C55;&#x5230;&#x591A;&#x884C;&#x7684;&#x573A;&#x666F;&#x3002;</p>
-<pre class="language-"><code class="lang-Go">const GoUsage = `Go is a tool for managing Go source code.
+<pre><code class="lang-Go"><span class="hljs-keyword">const</span> GoUsage = <span class="hljs-string">`Go is a tool for managing Go source code.
 
 Usage:
     go command [arguments]
-...`
+...`</span>
 </code></pre>
 <h3 id="352-unicode">3.5.2. Unicode</h3>
 <p>&#x5728;&#x5F88;&#x4E45;&#x4EE5;&#x524D;&#xFF0C;&#x4E16;&#x754C;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x8D77;&#x7801;&#x8BA1;&#x7B97;&#x673A;&#x4E16;&#x754C;&#x5C31;&#x53EA;&#x6709;&#x4E00;&#x4E2A;ASCII&#x5B57;&#x7B26;&#x96C6;&#xFF1A;&#x7F8E;&#x56FD;&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x6807;&#x51C6;&#x4EE3;&#x7801;&#x3002;ASCII&#xFF0C;&#x66F4;&#x51C6;&#x786E;&#x5730;&#x8BF4;&#x662F;&#x7F8E;&#x56FD;&#x7684;ASCII&#xFF0C;&#x4F7F;&#x7528;7bit&#x6765;&#x8868;&#x793A;128&#x4E2A;&#x5B57;&#x7B26;&#xFF1A;&#x5305;&#x542B;&#x82F1;&#x6587;&#x5B57;&#x6BCD;&#x7684;&#x5927;&#x5C0F;&#x5199;&#x3001;&#x6570;&#x5B57;&#x3001;&#x5404;&#x79CD;&#x6807;&#x70B9;&#x7B26;&#x53F7;&#x548C;&#x8BBE;&#x5907;&#x63A7;&#x5236;&#x7B26;&#x3002;&#x5BF9;&#x4E8E;&#x65E9;&#x671F;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E9B;&#x5C31;&#x8DB3;&#x591F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E5F;&#x5BFC;&#x81F4;&#x4E86;&#x4E16;&#x754C;&#x4E0A;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x5730;&#x533A;&#x7684;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x7B26;&#x53F7;&#x7CFB;&#x7EDF;&#x3002;&#x968F;&#x7740;&#x4E92;&#x8054;&#x7F51;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x6DF7;&#x5408;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x7684;&#x6570;&#x636E;&#x53D8;&#x5F97;&#x5F88;&#x5E38;&#x89C1;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x6BD4;&#x5982;&#x672C;&#x8EAB;&#x7684;&#x82F1;&#x6587;&#x539F;&#x6587;&#x6216;&#x4E2D;&#x6587;&#x7FFB;&#x8BD1;&#x90FD;&#x5305;&#x542B;&#x4E86;ASCII&#x3001;&#x4E2D;&#x6587;&#x3001;&#x65E5;&#x6587;&#x7B49;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x5B57;&#x7B26;&#xFF09;&#x3002;&#x5982;&#x4F55;&#x6709;&#x6548;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x5305;&#x542B;&#x4E86;&#x5404;&#x79CD;&#x8BED;&#x8A00;&#x7684;&#x4E30;&#x5BCC;&#x591A;&#x6837;&#x7684;&#x6587;&#x672C;&#x6570;&#x636E;&#x5462;&#xFF1F;</p>
@@ -583,71 +583,71 @@ Usage:
 <p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;&#x7B26;&#x6587;&#x5E8F;&#x5217;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;int32&#x5E8F;&#x5217;&#x3002;&#x8FD9;&#x79CD;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x53EB;UTF-32&#x6216;UCS-4&#xFF0C;&#x6BCF;&#x4E2A;Unicode&#x7801;&#x70B9;&#x90FD;&#x4F7F;&#x7528;&#x540C;&#x6837;&#x5927;&#x5C0F;&#x7684;32bit&#x6765;&#x8868;&#x793A;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7EDF;&#x4E00;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4F1A;&#x6D6A;&#x8D39;&#x5F88;&#x591A;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x56E0;&#x4E3A;&#x5927;&#x591A;&#x6570;&#x8BA1;&#x7B97;&#x673A;&#x53EF;&#x8BFB;&#x7684;&#x6587;&#x672C;&#x662F;ASCII&#x5B57;&#x7B26;&#xFF0C;&#x672C;&#x6765;&#x6BCF;&#x4E2A;ASCII&#x5B57;&#x7B26;&#x53EA;&#x9700;&#x8981;8bit&#x6216;1&#x5B57;&#x8282;&#x5C31;&#x80FD;&#x8868;&#x793A;&#x3002;&#x800C;&#x4E14;&#x5373;&#x4F7F;&#x662F;&#x5E38;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x4E5F;&#x8FDC;&#x5C11;&#x4E8E;65,536&#x4E2A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x7528;16bit&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x5C31;&#x80FD;&#x8868;&#x8FBE;&#x5E38;&#x7528;&#x5B57;&#x7B26;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x5B83;&#x66F4;&#x597D;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x6CD5;&#x5417;&#xFF1F;</p>
 <h3 id="353-utf-8">3.5.3. UTF-8</h3>
 <p>UTF8&#x662F;&#x4E00;&#x4E2A;&#x5C06;Unicode&#x7801;&#x70B9;&#x7F16;&#x7801;&#x4E3A;&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x7684;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;UTF8&#x7F16;&#x7801;&#x662F;&#x7531;Go&#x8BED;&#x8A00;&#x4E4B;&#x7236;Ken Thompson&#x548C;Rob Pike&#x5171;&#x540C;&#x53D1;&#x660E;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x662F;Unicode&#x7684;&#x6807;&#x51C6;&#x3002;UTF8&#x7F16;&#x7801;&#x4F7F;&#x7528;1&#x5230;4&#x4E2A;&#x5B57;&#x8282;&#x6765;&#x8868;&#x793A;&#x6BCF;&#x4E2A;Unicode&#x7801;&#x70B9;&#xFF0C;ASCII&#x90E8;&#x5206;&#x5B57;&#x7B26;&#x53EA;&#x4F7F;&#x7528;1&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5E38;&#x7528;&#x5B57;&#x7B26;&#x90E8;&#x5206;&#x4F7F;&#x7528;2&#x6216;3&#x4E2A;&#x5B57;&#x8282;&#x8868;&#x793A;&#x3002;&#x6BCF;&#x4E2A;&#x7B26;&#x53F7;&#x7F16;&#x7801;&#x540E;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x9AD8;&#x7AEF;bit&#x4F4D;&#x7528;&#x4E8E;&#x8868;&#x793A;&#x7F16;&#x7801;&#x603B;&#x5171;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5B57;&#x8282;&#x3002;&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x9AD8;&#x7AEF;bit&#x4E3A;0&#xFF0C;&#x5219;&#x8868;&#x793A;&#x5BF9;&#x5E94;7bit&#x7684;ASCII&#x5B57;&#x7B26;&#xFF0C;ASCII&#x5B57;&#x7B26;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x4F9D;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x548C;&#x4F20;&#x7EDF;&#x7684;ASCII&#x7F16;&#x7801;&#x517C;&#x5BB9;&#x3002;&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x9AD8;&#x7AEF;bit&#x662F;110&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x9700;&#x8981;2&#x4E2A;&#x5B57;&#x8282;&#xFF1B;&#x540E;&#x7EED;&#x7684;&#x6BCF;&#x4E2A;&#x9AD8;&#x7AEF;bit&#x90FD;&#x4EE5;10&#x5F00;&#x5934;&#x3002;&#x66F4;&#x5927;&#x7684;Unicode&#x7801;&#x70B9;&#x4E5F;&#x662F;&#x91C7;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x7B56;&#x7565;&#x5904;&#x7406;&#x3002;</p>
-<pre class="language-"><code>0xxxxxxx                             runes 0-127    (ASCII)
+<pre><code>0xxxxxxx                             runes 0-127    (ASCII)
 110xxxxx 10xxxxxx                    128-2047       (values &lt;128 unused)
 1110xxxx 10xxxxxx 10xxxxxx           2048-65535     (values &lt;2048 unused)
 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx  65536-0x10ffff (other values unused)
 </code></pre><p>&#x53D8;&#x957F;&#x7684;&#x7F16;&#x7801;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x6765;&#x8BBF;&#x95EE;&#x7B2C;n&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x4F46;&#x662F;UTF8&#x7F16;&#x7801;&#x83B7;&#x5F97;&#x4E86;&#x5F88;&#x591A;&#x989D;&#x5916;&#x7684;&#x4F18;&#x70B9;&#x3002;&#x9996;&#x5148;UTF8&#x7F16;&#x7801;&#x6BD4;&#x8F83;&#x7D27;&#x51D1;&#xFF0C;&#x5B8C;&#x5168;&#x517C;&#x5BB9;ASCII&#x7801;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x540C;&#x6B65;&#xFF1A;&#x5B83;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x524D;&#x56DE;&#x6714;&#x6700;&#x591A;3&#x4E2A;&#x5B57;&#x8282;&#x5C31;&#x80FD;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x7684;&#x5F00;&#x59CB;&#x5B57;&#x8282;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x5B83;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x524D;&#x7F00;&#x7F16;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#x89E3;&#x7801;&#x65F6;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x6B67;&#x4E49;&#x4E5F;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x5411;&#x524D;&#x67E5;&#x770B;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x50CF;GBK&#x4E4B;&#x7C7B;&#x7684;&#x7F16;&#x7801;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x8D77;&#x70B9;&#x4F4D;&#x7F6E;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x6B67;&#x4E49;&#xFF09;&#x3002;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;&#x7684;&#x7F16;&#x7801;&#x662F;&#x5176;&#x5B83;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x7684;&#x5B50;&#x4E32;&#xFF0C;&#x6216;&#x662F;&#x5176;&#x5B83;&#x7F16;&#x7801;&#x5E8F;&#x5217;&#x7684;&#x5B57;&#x4E32;&#xFF0C;&#x56E0;&#x6B64;&#x641C;&#x7D22;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x65F6;&#x53EA;&#x8981;&#x641C;&#x7D22;&#x5B83;&#x7684;&#x5B57;&#x8282;&#x7F16;&#x7801;&#x5E8F;&#x5217;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x524D;&#x540E;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4F1A;&#x5BF9;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#x4EA7;&#x751F;&#x5E72;&#x6270;&#x3002;&#x540C;&#x65F6;UTF8&#x7F16;&#x7801;&#x7684;&#x987A;&#x5E8F;&#x548C;Unicode&#x7801;&#x70B9;&#x7684;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6392;&#x5E8F;UTF8&#x7F16;&#x7801;&#x5E8F;&#x5217;&#x3002;&#x540C;&#x65F6;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x5D4C;&#x5165;&#x7684;NUL(0)&#x5B57;&#x8282;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x517C;&#x5BB9;&#x90A3;&#x4E9B;&#x4F7F;&#x7528;NUL&#x4F5C;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x5C3E;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;</p>
 <p>Go&#x8BED;&#x8A00;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#x91C7;&#x7528;UTF8&#x7F16;&#x7801;&#xFF0C;&#x5E76;&#x4E14;Go&#x8BED;&#x8A00;&#x5904;&#x7406;UTF8&#x7F16;&#x7801;&#x7684;&#x6587;&#x672C;&#x4E5F;&#x5F88;&#x51FA;&#x8272;&#x3002;unicode&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x8BF8;&#x591A;&#x5904;&#x7406;rune&#x5B57;&#x7B26;&#x76F8;&#x5173;&#x529F;&#x80FD;&#x7684;&#x51FD;&#x6570;&#xFF08;&#x6BD4;&#x5982;&#x533A;&#x5206;&#x5B57;&#x6BCD;&#x548C;&#x6570;&#x5B57;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x5B57;&#x6BCD;&#x7684;&#x5927;&#x5199;&#x548C;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x7B49;&#xFF09;&#xFF0C;unicode/utf8&#x5305;&#x5219;&#x63D0;&#x4F9B;&#x4E86;&#x7528;&#x4E8E;rune&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#x7684;UTF8&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
 <p>&#x6709;&#x5F88;&#x591A;Unicode&#x5B57;&#x7B26;&#x5F88;&#x96BE;&#x76F4;&#x63A5;&#x4ECE;&#x952E;&#x76D8;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5B57;&#x7B26;&#x6709;&#x7740;&#x76F8;&#x4F3C;&#x7684;&#x7ED3;&#x6784;&#xFF1B;&#x6709;&#x4E00;&#x4E9B;&#x751A;&#x81F3;&#x662F;&#x4E0D;&#x53EF;&#x89C1;&#x7684;&#x5B57;&#x7B26;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x4E2D;&#x6587;&#x548C;&#x65E5;&#x6587;&#x5C31;&#x6709;&#x5F88;&#x591A;&#x76F8;&#x4F3C;&#x4F46;&#x4E0D;&#x540C;&#x7684;&#x5B57;&#xFF09;&#x3002;Go&#x8BED;&#x8A00;&#x5B57;&#x7B26;&#x4E32;&#x9762;&#x503C;&#x4E2D;&#x7684;Unicode&#x8F6C;&#x4E49;&#x5B57;&#x7B26;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Unicode&#x7801;&#x70B9;&#x8F93;&#x5165;&#x7279;&#x6B8A;&#x7684;&#x5B57;&#x7B26;&#x3002;&#x6709;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;<code>\uhhhh</code>&#x5BF9;&#x5E94;16bit&#x7684;&#x7801;&#x70B9;&#x503C;&#xFF0C;<code>\Uhhhhhhhh</code>&#x5BF9;&#x5E94;32bit&#x7684;&#x7801;&#x70B9;&#x503C;&#xFF0C;&#x5176;&#x4E2D;h&#x662F;&#x4E00;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x6570;&#x5B57;&#xFF1B;&#x4E00;&#x822C;&#x5F88;&#x5C11;&#x9700;&#x8981;&#x4F7F;&#x7528;32bit&#x7684;&#x5F62;&#x5F0F;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7801;&#x70B9;&#x7684;UTF8&#x7F16;&#x7801;&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x4E0B;&#x9762;&#x7684;&#x5B57;&#x6BCD;&#x4E32;&#x9762;&#x503C;&#x90FD;&#x8868;&#x793A;&#x76F8;&#x540C;&#x7684;&#x503C;&#xFF1A;</p>
-<pre class="language-"><code>&quot;&#x4E16;&#x754C;&quot;
+<pre><code>&quot;&#x4E16;&#x754C;&quot;
 &quot;\xe4\xb8\x96\xe7\x95\x8c&quot;
 &quot;\u4e16\u754c&quot;
 &quot;\U00004e16\U0000754c&quot;
 </code></pre><p>&#x4E0A;&#x9762;&#x4E09;&#x4E2A;&#x8F6C;&#x4E49;&#x5E8F;&#x5217;&#x90FD;&#x4E3A;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x63D0;&#x4F9B;&#x66FF;&#x4EE3;&#x5199;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#x90FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
 <p>Unicode&#x8F6C;&#x4E49;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5728;rune&#x5B57;&#x7B26;&#x4E2D;&#x3002;&#x4E0B;&#x9762;&#x4E09;&#x4E2A;&#x5B57;&#x7B26;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF1A;</p>
-<pre class="language-"><code>&apos;&#x4E16;&apos; &apos;\u4e16&apos; &apos;\U00004e16&apos;
+<pre><code>&apos;&#x4E16;&apos; &apos;\u4e16&apos; &apos;\U00004e16&apos;
 </code></pre><p>&#x5BF9;&#x4E8E;&#x5C0F;&#x4E8E;256&#x7684;&#x7801;&#x70B9;&#x503C;&#x53EF;&#x4EE5;&#x5199;&#x5728;&#x4E00;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8F6C;&#x4E49;&#x5B57;&#x8282;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;<code>\x41</code>&#x5BF9;&#x5E94;&#x5B57;&#x7B26;&apos;A&apos;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x66F4;&#x5927;&#x7684;&#x7801;&#x70B9;&#x5219;&#x5FC5;&#x987B;&#x4F7F;&#x7528;<code>\u</code>&#x6216;<code>\U</code>&#x8F6C;&#x4E49;&#x5F62;&#x5F0F;&#x3002;&#x56E0;&#x6B64;&#xFF0C;<code>\xe4\xb8\x96</code>&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5408;&#x6CD5;&#x7684;rune&#x5B57;&#x7B26;&#xFF0C;&#x867D;&#x7136;&#x8FD9;&#x4E09;&#x4E2A;&#x5B57;&#x8282;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;UTF8&#x7F16;&#x7801;&#x7684;&#x7801;&#x70B9;&#x3002;</p>
 <p>&#x5F97;&#x76CA;&#x4E8E;UTF8&#x7F16;&#x7801;&#x4F18;&#x826F;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x8BF8;&#x591A;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x89E3;&#x7801;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x89E3;&#x7801;&#x76F4;&#x63A5;&#x6D4B;&#x8BD5;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x524D;&#x7F00;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func HasPrefix(s, prefix string) bool {
-    return len(s) &gt;= len(prefix) &amp;&amp; s[:len(prefix)] == prefix
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> HasPrefix(s, prefix <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s) &gt;= <span class="hljs-built_in">len</span>(prefix) &amp;&amp; s[:<span class="hljs-built_in">len</span>(prefix)] == prefix
 }
 </code></pre>
 <p>&#x6216;&#x8005;&#x662F;&#x540E;&#x7F00;&#x6D4B;&#x8BD5;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func HasSuffix(s, suffix string) bool {
-    return len(s) &gt;= len(suffix) &amp;&amp; s[len(s)-len(suffix):] == suffix
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> HasSuffix(s, suffix <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(s) &gt;= <span class="hljs-built_in">len</span>(suffix) &amp;&amp; s[<span class="hljs-built_in">len</span>(s)-<span class="hljs-built_in">len</span>(suffix):] == suffix
 }
 </code></pre>
 <p>&#x6216;&#x8005;&#x662F;&#x5305;&#x542B;&#x5B50;&#x4E32;&#x6D4B;&#x8BD5;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func Contains(s, substr string) bool {
-    for i := 0; i &lt; len(s); i++ {
-        if HasPrefix(s[i:], substr) {
-            return true
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> Contains(s, substr <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span> {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(s); i++ {
+        <span class="hljs-keyword">if</span> HasPrefix(s[i:], substr) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
         }
     }
-    return false
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 }
 </code></pre>
 <p>&#x5BF9;&#x4E8E;UTF8&#x7F16;&#x7801;&#x540E;&#x6587;&#x672C;&#x7684;&#x5904;&#x7406;&#x548C;&#x539F;&#x59CB;&#x7684;&#x5B57;&#x8282;&#x5904;&#x7406;&#x903B;&#x8F91;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x4F46;&#x662F;&#x5BF9;&#x5E94;&#x5F88;&#x591A;&#x5176;&#x5B83;&#x7F16;&#x7801;&#x5219;&#x5E76;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x3002;&#xFF08;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x90FD;&#x6765;&#x81EA;strings&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;&#x5305;&#xFF0C;&#x771F;&#x5B9E;&#x7684;&#x4EE3;&#x7801;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x7528;&#x54C8;&#x5E0C;&#x6280;&#x672F;&#x4F18;&#x5316;&#x7684;Contains &#x5B9E;&#x73B0;&#x3002;&#xFF09;</p>
 <p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x771F;&#x7684;&#x5173;&#x5FC3;&#x6BCF;&#x4E2A;Unicode&#x5B57;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;&#x8003;&#x8651;&#x524D;&#x9762;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5B83;&#x6DF7;&#x5408;&#x4E86;&#x4E2D;&#x897F;&#x4E24;&#x79CD;&#x5B57;&#x7B26;&#x3002;&#x56FE;3.5&#x5C55;&#x793A;&#x4E86;&#x5B83;&#x7684;&#x5185;&#x5B58;&#x8868;&#x793A;&#x5F62;&#x5F0F;&#x3002;&#x5B57;&#x7B26;&#x4E32;&#x5305;&#x542B;13&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x4EE5;UTF8&#x5F62;&#x5F0F;&#x7F16;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x5BF9;&#x5E94;9&#x4E2A;Unicode&#x5B57;&#x7B26;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">import &quot;unicode/utf8&quot;
+<pre><code class="lang-Go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;unicode/utf8&quot;</span>
 
-s := &quot;Hello, &#x4E16;&#x754C;&quot;
-fmt.Println(len(s))                    // &quot;13&quot;
-fmt.Println(utf8.RuneCountInString(s)) // &quot;9&quot;
+s := <span class="hljs-string">&quot;Hello, &#x4E16;&#x754C;&quot;</span>
+fmt.Println(<span class="hljs-built_in">len</span>(s))                    <span class="hljs-comment">// &quot;13&quot;</span>
+fmt.Println(utf8.RuneCountInString(s)) <span class="hljs-comment">// &quot;9&quot;</span>
 </code></pre>
 <p>&#x4E3A;&#x4E86;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x771F;&#x5B9E;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;UTF8&#x89E3;&#x7801;&#x5668;&#x3002;unicode/utf8&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x8BE5;&#x529F;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">for i := 0; i &lt; len(s); {
+<pre><code class="lang-Go"><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(s); {
     r, size := utf8.DecodeRuneInString(s[i:])
-    fmt.Printf(&quot;%d\t%c\n&quot;, i, r)
+    fmt.Printf(<span class="hljs-string">&quot;%d\t%c\n&quot;</span>, i, r)
     i += size
 }
 </code></pre>
 <p>&#x6BCF;&#x4E00;&#x6B21;&#x8C03;&#x7528;DecodeRuneInString&#x51FD;&#x6570;&#x90FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;r&#x548C;&#x957F;&#x5EA6;&#xFF0C;r&#x5BF9;&#x5E94;&#x5B57;&#x7B26;&#x672C;&#x8EAB;&#xFF0C;&#x957F;&#x5EA6;&#x5BF9;&#x5E94;r&#x91C7;&#x7528;UTF8&#x7F16;&#x7801;&#x540E;&#x7684;&#x7F16;&#x7801;&#x5B57;&#x8282;&#x6570;&#x76EE;&#x3002;&#x957F;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x66F4;&#x65B0;&#x7B2C;i&#x4E2A;&#x5B57;&#x7B26;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x8282;&#x7D22;&#x5F15;&#x4F4D;&#x7F6E;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x662F;&#x7B28;&#x62D9;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x66F4;&#x7B80;&#x6D01;&#x7684;&#x8BED;&#x6CD5;&#x3002;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;Go&#x8BED;&#x8A00;&#x7684;range&#x5FAA;&#x73AF;&#x5728;&#x5904;&#x7406;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x9690;&#x5F0F;&#x89E3;&#x7801;UTF8&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x5FAA;&#x73AF;&#x8FD0;&#x884C;&#x5982;&#x56FE;3.5&#x6240;&#x793A;&#xFF1B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5BF9;&#x4E8E;&#x975E;ASCII&#xFF0C;&#x7D22;&#x5F15;&#x66F4;&#x65B0;&#x7684;&#x6B65;&#x957F;&#x5C06;&#x8D85;&#x8FC7;1&#x4E2A;&#x5B57;&#x8282;&#x3002;</p>
 <p><img src="../images/ch3-05.png" alt=""></p>
-<pre class="language-"><code class="lang-Go">for i, r := range &quot;Hello, &#x4E16;&#x754C;&quot; {
-    fmt.Printf(&quot;%d\t%q\t%d\n&quot;, i, r, r)
+<pre><code class="lang-Go"><span class="hljs-keyword">for</span> i, r := <span class="hljs-keyword">range</span> <span class="hljs-string">&quot;Hello, &#x4E16;&#x754C;&quot;</span> {
+    fmt.Printf(<span class="hljs-string">&quot;%d\t%q\t%d\n&quot;</span>, i, r, r)
 }
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5FAA;&#x73AF;&#x6765;&#x7EDF;&#x8BA1;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x76EE;&#xFF0C;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">n := 0
-for _, _ = range s {
+<pre><code class="lang-Go">n := <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> _, _ = <span class="hljs-keyword">range</span> s {
     n++
 }
 </code></pre>
 <p>&#x50CF;&#x5176;&#x5B83;&#x5F62;&#x5F0F;&#x7684;&#x5FAA;&#x73AF;&#x90A3;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x53D8;&#x91CF;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">n := 0
-for range s {
+<pre><code class="lang-Go">n := <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> <span class="hljs-keyword">range</span> s {
     n++
 }
 </code></pre>
@@ -656,22 +656,22 @@ for range s {
 <p>&#x6BCF;&#x4E00;&#x4E2A;UTF8&#x5B57;&#x7B26;&#x89E3;&#x7801;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x663E;&#x5F0F;&#x5730;&#x8C03;&#x7528;utf8.DecodeRuneInString&#x89E3;&#x7801;&#x6216;&#x662F;&#x5728;range&#x5FAA;&#x73AF;&#x4E2D;&#x9690;&#x5F0F;&#x5730;&#x89E3;&#x7801;&#xFF0C;&#x5982;&#x679C;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;UTF8&#x7F16;&#x7801;&#x8F93;&#x5165;&#xFF0C;&#x5C06;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7279;&#x522B;&#x7684;Unicode&#x5B57;&#x7B26;<code>\uFFFD</code>&#xFF0C;&#x5728;&#x5370;&#x5237;&#x4E2D;&#x8FD9;&#x4E2A;&#x7B26;&#x53F7;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x9ED1;&#x8272;&#x516D;&#x89D2;&#x6216;&#x94BB;&#x77F3;&#x5F62;&#x72B6;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x767D;&#x8272;&#x7684;&#x95EE;&#x53F7;&quot;?&quot;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x9047;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x5371;&#x9669;&#x4FE1;&#x53F7;&#xFF0C;&#x8BF4;&#x660E;&#x8F93;&#x5165;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x7F8E;&#x6CA1;&#x6709;&#x9519;&#x8BEF;&#x7684;UTF8&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <p>UTF8&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x4EA4;&#x6362;&#x683C;&#x5F0F;&#x662F;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x7A0B;&#x5E8F;&#x5185;&#x90E8;&#x91C7;&#x7528;rune&#x5E8F;&#x5217;&#x53EF;&#x80FD;&#x66F4;&#x65B9;&#x4FBF;&#xFF0C;&#x56E0;&#x4E3A;rune&#x5927;&#x5C0F;&#x4E00;&#x81F4;&#xFF0C;&#x652F;&#x6301;&#x6570;&#x7EC4;&#x7D22;&#x5F15;&#x548C;&#x65B9;&#x4FBF;&#x5207;&#x5272;&#x3002;</p>
 <p>&#x5C06;[]rune&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5E94;&#x7528;&#x5230;UTF8&#x7F16;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5C06;&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;&#x7F16;&#x7801;&#x7684;Unicode&#x7801;&#x70B9;&#x5E8F;&#x5217;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">// &quot;program&quot; in Japanese katakana
-s := &quot;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&quot;
-fmt.Printf(&quot;% x\n&quot;, s) // &quot;e3 83 97 e3 83 ad e3 82 b0 e3 83 a9 e3 83 a0&quot;
-r := []rune(s)
-fmt.Printf(&quot;%x\n&quot;, r)  // &quot;[30d7 30ed 30b0 30e9 30e0]&quot;
+<pre><code class="lang-Go"><span class="hljs-comment">// &quot;program&quot; in Japanese katakana</span>
+s := <span class="hljs-string">&quot;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&quot;</span>
+fmt.Printf(<span class="hljs-string">&quot;% x\n&quot;</span>, s) <span class="hljs-comment">// &quot;e3 83 97 e3 83 ad e3 82 b0 e3 83 a9 e3 83 a0&quot;</span>
+r := []<span class="hljs-keyword">rune</span>(s)
+fmt.Printf(<span class="hljs-string">&quot;%x\n&quot;</span>, r)  <span class="hljs-comment">// &quot;[30d7 30ed 30b0 30e9 30e0]&quot;</span>
 </code></pre>
 <p>&#xFF08;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;Printf&#x4E2D;&#x7684;<code>% x</code>&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x5728;&#x6BCF;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x6570;&#x5B57;&#x524D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x7A7A;&#x683C;&#x3002;&#xFF09;</p>
 <p>&#x5982;&#x679C;&#x662F;&#x5C06;&#x4E00;&#x4E2A;[]rune&#x7C7B;&#x578B;&#x7684;Unicode&#x5B57;&#x7B26;slice&#x6216;&#x6570;&#x7EC4;&#x8F6C;&#x4E3A;string&#xFF0C;&#x5219;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;UTF8&#x7F16;&#x7801;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(string(r)) // &quot;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&quot;
+<pre><code class="lang-Go">fmt.Println(<span class="hljs-keyword">string</span>(r)) <span class="hljs-comment">// &quot;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&quot;</span>
 </code></pre>
 <p>&#x5C06;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x8F6C;&#x578B;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x610F;&#x601D;&#x662F;&#x751F;&#x6210;&#x4EE5;&#x53EA;&#x5305;&#x542B;&#x5BF9;&#x5E94;Unicode&#x7801;&#x70B9;&#x5B57;&#x7B26;&#x7684;UTF8&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(string(65))     // &quot;A&quot;, not &quot;65&quot;
-fmt.Println(string(0x4eac)) // &quot;&#x4EAC;&quot;
+<pre><code class="lang-Go">fmt.Println(<span class="hljs-keyword">string</span>(<span class="hljs-number">65</span>))     <span class="hljs-comment">// &quot;A&quot;, not &quot;65&quot;</span>
+fmt.Println(<span class="hljs-keyword">string</span>(<span class="hljs-number">0x4eac</span>)) <span class="hljs-comment">// &quot;&#x4EAC;&quot;</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x5BF9;&#x5E94;&#x7801;&#x70B9;&#x7684;&#x5B57;&#x7B26;&#x662F;&#x65E0;&#x6548;&#x7684;&#xFF0C;&#x5219;&#x7528;<code>\uFFFD</code>&#x65E0;&#x6548;&#x5B57;&#x7B26;&#x4F5C;&#x4E3A;&#x66FF;&#x6362;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(string(1234567)) // &quot;?&quot;
+<pre><code class="lang-Go">fmt.Println(<span class="hljs-keyword">string</span>(<span class="hljs-number">1234567</span>)) <span class="hljs-comment">// &quot;?&quot;</span>
 </code></pre>
 <h3 id="354-&#x5B57;&#x7B26;&#x4E32;&#x548C;byte&#x5207;&#x7247;">3.5.4. &#x5B57;&#x7B26;&#x4E32;&#x548C;Byte&#x5207;&#x7247;</h3>
 <p>&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x6709;&#x56DB;&#x4E2A;&#x5305;&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x5904;&#x7406;&#x5C24;&#x4E3A;&#x91CD;&#x8981;&#xFF1A;bytes&#x3001;strings&#x3001;strconv&#x548C;unicode&#x5305;&#x3002;strings&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x8BB8;&#x591A;&#x5982;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x67E5;&#x8BE2;&#x3001;&#x66FF;&#x6362;&#x3001;&#x6BD4;&#x8F83;&#x3001;&#x622A;&#x65AD;&#x3001;&#x62C6;&#x5206;&#x548C;&#x5408;&#x5E76;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
@@ -679,98 +679,98 @@ fmt.Println(string(0x4eac)) // &quot;&#x4EAC;&quot;
 <p>strconv&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x5E03;&#x5C14;&#x578B;&#x3001;&#x6574;&#x578B;&#x6570;&#x3001;&#x6D6E;&#x70B9;&#x6570;&#x548C;&#x5BF9;&#x5E94;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x53CC;&#x5F15;&#x53F7;&#x8F6C;&#x4E49;&#x76F8;&#x5173;&#x7684;&#x8F6C;&#x6362;&#x3002;</p>
 <p>unicode&#x5305;&#x63D0;&#x4F9B;&#x4E86;IsDigit&#x3001;IsLetter&#x3001;IsUpper&#x548C;IsLower&#x7B49;&#x7C7B;&#x4F3C;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x4EEC;&#x7528;&#x4E8E;&#x7ED9;&#x5B57;&#x7B26;&#x5206;&#x7C7B;&#x3002;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x7684;rune&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;&#x3002;&#x800C;&#x50CF;ToUpper&#x548C;ToLower&#x4E4B;&#x7C7B;&#x7684;&#x8F6C;&#x6362;&#x51FD;&#x6570;&#x5C06;&#x7528;&#x4E8E;rune&#x5B57;&#x7B26;&#x7684;&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x3002;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x9075;&#x5FAA;Unicode&#x6807;&#x51C6;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x6BCD;&#x3001;&#x6570;&#x5B57;&#x7B49;&#x5206;&#x7C7B;&#x89C4;&#x8303;&#x3002;strings&#x5305;&#x4E5F;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;ToUpper&#x548C;ToLower&#xFF0C;&#x5C06;&#x539F;&#x59CB;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;&#x90FD;&#x505A;&#x76F8;&#x5E94;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x7684;basename&#x51FD;&#x6570;&#x7075;&#x611F;&#x6E90;&#x4E8E;Unix shell&#x7684;&#x540C;&#x540D;&#x5DE5;&#x5177;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x7684;&#x7248;&#x672C;&#x4E2D;&#xFF0C;basename(s)&#x5C06;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x662F;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;&#x7684;&#x524D;&#x7F00;&#x5220;&#x9664;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x770B;&#x4F3C;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x7684;&#x540E;&#x7F00;&#x540D;&#x90E8;&#x5206;&#x5220;&#x9664;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(basename(&quot;a/b/c.go&quot;)) // &quot;c&quot;
-fmt.Println(basename(&quot;c.d.go&quot;))   // &quot;c.d&quot;
-fmt.Println(basename(&quot;abc&quot;))      // &quot;abc&quot;
+<pre><code class="lang-Go">fmt.Println(basename(<span class="hljs-string">&quot;a/b/c.go&quot;</span>)) <span class="hljs-comment">// &quot;c&quot;</span>
+fmt.Println(basename(<span class="hljs-string">&quot;c.d.go&quot;</span>))   <span class="hljs-comment">// &quot;c.d&quot;</span>
+fmt.Println(basename(<span class="hljs-string">&quot;abc&quot;</span>))      <span class="hljs-comment">// &quot;abc&quot;</span>
 </code></pre>
 <p>&#x7B2C;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x5E76;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x5E93;&#xFF0C;&#x5168;&#x90E8;&#x624B;&#x5DE5;&#x786C;&#x7F16;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</p>
 <p><u><i>gopl.io/ch3/basename1</i></u></p>
-<pre class="language-"><code class="lang-Go">// basename removes directory components and a .suffix.
-// e.g., a =&gt; a, a.go =&gt; a, a/b/c.go =&gt; c, a/b.c.go =&gt; b.c
-func basename(s string) string {
-    // Discard last &apos;/&apos; and everything before.
-    for i := len(s) - 1; i &gt;= 0; i-- {
-        if s[i] == &apos;/&apos; {
-            s = s[i+1:]
-            break
+<pre><code class="lang-Go"><span class="hljs-comment">// basename removes directory components and a .suffix.</span>
+<span class="hljs-comment">// e.g., a =&gt; a, a.go =&gt; a, a/b/c.go =&gt; c, a/b.c.go =&gt; b.c</span>
+<span class="hljs-keyword">func</span> basename(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span> {
+    <span class="hljs-comment">// Discard last &apos;/&apos; and everything before.</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(s) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
+        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&apos;/&apos;</span> {
+            s = s[i+<span class="hljs-number">1</span>:]
+            <span class="hljs-keyword">break</span>
         }
     }
-    // Preserve everything before last &apos;.&apos;.
-    for i := len(s) - 1; i &gt;= 0; i-- {
-        if s[i] == &apos;.&apos; {
+    <span class="hljs-comment">// Preserve everything before last &apos;.&apos;.</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(s) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
+        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&apos;.&apos;</span> {
             s = s[:i]
-            break
+            <span class="hljs-keyword">break</span>
         }
     }
-    return s
+    <span class="hljs-keyword">return</span> s
 }
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x7B80;&#x5316;&#x7248;&#x672C;&#x4F7F;&#x7528;&#x4E86;strings.LastIndex&#x5E93;&#x51FD;&#x6570;&#xFF1A;</p>
 <p><u><i>gopl.io/ch3/basename2</i></u></p>
-<pre class="language-"><code class="lang-Go">func basename(s string) string {
-    slash := strings.LastIndex(s, &quot;/&quot;) // -1 if &quot;/&quot; not found
-    s = s[slash+1:]
-    if dot := strings.LastIndex(s, &quot;.&quot;); dot &gt;= 0 {
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> basename(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span> {
+    slash := strings.LastIndex(s, <span class="hljs-string">&quot;/&quot;</span>) <span class="hljs-comment">// -1 if &quot;/&quot; not found</span>
+    s = s[slash+<span class="hljs-number">1</span>:]
+    <span class="hljs-keyword">if</span> dot := strings.LastIndex(s, <span class="hljs-string">&quot;.&quot;</span>); dot &gt;= <span class="hljs-number">0</span> {
         s = s[:dot]
     }
-    return s
+    <span class="hljs-keyword">return</span> s
 }
 </code></pre>
 <p>path&#x548C;path/filepath&#x5305;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x4E8E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x540D;&#x66F4;&#x4E00;&#x822C;&#x7684;&#x51FD;&#x6570;&#x64CD;&#x4F5C;&#x3002;&#x4F7F;&#x7528;&#x659C;&#x6760;&#x5206;&#x9694;&#x8DEF;&#x5F84;&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0A;&#x5DE5;&#x4F5C;&#x3002;&#x659C;&#x6760;&#x672C;&#x8EAB;&#x4E0D;&#x5E94;&#x8BE5;&#x7528;&#x4E8E;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x9886;&#x57DF;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x4E8E;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4F8B;&#x5982;URL&#x8DEF;&#x5F84;&#x7EC4;&#x4EF6;&#x3002;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;path/filepath&#x5305;&#x5219;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x672C;&#x8EAB;&#x7684;&#x8DEF;&#x5F84;&#x89C4;&#x5219;&#xFF0C;&#x4F8B;&#x5982;POSIX&#x7CFB;&#x7EDF;&#x4F7F;&#x7528;/foo/bar&#xFF0C;&#x800C;Microsoft Windows&#x4F7F;&#x7528;<code>c:\foo\bar</code>&#x7B49;&#x3002;</p>
 <p>&#x8BA9;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x51FD;&#x6570;&#x7684;&#x529F;&#x80FD;&#x662F;&#x5C06;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x6574;&#x6570;&#x503C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6BCF;&#x9694;&#x4E09;&#x4E2A;&#x5B57;&#x7B26;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x4F8B;&#x5982;&#x201C;12345&#x201D;&#x5904;&#x7406;&#x540E;&#x6210;&#x4E3A;&#x201C;12,345&#x201D;&#x3002;&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x6574;&#x6570;&#x7C7B;&#x578B;&#xFF1B;&#x652F;&#x6301;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x7559;&#x4F5C;&#x7EC3;&#x4E60;&#x3002;</p>
 <p><u><i>gopl.io/ch3/comma</i></u></p>
-<pre class="language-"><code class="lang-Go">// comma inserts commas in a non-negative decimal integer string.
-func comma(s string) string {
-    n := len(s)
-    if n &lt;= 3 {
-        return s
+<pre><code class="lang-Go"><span class="hljs-comment">// comma inserts commas in a non-negative decimal integer string.</span>
+<span class="hljs-keyword">func</span> comma(s <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span> {
+    n := <span class="hljs-built_in">len</span>(s)
+    <span class="hljs-keyword">if</span> n &lt;= <span class="hljs-number">3</span> {
+        <span class="hljs-keyword">return</span> s
     }
-    return comma(s[:n-3]) + &quot;,&quot; + s[n-3:]
+    <span class="hljs-keyword">return</span> comma(s[:n<span class="hljs-number">-3</span>]) + <span class="hljs-string">&quot;,&quot;</span> + s[n<span class="hljs-number">-3</span>:]
 }
 </code></pre>
 <p>&#x8F93;&#x5165;comma&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x5982;&#x679C;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x5C0F;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;3&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x63D2;&#x5165;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7B26;&#x3002;&#x5426;&#x5219;&#xFF0C;comma&#x51FD;&#x6570;&#x5C06;&#x5728;&#x6700;&#x540E;&#x4E09;&#x4E2A;&#x5B57;&#x7B26;&#x524D;&#x7684;&#x4F4D;&#x7F6E;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x5207;&#x5272;&#x4E3A;&#x4E24;&#x4E2A;&#x5B50;&#x4E32;&#x5E76;&#x63D2;&#x5165;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x81EA;&#x8EAB;&#x6765;&#x5F97;&#x51FA;&#x524D;&#x9762;&#x7684;&#x5B50;&#x4E32;&#x3002;</p>
 <p>&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5305;&#x542B;&#x53EA;&#x8BFB;&#x5B57;&#x8282;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#xFF0C;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x3002;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;slice&#x7684;&#x5143;&#x7D20;&#x5219;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5730;&#x4FEE;&#x6539;&#x3002;</p>
 <p>&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x5B57;&#x8282;slice&#x4E4B;&#x95F4;&#x53EF;&#x4EE5;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">s := &quot;abc&quot;
-b := []byte(s)
-s2 := string(b)
+<pre><code class="lang-Go">s := <span class="hljs-string">&quot;abc&quot;</span>
+b := []<span class="hljs-keyword">byte</span>(s)
+s2 := <span class="hljs-keyword">string</span>(b)
 </code></pre>
 <p>&#x4ECE;&#x6982;&#x5FF5;&#x4E0A;&#x8BB2;&#xFF0C;&#x4E00;&#x4E2A;[]byte(s)&#x8F6C;&#x6362;&#x662F;&#x5206;&#x914D;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;&#x7684;&#x62F7;&#x8D1D;&#xFF0C;&#x7136;&#x540E;&#x5F15;&#x7528;&#x8FD9;&#x4E2A;&#x5E95;&#x5C42;&#x7684;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x4F18;&#x5316;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5728;&#x4E00;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x5206;&#x914D;&#x548C;&#x590D;&#x5236;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x603B;&#x7684;&#x6765;&#x8BF4;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x5728;&#x53D8;&#x91CF;b&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x539F;&#x59CB;&#x7684;s&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x8282;slice&#x8F6C;&#x6362;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x7684;string(b)&#x64CD;&#x4F5C;&#x5219;&#x662F;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x62F7;&#x8D1D;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;s2&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x53EA;&#x8BFB;&#x7684;&#x3002;</p>
 <p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8F6C;&#x6362;&#x4E2D;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#xFF0C;bytes&#x5305;&#x548C;strings&#x540C;&#x65F6;&#x63D0;&#x4F9B;&#x4E86;&#x8BB8;&#x591A;&#x5B9E;&#x7528;&#x51FD;&#x6570;&#x3002;&#x4E0B;&#x9762;&#x662F;strings&#x5305;&#x4E2D;&#x7684;&#x516D;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func Contains(s, substr string) bool
-func Count(s, sep string) int
-func Fields(s string) []string
-func HasPrefix(s, prefix string) bool
-func Index(s, sep string) int
-func Join(a []string, sep string) string
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> Contains(s, substr <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span>
+<span class="hljs-keyword">func</span> Count(s, sep <span class="hljs-keyword">string</span>) <span class="hljs-keyword">int</span>
+<span class="hljs-keyword">func</span> Fields(s <span class="hljs-keyword">string</span>) []<span class="hljs-keyword">string</span>
+<span class="hljs-keyword">func</span> HasPrefix(s, prefix <span class="hljs-keyword">string</span>) <span class="hljs-keyword">bool</span>
+<span class="hljs-keyword">func</span> Index(s, sep <span class="hljs-keyword">string</span>) <span class="hljs-keyword">int</span>
+<span class="hljs-keyword">func</span> Join(a []<span class="hljs-keyword">string</span>, sep <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span>
 </code></pre>
 <p>bytes&#x5305;&#x4E2D;&#x4E5F;&#x5BF9;&#x5E94;&#x7684;&#x516D;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func Contains(b, subslice []byte) bool
-func Count(s, sep []byte) int
-func Fields(s []byte) [][]byte
-func HasPrefix(s, prefix []byte) bool
-func Index(s, sep []byte) int
-func Join(s [][]byte, sep []byte) []byte
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> Contains(b, subslice []<span class="hljs-keyword">byte</span>) <span class="hljs-keyword">bool</span>
+<span class="hljs-keyword">func</span> Count(s, sep []<span class="hljs-keyword">byte</span>) <span class="hljs-keyword">int</span>
+<span class="hljs-keyword">func</span> Fields(s []<span class="hljs-keyword">byte</span>) [][]<span class="hljs-keyword">byte</span>
+<span class="hljs-keyword">func</span> HasPrefix(s, prefix []<span class="hljs-keyword">byte</span>) <span class="hljs-keyword">bool</span>
+<span class="hljs-keyword">func</span> Index(s, sep []<span class="hljs-keyword">byte</span>) <span class="hljs-keyword">int</span>
+<span class="hljs-keyword">func</span> Join(s [][]<span class="hljs-keyword">byte</span>, sep []<span class="hljs-keyword">byte</span>) []<span class="hljs-keyword">byte</span>
 </code></pre>
 <p>&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x88AB;&#x66FF;&#x6362;&#x6210;&#x4E86;&#x5B57;&#x8282;slice&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
 <p>bytes&#x5305;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;Buffer&#x7C7B;&#x578B;&#x7528;&#x4E8E;&#x5B57;&#x8282;slice&#x7684;&#x7F13;&#x5B58;&#x3002;&#x4E00;&#x4E2A;Buffer&#x5F00;&#x59CB;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x968F;&#x7740;string&#x3001;byte&#x6216;[]byte&#x7B49;&#x7C7B;&#x578B;&#x6570;&#x636E;&#x7684;&#x5199;&#x5165;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x589E;&#x957F;&#xFF0C;&#x4E00;&#x4E2A;bytes.Buffer&#x53D8;&#x91CF;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x56E0;&#x4E3A;&#x96F6;&#x503C;&#x4E5F;&#x662F;&#x6709;&#x6548;&#x7684;&#xFF1A;</p>
 <p><u><i>gopl.io/ch3/printints</i></u></p>
-<pre class="language-"><code class="lang-Go">// intsToString is like fmt.Sprint(values) but adds commas.
-func intsToString(values []int) string {
-    var buf bytes.Buffer
-    buf.WriteByte(&apos;[&apos;)
-    for i, v := range values {
-        if i &gt; 0 {
-            buf.WriteString(&quot;, &quot;)
+<pre><code class="lang-Go"><span class="hljs-comment">// intsToString is like fmt.Sprint(values) but adds commas.</span>
+<span class="hljs-keyword">func</span> intsToString(values []<span class="hljs-keyword">int</span>) <span class="hljs-keyword">string</span> {
+    <span class="hljs-keyword">var</span> buf bytes.Buffer
+    buf.WriteByte(<span class="hljs-string">&apos;[&apos;</span>)
+    <span class="hljs-keyword">for</span> i, v := <span class="hljs-keyword">range</span> values {
+        <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">0</span> {
+            buf.WriteString(<span class="hljs-string">&quot;, &quot;</span>)
         }
-        fmt.Fprintf(&amp;buf, &quot;%d&quot;, v)
+        fmt.Fprintf(&amp;buf, <span class="hljs-string">&quot;%d&quot;</span>, v)
     }
-    buf.WriteByte(&apos;]&apos;)
-    return buf.String()
+    buf.WriteByte(<span class="hljs-string">&apos;]&apos;</span>)
+    <span class="hljs-keyword">return</span> buf.String()
 }
 
-func main() {
-    fmt.Println(intsToString([]int{1, 2, 3})) // &quot;[1, 2, 3]&quot;
+<span class="hljs-keyword">func</span> main() {
+    fmt.Println(intsToString([]<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>})) <span class="hljs-comment">// &quot;[1, 2, 3]&quot;</span>
 }
 </code></pre>
 <p>&#x5F53;&#x5411;bytes.Buffer&#x6DFB;&#x52A0;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x7684;UTF8&#x7F16;&#x7801;&#x65F6;&#xFF0C;&#x6700;&#x597D;&#x4F7F;&#x7528;bytes.Buffer&#x7684;WriteRune&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;WriteByte&#x65B9;&#x6CD5;&#x5BF9;&#x4E8E;&#x5199;&#x5165;&#x7C7B;&#x4F3C;&apos;[&apos;&#x548C;&apos;]&apos;&#x7B49;ASCII&#x5B57;&#x7B26;&#x5219;&#x4F1A;&#x66F4;&#x52A0;&#x6709;&#x6548;&#x3002;</p>
@@ -781,19 +781,19 @@ func main() {
 <h3 id="355-&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x5B57;&#x7684;&#x8F6C;&#x6362;">3.5.5. &#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x5B57;&#x7684;&#x8F6C;&#x6362;</h3>
 <p>&#x9664;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x3001;&#x5B57;&#x7B26;&#x3001;&#x5B57;&#x8282;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E5F;&#x6BD4;&#x8F83;&#x5E38;&#x89C1;&#x3002;&#x7531;strconv&#x5305;&#x63D0;&#x4F9B;&#x8FD9;&#x7C7B;&#x8F6C;&#x6362;&#x529F;&#x80FD;&#x3002;</p>
 <p>&#x5C06;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x8F6C;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x7528;fmt.Sprintf&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x683C;&#x5F0F;&#x5316;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x7528;strconv.Itoa(&#x201C;&#x6574;&#x6570;&#x5230;ASCII&#x201D;)&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">x := 123
-y := fmt.Sprintf(&quot;%d&quot;, x)
-fmt.Println(y, strconv.Itoa(x)) // &quot;123 123&quot;
+<pre><code class="lang-Go">x := <span class="hljs-number">123</span>
+y := fmt.Sprintf(<span class="hljs-string">&quot;%d&quot;</span>, x)
+fmt.Println(y, strconv.Itoa(x)) <span class="hljs-comment">// &quot;123 123&quot;</span>
 </code></pre>
 <p>FormatInt&#x548C;FormatUint&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x8FDB;&#x5236;&#x6765;&#x683C;&#x5F0F;&#x5316;&#x6570;&#x5B57;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">fmt.Println(strconv.FormatInt(int64(x), 2)) // &quot;1111011&quot;
+<pre><code class="lang-Go">fmt.Println(strconv.FormatInt(<span class="hljs-keyword">int64</span>(x), <span class="hljs-number">2</span>)) <span class="hljs-comment">// &quot;1111011&quot;</span>
 </code></pre>
 <p>fmt.Printf&#x51FD;&#x6570;&#x7684;%b&#x3001;%d&#x3001;%o&#x548C;%x&#x7B49;&#x53C2;&#x6570;&#x63D0;&#x4F9B;&#x529F;&#x80FD;&#x5F80;&#x5F80;&#x6BD4;strconv&#x5305;&#x7684;Format&#x51FD;&#x6570;&#x65B9;&#x4FBF;&#x5F88;&#x591A;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5728;&#x9700;&#x8981;&#x5305;&#x542B;&#x6709;&#x9644;&#x52A0;&#x989D;&#x5916;&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">s := fmt.Sprintf(&quot;x=%b&quot;, x) // &quot;x=1111011&quot;
+<pre><code class="lang-Go">s := fmt.Sprintf(<span class="hljs-string">&quot;x=%b&quot;</span>, x) <span class="hljs-comment">// &quot;x=1111011&quot;</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x8981;&#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x89E3;&#x6790;&#x4E3A;&#x6574;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;strconv&#x5305;&#x7684;Atoi&#x6216;ParseInt&#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x6709;&#x7528;&#x4E8E;&#x89E3;&#x6790;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7684;ParseUint&#x51FD;&#x6570;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">x, err := strconv.Atoi(&quot;123&quot;)             // x is an int
-y, err := strconv.ParseInt(&quot;123&quot;, 10, 64) // base 10, up to 64 bits
+<pre><code class="lang-Go">x, err := strconv.Atoi(<span class="hljs-string">&quot;123&quot;</span>)             <span class="hljs-comment">// x is an int</span>
+y, err := strconv.ParseInt(<span class="hljs-string">&quot;123&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">64</span>) <span class="hljs-comment">// base 10, up to 64 bits</span>
 </code></pre>
 <p>ParseInt&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x6574;&#x578B;&#x6570;&#x7684;&#x5927;&#x5C0F;&#xFF1B;&#x4F8B;&#x5982;16&#x8868;&#x793A;int16&#xFF0C;0&#x5219;&#x8868;&#x793A;int&#x3002;&#x5728;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;y&#x603B;&#x662F;int64&#x7C7B;&#x578B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x5C06;&#x5B83;&#x8F6C;&#x4E3A;&#x66F4;&#x5C0F;&#x7684;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x3002;</p>
 <p>&#x6709;&#x65F6;&#x5019;&#x4E5F;&#x4F1A;&#x4F7F;&#x7528;fmt.Scanf&#x6765;&#x89E3;&#x6790;&#x8F93;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x5B57;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5F53;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x6570;&#x5B57;&#x6DF7;&#x5408;&#x5728;&#x4E00;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7075;&#x6D3B;&#x5904;&#x7406;&#x4E0D;&#x5B8C;&#x6574;&#x6216;&#x4E0D;&#x89C4;&#x5219;&#x7684;&#x8F93;&#x5165;&#x3002;</p>
@@ -842,9 +842,13 @@ y, err := strconv.ParseInt(&quot;123&quot;, 10, 64) // base 10, up to 64 bits
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"字符串","level":"1.4.5","depth":2,"next":{"title":"常量","level":"1.4.6","depth":2,"path":"ch3/ch3-06.md","ref":"ch3/ch3-06.md","articles":[]},"previous":{"title":"布尔型","level":"1.4.4","depth":2,"path":"ch3/ch3-04.md","ref":"ch3/ch3-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-05.md","mtime":"2019-03-26T06:34:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"字符串","level":"1.4.5","depth":2,"next":{"title":"常量","level":"1.4.6","depth":2,"path":"ch3/ch3-06.md","ref":"ch3/ch3-06.md","articles":[]},"previous":{"title":"布尔型","level":"1.4.4","depth":2,"path":"ch3/ch3-04.md","ref":"ch3/ch3-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch3/ch3-05.md","mtime":"2019-08-14T08:20:28.117Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

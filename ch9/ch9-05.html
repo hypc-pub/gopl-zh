@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -552,83 +552,83 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="95-synconce&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;">9.5. sync.Once&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;</h2>
 <p>&#x5982;&#x679C;&#x521D;&#x59CB;&#x5316;&#x6210;&#x672C;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x521D;&#x59CB;&#x5316;&#x5EF6;&#x8FDF;&#x5230;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x518D;&#x53BB;&#x505A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002;&#x5982;&#x679C;&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53BB;&#x505A;&#x8FD9;&#x7C7B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x589E;&#x52A0;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x4E14;&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x4E5F;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x4E0A;&#x6709;&#x4E00;&#x4E9B;&#x6D6A;&#x8D39;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x5728;&#x672C;&#x7AE0;&#x65E9;&#x4E00;&#x4E9B;&#x65F6;&#x5019;&#x7684;icons&#x53D8;&#x91CF;&#xFF1A;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> icons <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> icons <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x7684;Icon&#x7528;&#x5230;&#x4E86;&#x61D2;&#x521D;&#x59CB;&#x5316;&#xFF08;lazy initialization&#xFF09;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">loadIcons</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    icons <span class="token operator">=</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image<span class="token punctuation">{</span>
-        <span class="token string">&quot;spades.png&quot;</span><span class="token punctuation">:</span>   <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;spades.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">&quot;hearts.png&quot;</span><span class="token punctuation">:</span>   <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;hearts.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">&quot;diamonds.png&quot;</span><span class="token punctuation">:</span> <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;diamonds.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">&quot;clubs.png&quot;</span><span class="token punctuation">:</span>    <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;clubs.png&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> loadIcons() {
+    icons = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image{
+        <span class="hljs-string">&quot;spades.png&quot;</span>:   loadIcon(<span class="hljs-string">&quot;spades.png&quot;</span>),
+        <span class="hljs-string">&quot;hearts.png&quot;</span>:   loadIcon(<span class="hljs-string">&quot;hearts.png&quot;</span>),
+        <span class="hljs-string">&quot;diamonds.png&quot;</span>: loadIcon(<span class="hljs-string">&quot;diamonds.png&quot;</span>),
+        <span class="hljs-string">&quot;clubs.png&quot;</span>:    loadIcon(<span class="hljs-string">&quot;clubs.png&quot;</span>),
+    }
+}
 
-<span class="token comment">// NOTE: not concurrency-safe!</span>
-<span class="token keyword">func</span> <span class="token function">Icon</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> image<span class="token punctuation">.</span>Image <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> icons <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token function">loadIcons</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// one-time initialization</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> icons<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> not concurrency-safe!</span>
+<span class="hljs-keyword">func</span> Icon(name <span class="hljs-keyword">string</span>) image.Image {
+    <span class="hljs-keyword">if</span> icons == <span class="hljs-literal">nil</span> {
+        loadIcons() <span class="hljs-comment">// one-time initialization</span>
+    }
+    <span class="hljs-keyword">return</span> icons[name]
+}
 </code></pre>
 <p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EA;&#x88AB;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;goroutine&#x6240;&#x8BBF;&#x95EE;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x8FD9;&#x79CD;&#x6A21;&#x677F;&#xFF0C;&#x4F46;&#x8FD9;&#x79CD;&#x6A21;&#x677F;&#x5728;Icon&#x88AB;&#x5E76;&#x53D1;&#x8C03;&#x7528;&#x65F6;&#x5E76;&#x4E0D;&#x5B89;&#x5168;&#x3002;&#x5C31;&#x50CF;&#x524D;&#x9762;&#x94F6;&#x884C;&#x7684;&#x90A3;&#x4E2A;Deposit(&#x5B58;&#x6B3E;)&#x51FD;&#x6570;&#x4E00;&#x6837;&#xFF0C;Icon&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x7531;&#x591A;&#x4E2A;&#x6B65;&#x9AA4;&#x7EC4;&#x6210;&#x7684;&#xFF1A;&#x9996;&#x5148;&#x6D4B;&#x8BD5;icons&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x7136;&#x540E;load&#x8FD9;&#x4E9B;icons&#xFF0C;&#x4E4B;&#x540E;&#x5C06;icons&#x66F4;&#x65B0;&#x4E3A;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x7684;&#x503C;&#x3002;&#x76F4;&#x89C9;&#x4F1A;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x6700;&#x5DEE;&#x7684;&#x60C5;&#x51B5;&#x662F;loadIcons&#x51FD;&#x6570;&#x88AB;&#x591A;&#x6B21;&#x8BBF;&#x95EE;&#x4F1A;&#x5E26;&#x6765;&#x6570;&#x636E;&#x7ADE;&#x4E89;&#x3002;&#x5F53;&#x7B2C;&#x4E00;&#x4E2A;goroutine&#x5728;&#x5FD9;&#x7740;loading&#x8FD9;&#x4E9B;icons&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;goroutine&#x8FDB;&#x5165;&#x4E86;Icon&#x51FD;&#x6570;&#xFF0C;&#x53D1;&#x73B0;&#x53D8;&#x91CF;&#x662F;nil&#xFF0C;&#x7136;&#x540E;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;loadIcons&#x51FD;&#x6570;&#x3002;</p>
 <p>&#x4E0D;&#x8FC7;&#x8FD9;&#x79CD;&#x76F4;&#x89C9;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x3002;&#xFF08;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x4F60;&#x4ECE;&#x73B0;&#x5728;&#x5F00;&#x59CB;&#x80FD;&#x591F;&#x6784;&#x5EFA;&#x81EA;&#x5DF1;&#x5BF9;&#x5E76;&#x53D1;&#x7684;&#x76F4;&#x89C9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5BF9;&#x5E76;&#x53D1;&#x7684;&#x76F4;&#x89C9;&#x603B;&#x662F;&#x4E0D;&#x80FD;&#x88AB;&#x4FE1;&#x4EFB;&#x7684;&#xFF01;&#xFF09;&#xFF0C;&#x56DE;&#x5FC6;&#x4E00;&#x4E0B;9.4&#x8282;&#x3002;&#x56E0;&#x4E3A;&#x7F3A;&#x5C11;&#x663E;&#x5F0F;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x548C;CPU&#x662F;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x5730;&#x53BB;&#x66F4;&#x6539;&#x8BBF;&#x95EE;&#x5185;&#x5B58;&#x7684;&#x6307;&#x4EE4;&#x987A;&#x5E8F;&#xFF0C;&#x4EE5;&#x4EFB;&#x610F;&#x65B9;&#x5F0F;&#xFF0C;&#x53EA;&#x8981;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E00;&#x4E2A;goroutine&#x81EA;&#x5DF1;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x53EF;&#x80FD;loadIcons&#x7684;&#x8BED;&#x53E5;&#x91CD;&#x6392;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x3002;&#x5B83;&#x4F1A;&#x5728;&#x586B;&#x5199;icons&#x53D8;&#x91CF;&#x7684;&#x503C;&#x4E4B;&#x524D;&#x5148;&#x7528;&#x4E00;&#x4E2A;&#x7A7A;map&#x6765;&#x521D;&#x59CB;&#x5316;icons&#x53D8;&#x91CF;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token function">loadIcons</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    icons <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image<span class="token punctuation">)</span>
-    icons<span class="token punctuation">[</span><span class="token string">&quot;spades.png&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;spades.png&quot;</span><span class="token punctuation">)</span>
-    icons<span class="token punctuation">[</span><span class="token string">&quot;hearts.png&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;hearts.png&quot;</span><span class="token punctuation">)</span>
-    icons<span class="token punctuation">[</span><span class="token string">&quot;diamonds.png&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;diamonds.png&quot;</span><span class="token punctuation">)</span>
-    icons<span class="token punctuation">[</span><span class="token string">&quot;clubs.png&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">loadIcon</span><span class="token punctuation">(</span><span class="token string">&quot;clubs.png&quot;</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> loadIcons() {
+    icons = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image)
+    icons[<span class="hljs-string">&quot;spades.png&quot;</span>] = loadIcon(<span class="hljs-string">&quot;spades.png&quot;</span>)
+    icons[<span class="hljs-string">&quot;hearts.png&quot;</span>] = loadIcon(<span class="hljs-string">&quot;hearts.png&quot;</span>)
+    icons[<span class="hljs-string">&quot;diamonds.png&quot;</span>] = loadIcon(<span class="hljs-string">&quot;diamonds.png&quot;</span>)
+    icons[<span class="hljs-string">&quot;clubs.png&quot;</span>] = loadIcon(<span class="hljs-string">&quot;clubs.png&quot;</span>)
+}
 </code></pre>
 <p>&#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A;goroutine&#x5728;&#x68C0;&#x67E5;icons&#x662F;&#x975E;&#x7A7A;&#x65F6;&#xFF0C;&#x4E5F;&#x5E76;&#x4E0D;&#x80FD;&#x5C31;&#x5047;&#x8BBE;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x6D41;&#x7A0B;&#x5DF2;&#x7ECF;&#x8D70;&#x5B8C;&#x4E86;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x53EF;&#x80FD;&#x53EA;&#x662F;&#x585E;&#x4E86;&#x4E2A;&#x7A7A;map&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x503C;&#x8FD8;&#x6CA1;&#x586B;&#x5B8C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x586B;&#x503C;&#x7684;&#x8BED;&#x53E5;&#x90FD;&#x6CA1;&#x6267;&#x884C;&#x5B8C;&#x5462;&#xFF09;&#x3002;</p>
 <p>&#x6700;&#x7B80;&#x5355;&#x4E14;&#x6B63;&#x786E;&#x7684;&#x4FDD;&#x8BC1;&#x6240;&#x6709;goroutine&#x80FD;&#x591F;&#x89C2;&#x5BDF;&#x5230;loadIcons&#x6548;&#x679C;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x662F;&#x7528;&#x4E00;&#x4E2A;mutex&#x6765;&#x540C;&#x6B65;&#x68C0;&#x67E5;&#x3002;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> mu sync<span class="token punctuation">.</span>Mutex <span class="token comment">// guards icons</span>
-<span class="token keyword">var</span> icons <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> mu sync.Mutex <span class="hljs-comment">// guards icons</span>
+<span class="hljs-keyword">var</span> icons <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image
 
-<span class="token comment">// Concurrency-safe.</span>
-<span class="token keyword">func</span> <span class="token function">Icon</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> image<span class="token punctuation">.</span>Image <span class="token punctuation">{</span>
-    mu<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">defer</span> mu<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> icons <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token function">loadIcons</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> icons<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+<span class="hljs-comment">// Concurrency-safe.</span>
+<span class="hljs-keyword">func</span> Icon(name <span class="hljs-keyword">string</span>) image.Image {
+    mu.Lock()
+    <span class="hljs-keyword">defer</span> mu.Unlock()
+    <span class="hljs-keyword">if</span> icons == <span class="hljs-literal">nil</span> {
+        loadIcons()
+    }
+    <span class="hljs-keyword">return</span> icons[name]
+}
 </code></pre>
 <p>&#x7136;&#x800C;&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x8BBF;&#x95EE;icons&#x7684;&#x4EE3;&#x4EF7;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x5BF9;&#x8BE5;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#xFF0C;&#x5373;&#x4F7F;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6BD5;&#x4E14;&#x518D;&#x4E5F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x53D8;&#x52A8;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x5165;&#x4E00;&#x4E2A;&#x5141;&#x8BB8;&#x591A;&#x8BFB;&#x7684;&#x9501;&#xFF1A;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> mu sync<span class="token punctuation">.</span>RWMutex <span class="token comment">// guards icons</span>
-<span class="token keyword">var</span> icons <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image
-<span class="token comment">// Concurrency-safe.</span>
-<span class="token keyword">func</span> <span class="token function">Icon</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> image<span class="token punctuation">.</span>Image <span class="token punctuation">{</span>
-    mu<span class="token punctuation">.</span><span class="token function">RLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> icons <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        icon <span class="token operator">:=</span> icons<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
-        mu<span class="token punctuation">.</span><span class="token function">RUnlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> icon
-    <span class="token punctuation">}</span>
-    mu<span class="token punctuation">.</span><span class="token function">RUnlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> mu sync.RWMutex <span class="hljs-comment">// guards icons</span>
+<span class="hljs-keyword">var</span> icons <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image
+<span class="hljs-comment">// Concurrency-safe.</span>
+<span class="hljs-keyword">func</span> Icon(name <span class="hljs-keyword">string</span>) image.Image {
+    mu.RLock()
+    <span class="hljs-keyword">if</span> icons != <span class="hljs-literal">nil</span> {
+        icon := icons[name]
+        mu.RUnlock()
+        <span class="hljs-keyword">return</span> icon
+    }
+    mu.RUnlock()
 
-    <span class="token comment">// acquire an exclusive lock</span>
-    mu<span class="token punctuation">.</span><span class="token function">Lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> icons <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span> <span class="token comment">// NOTE: must recheck for nil</span>
-        <span class="token function">loadIcons</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    icon <span class="token operator">:=</span> icons<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
-    mu<span class="token punctuation">.</span><span class="token function">Unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> icon
-<span class="token punctuation">}</span>
+    <span class="hljs-comment">// acquire an exclusive lock</span>
+    mu.Lock()
+    <span class="hljs-keyword">if</span> icons == <span class="hljs-literal">nil</span> { <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> must recheck for nil</span>
+        loadIcons()
+    }
+    icon := icons[name]
+    mu.Unlock()
+    <span class="hljs-keyword">return</span> icon
+}
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6709;&#x4E24;&#x4E2A;&#x4E34;&#x754C;&#x533A;&#x3002;goroutine&#x9996;&#x5148;&#x4F1A;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x8BFB;&#x9501;&#xFF0C;&#x67E5;&#x8BE2;map&#xFF0C;&#x7136;&#x540E;&#x91CA;&#x653E;&#x9501;&#x3002;&#x5982;&#x679C;&#x6761;&#x76EE;&#x88AB;&#x627E;&#x5230;&#x4E86;&#xFF08;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#xFF0C;&#x90A3;goroutine&#x4F1A;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x5199;&#x9501;&#x3002;&#x4E0D;&#x91CA;&#x653E;&#x5171;&#x4EAB;&#x9501;&#x7684;&#x8BDD;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x529E;&#x6CD5;&#x6765;&#x5C06;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x9501;&#x5347;&#x7EA7;&#x4E3A;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x68C0;&#x67E5;icons&#x53D8;&#x91CF;&#x662F;&#x5426;&#x4E3A;nil&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x5728;&#x6267;&#x884C;&#x8FD9;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#xFF0C;icons&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x88AB;&#x5176;&#x5B83;gorouine&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x4E86;&#x3002;</p>
 <p>&#x4E0A;&#x9762;&#x7684;&#x6A21;&#x677F;&#x4F7F;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x66F4;&#x597D;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x70B9;&#x592A;&#x590D;&#x6742;&#x4E14;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x3002;&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;sync&#x5305;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x4E13;&#x95E8;&#x7684;&#x65B9;&#x6848;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x79CD;&#x4E00;&#x6B21;&#x6027;&#x521D;&#x59CB;&#x5316;&#x7684;&#x95EE;&#x9898;&#xFF1A;sync.Once&#x3002;&#x6982;&#x5FF5;&#x4E0A;&#x6765;&#x8BB2;&#xFF0C;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x521D;&#x59CB;&#x5316;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x91CF;mutex&#x548C;&#x4E00;&#x4E2A;boolean&#x53D8;&#x91CF;&#x6765;&#x8BB0;&#x5F55;&#x521D;&#x59CB;&#x5316;&#x662F;&#x4E0D;&#x662F;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#xFF1B;&#x4E92;&#x65A5;&#x91CF;&#x7528;&#x6765;&#x4FDD;&#x62A4;boolean&#x53D8;&#x91CF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;Do&#x8FD9;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x63A5;&#x6536;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x5176;&#x53C2;&#x6570;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x7528;sync.Once&#x6765;&#x7B80;&#x5316;&#x524D;&#x9762;&#x7684;Icon&#x51FD;&#x6570;&#x5427;&#xFF1A;</p>
-<pre class="language-"><code class="lang-go"><span class="token keyword">var</span> loadIconsOnce sync<span class="token punctuation">.</span>Once
-<span class="token keyword">var</span> icons <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>image<span class="token punctuation">.</span>Image
-<span class="token comment">// Concurrency-safe.</span>
-<span class="token keyword">func</span> <span class="token function">Icon</span><span class="token punctuation">(</span>name <span class="token builtin">string</span><span class="token punctuation">)</span> image<span class="token punctuation">.</span>Image <span class="token punctuation">{</span>
-    loadIconsOnce<span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span>loadIcons<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> icons<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> loadIconsOnce sync.Once
+<span class="hljs-keyword">var</span> icons <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]image.Image
+<span class="hljs-comment">// Concurrency-safe.</span>
+<span class="hljs-keyword">func</span> Icon(name <span class="hljs-keyword">string</span>) image.Image {
+    loadIconsOnce.Do(loadIcons)
+    <span class="hljs-keyword">return</span> icons[name]
+}
 </code></pre>
 <p>&#x6BCF;&#x4E00;&#x6B21;&#x5BF9;Do(loadIcons)&#x7684;&#x8C03;&#x7528;&#x90FD;&#x4F1A;&#x9501;&#x5B9A;mutex&#xFF0C;&#x5E76;&#x4F1A;&#x68C0;&#x67E5;boolean&#x53D8;&#x91CF;&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;Go1.9&#x4E2D;&#x4F1A;&#x5148;&#x5224;&#x65AD;boolean&#x53D8;&#x91CF;&#x662F;&#x5426;&#x4E3A;1(true)&#xFF0C;&#x53EA;&#x6709;&#x4E0D;&#x4E3A;1&#x624D;&#x9501;&#x5B9A;mutex&#xFF0C;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x90FD;&#x9501;&#x5B9A;mutex&#xFF09;&#x3002;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#xFF0C;boolean&#x53D8;&#x91CF;&#x7684;&#x503C;&#x662F;false&#xFF0C;Do&#x4F1A;&#x8C03;&#x7528;loadIcons&#x5E76;&#x4F1A;&#x5C06;boolean&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A;true&#x3002;&#x968F;&#x540E;&#x7684;&#x8C03;&#x7528;&#x4EC0;&#x4E48;&#x90FD;&#x4E0D;&#x4F1A;&#x505A;&#xFF0C;&#x4F46;&#x662F;mutex&#x540C;&#x6B65;&#x4F1A;&#x4FDD;&#x8BC1;loadIcons&#x5BF9;&#x5185;&#x5B58;&#xFF08;&#x8FD9;&#x91CC;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6307;icons&#x53D8;&#x91CF;&#x5566;&#xFF09;&#x4EA7;&#x751F;&#x7684;&#x6548;&#x679C;&#x80FD;&#x591F;&#x5BF9;&#x6240;&#x6709;goroutine&#x53EF;&#x89C1;&#x3002;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x4F7F;&#x7528;sync.Once&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x907F;&#x514D;&#x5728;&#x53D8;&#x91CF;&#x88AB;&#x6784;&#x5EFA;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x548C;&#x5176;&#x5B83;goroutine&#x5171;&#x4EAB;&#x8BE5;&#x53D8;&#x91CF;&#x3002;</p>
 <p><strong>&#x7EC3;&#x4E60; 9.2&#xFF1A;</strong> &#x91CD;&#x5199;2.6.2&#x8282;&#x4E2D;&#x7684;PopCount&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4F7F;&#x7528;sync.Once&#xFF0C;&#x53EA;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;&#xFF08;&#x867D;&#x7136;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5BF9;PopCount&#x8FD9;&#x6837;&#x5F88;&#x5C0F;&#x4E14;&#x9AD8;&#x5EA6;&#x4F18;&#x5316;&#x7684;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x53EF;&#x80FD;&#x4EE3;&#x4EF7;&#x6CA1;&#x6CD5;&#x63A5;&#x53D7;&#x3002;&#xFF09;</p>
@@ -677,9 +677,13 @@
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"sync.Once惰性初始化","level":"1.10.5","depth":2,"next":{"title":"竞争条件检测","level":"1.10.6","depth":2,"path":"ch9/ch9-06.md","ref":"ch9/ch9-06.md","articles":[]},"previous":{"title":"内存同步","level":"1.10.4","depth":2,"path":"ch9/ch9-04.md","ref":"ch9/ch9-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch9/ch9-05.md","mtime":"2019-03-26T06:34:32.118Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"sync.Once惰性初始化","level":"1.10.5","depth":2,"next":{"title":"竞争条件检测","level":"1.10.6","depth":2,"path":"ch9/ch9-06.md","ref":"ch9/ch9-06.md","articles":[]},"previous":{"title":"内存同步","level":"1.10.4","depth":2,"path":"ch9/ch9-04.md","ref":"ch9/ch9-04.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch9/ch9-05.md","mtime":"2019-08-14T08:20:28.121Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

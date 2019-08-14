@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -516,12 +516,12 @@
                             <div class="gb-markdown book-page-inner">
                                 <h2 id="116-&#x793A;&#x4F8B;&#x51FD;&#x6570;">11.6. &#x793A;&#x4F8B;&#x51FD;&#x6570;</h2>
 <p>&#x7B2C;&#x4E09;&#x79CD;&#x88AB;<code>go test</code>&#x7279;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x51FD;&#x6570;&#x662F;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;Example&#x4E3A;&#x51FD;&#x6570;&#x540D;&#x5F00;&#x5934;&#x3002;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x4E0B;&#x9762;&#x662F;IsPalindrome&#x51FD;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#xFF1A;</p>
-<pre class="language-"><code class="lang-Go">func ExampleIsPalindrome() {
-    fmt.Println(IsPalindrome(&quot;A man, a plan, a canal: Panama&quot;))
-    fmt.Println(IsPalindrome(&quot;palindrome&quot;))
-    // Output:
-    // true
-    // false
+<pre><code class="lang-Go"><span class="hljs-keyword">func</span> ExampleIsPalindrome() {
+    fmt.Println(IsPalindrome(<span class="hljs-string">&quot;A man, a plan, a canal: Panama&quot;</span>))
+    fmt.Println(IsPalindrome(<span class="hljs-string">&quot;palindrome&quot;</span>))
+    <span class="hljs-comment">// Output:</span>
+    <span class="hljs-comment">// true</span>
+    <span class="hljs-comment">// false</span>
 }
 </code></pre>
 <p>&#x793A;&#x4F8B;&#x51FD;&#x6570;&#x6709;&#x4E09;&#x4E2A;&#x7528;&#x5904;&#x3002;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x662F;&#x4F5C;&#x4E3A;&#x6587;&#x6863;&#xFF1A;&#x4E00;&#x4E2A;&#x5305;&#x7684;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x66F4;&#x7B80;&#x6D01;&#x76F4;&#x89C2;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x6F14;&#x793A;&#x51FD;&#x6570;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x6BD4;&#x6587;&#x5B57;&#x63CF;&#x8FF0;&#x66F4;&#x76F4;&#x63A5;&#x6613;&#x61C2;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x63D0;&#x9192;&#x6216;&#x5FEB;&#x901F;&#x53C2;&#x8003;&#x65F6;&#x3002;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5C55;&#x793A;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x6216;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6587;&#x6863;&#x90FD;&#x5FC5;&#x987B;&#x5173;&#x8054;&#x5230;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x6216;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x90FD;&#x7EDF;&#x4E00;&#x5230;&#x5305;&#x4E00;&#x6837;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#x548C;&#x6CE8;&#x91CA;&#x5E76;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x793A;&#x4F8B;&#x51FD;&#x6570;&#x662F;&#x771F;&#x5B9E;&#x7684;Go&#x4EE3;&#x7801;&#xFF0C;&#x9700;&#x8981;&#x63A5;&#x53D7;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x7F16;&#x8BD1;&#x65F6;&#x68C0;&#x67E5;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x6E90;&#x4EE3;&#x7801;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E0D;&#x4F1A;&#x8131;&#x8282;&#x3002;</p>
@@ -575,9 +575,13 @@
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"示例函数","level":"1.12.6","depth":2,"next":{"title":"反射","level":"1.13","depth":1,"path":"ch12/ch12.md","ref":"ch12/ch12.md","articles":[{"title":"为何需要反射?","level":"1.13.1","depth":2,"path":"ch12/ch12-01.md","ref":"ch12/ch12-01.md","articles":[]},{"title":"reflect.Type和reflect.Value","level":"1.13.2","depth":2,"path":"ch12/ch12-02.md","ref":"ch12/ch12-02.md","articles":[]},{"title":"Display递归打印","level":"1.13.3","depth":2,"path":"ch12/ch12-03.md","ref":"ch12/ch12-03.md","articles":[]},{"title":"示例: 编码S表达式","level":"1.13.4","depth":2,"path":"ch12/ch12-04.md","ref":"ch12/ch12-04.md","articles":[]},{"title":"通过reflect.Value修改值","level":"1.13.5","depth":2,"path":"ch12/ch12-05.md","ref":"ch12/ch12-05.md","articles":[]},{"title":"示例: 解码S表达式","level":"1.13.6","depth":2,"path":"ch12/ch12-06.md","ref":"ch12/ch12-06.md","articles":[]},{"title":"获取结构体字段标签","level":"1.13.7","depth":2,"path":"ch12/ch12-07.md","ref":"ch12/ch12-07.md","articles":[]},{"title":"显示一个类型的方法集","level":"1.13.8","depth":2,"path":"ch12/ch12-08.md","ref":"ch12/ch12-08.md","articles":[]},{"title":"几点忠告","level":"1.13.9","depth":2,"path":"ch12/ch12-09.md","ref":"ch12/ch12-09.md","articles":[]}]},"previous":{"title":"剖析","level":"1.12.5","depth":2,"path":"ch11/ch11-05.md","ref":"ch11/ch11-05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch11/ch11-06.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"示例函数","level":"1.12.6","depth":2,"next":{"title":"反射","level":"1.13","depth":1,"path":"ch12/ch12.md","ref":"ch12/ch12.md","articles":[{"title":"为何需要反射?","level":"1.13.1","depth":2,"path":"ch12/ch12-01.md","ref":"ch12/ch12-01.md","articles":[]},{"title":"reflect.Type和reflect.Value","level":"1.13.2","depth":2,"path":"ch12/ch12-02.md","ref":"ch12/ch12-02.md","articles":[]},{"title":"Display递归打印","level":"1.13.3","depth":2,"path":"ch12/ch12-03.md","ref":"ch12/ch12-03.md","articles":[]},{"title":"示例: 编码S表达式","level":"1.13.4","depth":2,"path":"ch12/ch12-04.md","ref":"ch12/ch12-04.md","articles":[]},{"title":"通过reflect.Value修改值","level":"1.13.5","depth":2,"path":"ch12/ch12-05.md","ref":"ch12/ch12-05.md","articles":[]},{"title":"示例: 解码S表达式","level":"1.13.6","depth":2,"path":"ch12/ch12-06.md","ref":"ch12/ch12-06.md","articles":[]},{"title":"获取结构体字段标签","level":"1.13.7","depth":2,"path":"ch12/ch12-07.md","ref":"ch12/ch12-07.md","articles":[]},{"title":"显示一个类型的方法集","level":"1.13.8","depth":2,"path":"ch12/ch12-08.md","ref":"ch12/ch12-08.md","articles":[]},{"title":"几点忠告","level":"1.13.9","depth":2,"path":"ch12/ch12-09.md","ref":"ch12/ch12-09.md","articles":[]}]},"previous":{"title":"剖析","level":"1.12.5","depth":2,"path":"ch11/ch11-05.md","ref":"ch11/ch11-05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"ch11/ch11-06.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 

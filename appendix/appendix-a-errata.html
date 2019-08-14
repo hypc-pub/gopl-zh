@@ -21,11 +21,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
         
@@ -491,7 +491,7 @@
 <p><strong>p.52, &#xB6;2:</strong> for &quot;an synonym&quot;, read &quot;a synonym&quot;, twice. (Corrected in the second printing.)</p>
 <p><strong>p.52, &#xB6;9:</strong> for &quot;The integer arithmetic operators&quot;, read &quot;The arithmetic operators&quot;. (Thanks to Yoshiki Shibata, 2015-12-20.)</p>
 <p><strong>p.68:</strong> the table of UTF-8 encodings is missing a bit from each first byte. The corrected table is shown below.  (Thanks to Akshay Kumar, 2015-11-02. Corrected in the second printing.)</p>
-<pre class="language-"><code>0xxxxxxx                             runes 0&#x2212;127     (ASCII)
+<pre><code>0xxxxxxx                             runes 0&#x2212;127     (ASCII)
 110xxxxx 10xxxxxx                    128&#x2212;2047        (values &lt;128 unused)
 1110xxxx 10xxxxxx 10xxxxxx           2048&#x2212;65535      (values &lt;2048 unused)
 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx  65536&#x2212;0x10ffff  (other values unused)
@@ -502,7 +502,7 @@
 <p><strong>p.79, &#xB6;4:</strong> &quot;When an untyped constant is assigned to a variable, as in the first statement below, or
 appears on the right-hand side of a variable declaration with an explicit type, as in the other three statements, ...&quot; has it backwards: the <i>first</i> statement is a declaration; the other three are assignments. (Thanks to Yoshiki Shibata, 2015-11-09. Corrected in the third printing.)</p>
 <p><strong>p.112:</strong> Exercise 4.11 calls for a &quot;CRUD&quot; (create, read, update, delete) tool for GitHub Issues. Since GitHub does not currently allow Issues to be deleted, for &quot;delete&quot;, read &quot;close&quot;. (Thanks to Yoshiki Shibata, 2016-01-18.)</p>
-<p><strong>p.115:</strong> The anchor element in <code>gopl.io/ch4/issueshtml</code>&apos;s template is missing a closing <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span></code> tag. (Thanks to Taj Khattra, 2016-01-19.)</p>
+<p><strong>p.115:</strong> The anchor element in <code>gopl.io/ch4/issueshtml</code>&apos;s template is missing a closing <code>&lt;/a&gt;</code> tag. (Thanks to Taj Khattra, 2016-01-19.)</p>
 <p><strong>p.132, code display following &#xB6;3:</strong> the final comment should read: <code>// compile error: can&apos;t assign func(int, int) int to func(int) int</code> (Thanks to Toni Suter, 2015-11-21. Corrected in the third printing.)</p>
 <p><strong>p.160, &#xB6;4:</strong> <code>For Get(&quot;item&quot;))</code>, read <code>Get(&quot;item&quot;)</code>. (Thanks to Yoshiki Shibata, 2016-02-01.)</p>
 <p><strong>p.166, &#xB6;2:</strong> for &quot;way&quot;, read &quot;a way&quot;. (Corrected in the third printing.)</p>
@@ -557,9 +557,13 @@ appears on the right-hand side of a variable declaration with an explicit type, 
     <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
     
 
+    
+    <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+    
+
 <script>
 (function() {
-    gitbook.page.hasChanged({"page":{"title":"附录A：原文勘误","level":"1.15.1","depth":2,"next":{"title":"附录B：作者译者","level":"1.15.2","depth":2,"path":"appendix/appendix-b-author.md","ref":"appendix/appendix-b-author.md","articles":[]},"previous":{"title":"附录","level":"1.15","depth":1,"path":"appendix/appendix.md","ref":"appendix/appendix.md","articles":[{"title":"附录A：原文勘误","level":"1.15.1","depth":2,"path":"appendix/appendix-a-errata.md","ref":"appendix/appendix-a-errata.md","articles":[]},{"title":"附录B：作者译者","level":"1.15.2","depth":2,"path":"appendix/appendix-b-author.md","ref":"appendix/appendix-b-author.md","articles":[]},{"title":"附录C：译文授权","level":"1.15.3","depth":2,"path":"appendix/appendix-c-cpoyright.md","ref":"appendix/appendix-c-cpoyright.md","articles":[]},{"title":"附录D：其它语言","level":"1.15.4","depth":2,"path":"appendix/appendix-d-translations.md","ref":"appendix/appendix-d-translations.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-highlight","prism","-lunr","-search","search-pro","-sharing","-fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"bg-nest":{},"katex":{},"prism":{},"search-pro":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"appendix/appendix-a-errata.md","mtime":"2019-03-26T06:34:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T06:35:31.960Z"},"basePath":"..","book":{"language":""}});
+    gitbook.page.hasChanged({"page":{"title":"附录A：原文勘误","level":"1.15.1","depth":2,"next":{"title":"附录B：作者译者","level":"1.15.2","depth":2,"path":"appendix/appendix-b-author.md","ref":"appendix/appendix-b-author.md","articles":[]},"previous":{"title":"附录","level":"1.15","depth":1,"path":"appendix/appendix.md","ref":"appendix/appendix.md","articles":[{"title":"附录A：原文勘误","level":"1.15.1","depth":2,"path":"appendix/appendix-a-errata.md","ref":"appendix/appendix-a-errata.md","articles":[]},{"title":"附录B：作者译者","level":"1.15.2","depth":2,"path":"appendix/appendix-b-author.md","ref":"appendix/appendix-b-author.md","articles":[]},{"title":"附录C：译文授权","level":"1.15.3","depth":2,"path":"appendix/appendix-c-cpoyright.md","ref":"appendix/appendix-c-cpoyright.md","articles":[]},{"title":"附录D：其它语言","level":"1.15.4","depth":2,"path":"appendix/appendix-d-translations.md","ref":"appendix/appendix-d-translations.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-opendocs","bg-nest","katex","-lunr","-search","search-pro","-sharing","-fontsettings","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-131598830-2"},"bg-nest":{},"katex":{},"search-pro":{},"highlight":{},"theme-opendocs":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"preface.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Go语言圣经","language":"zh-hans","gitbook":"3.x","description":"<The Go Programming Language>中文版"},"file":{"path":"appendix/appendix-a-errata.md","mtime":"2019-08-14T08:20:28.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-14T08:21:33.379Z"},"basePath":"..","book":{"language":""}});
 })();
 </script>
 
